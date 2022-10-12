@@ -4,10 +4,12 @@
  */
 package br.com.ifba.sad.usuario.dao;
 
+import br.com.ifba.sad.infrastructure.basedao.BaseDao;
+
 /**
  *
  * @author Lucas Bastos
  */
-public class DaoUsuario implements IDaoUsuario {
+public class DaoUsuario extends BaseDao<Usuario> implements IDaoUsuario {
     
 }
