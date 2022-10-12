@@ -8,6 +8,6 @@ package br.com.ifba.sad.infrastructure.service;
  *
  * @author clebinho
  */
-public class Facade {
+public class Facade implements IFacade {
     
 }
