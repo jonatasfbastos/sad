@@ -5,7 +5,7 @@
  */
 package br.com.ifba.sad.infrastructure.basedao;
 
-import br.com.ifba.infrastructure.model.PersistenceEntity;
+import br.com.ifba.sad.infrastructure.model.PersistenceEntity;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import javax.persistence.EntityManager;
