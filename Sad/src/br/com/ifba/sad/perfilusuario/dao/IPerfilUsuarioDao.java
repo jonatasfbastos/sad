@@ -4,12 +4,13 @@
  */
 package br.com.ifba.sad.perfilusuario.dao;
 
+import br.com.ifba.sad.infrastructure.basedao.IBaseDao;
 import java.util.List;
 
 /**
  *
  * @author ph715
  */
-public interface IPerfilUsuarioDao {
+public interface IPerfilUsuarioDao extends IBaseDao<PerfilUsuario> {
     public List<PerfilUsuario> findByName(String name);
 }

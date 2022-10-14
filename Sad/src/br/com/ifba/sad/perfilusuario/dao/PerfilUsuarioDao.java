@@ -12,13 +12,14 @@ import javax.persistence.Query;
  *
  * @author ph715
  */
-public class PerfilUsuarioDao extends BaseDao<PerfilUsuario> implements IPerfilUsuarioDao{
+public class PerfilUsuarioDao extends BaseDao<PerfilUsuario> implements IPerfilUsuarioDao {
+     
     @Override
-    public List<PerfilUsuario> findByName(String name) {
-        String busca = "SELECT a FROM Aluno AS a WHERE a.nome=:nome";
+    public List<PerfilUsuario> findByName(String nome) {
+        String busca = "SELECT a FROM PerfilUsuario AS a WHERE a.nome=:nome";
         // inserindo comando na querry e inserindo os dados
         Query query = entityManager.createQuery(busca);
-        query.setParameter("nome", name);
+        query.setParameter("nome", nome);
         return query.getResultList();
     }
     
