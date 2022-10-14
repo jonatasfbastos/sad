@@ -8,6 +8,10 @@ package br.com.ifba.sad.usuario.dao;
  *
  * @author Lucas Bastos
  */
-public interface IDaoUsuario {
+public interface IUsuarioDao extends IBaseDAO<Usuario> {
+    
+    // Interface do DAO do usuário
+    
+    List<Usuario> findByName(String name);
     
 }
