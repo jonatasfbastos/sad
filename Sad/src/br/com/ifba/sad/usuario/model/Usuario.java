@@ -4,6 +4,7 @@
  */
 package br.com.ifba.sad.usuario.model;
 import br.com.ifba.sad.infrastructure.model.PersistenceEntity;
+
 /**
  *
  * @author Pedro Henrique
@@ -12,7 +13,7 @@ public class Usuario extends PersistenceEntity{
     //variaveis de usuario
     private String login;
     private String senha;
-    private String perfil;
+    private PerfilUsuario perfil;
 
     //getterres e setterres de usuario
     public String getLogin() {
@@ -31,12 +32,14 @@ public class Usuario extends PersistenceEntity{
         this.senha = senha;
     }
 
-    public String getPerfil() {
+    public PerfilUsuario getPerfil() {
         return perfil;
     }
 
-    public void setPerfil(String perfil) {
+    public void setPerfil(PerfilUsuario perfil) {
         this.perfil = perfil;
     }
+
+    
     
 }
