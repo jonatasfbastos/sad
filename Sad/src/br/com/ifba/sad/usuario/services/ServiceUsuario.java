@@ -70,13 +70,13 @@ public class ServiceUsuario implements IServiceUsuario {
     }
 
     @Override
-    public List<Usuario> findByName(String name) {
-        if(name == null) {
-            throw new BusinessException("Nome null");
-        } else if(name.isEmpty()) {
-            throw new BusinessException("Nome vazio");
+    public List<Usuario> findByLogin(String login) {
+        if(login == null) {
+            throw new BusinessException("login null");
+        } else if(login.isEmpty()) {
+            throw new BusinessException("login vazio");
         } else {
-            return UsuarioDao.findByName(name);
+            return UsuarioDao.findByLogin(login);
         }    
     }
 }
