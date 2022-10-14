@@ -13,9 +13,9 @@ import java.util.List;
 public interface IServicePerfilUsuario {
      //salva o PerfilUsuario
     public abstract PerfilUsuario savePerfilUsuario(PerfilUsuario perfilUsuario);
-    //deleta PerfilUsuario
+    //atualiza PerfilUsuario
     public abstract PerfilUsuario updatePerfilUsuario(PerfilUsuario perfilUsuario);
-    
+    //deleta PerfilUsuario
     public abstract void deletePerfilUsuario(PerfilUsuario perfilUsuario);
      // Metodo que retorna todos os PerfilUsuario da base de dados
     public abstract List<PerfilUsuario> getAllPerfilUsuario();
