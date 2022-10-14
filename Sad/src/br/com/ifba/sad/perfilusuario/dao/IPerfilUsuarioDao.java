@@ -4,10 +4,12 @@
  */
 package br.com.ifba.sad.perfilusuario.dao;
 
+import java.util.List;
+
 /**
  *
  * @author ph715
  */
 public interface IPerfilUsuarioDao {
-    
+    public List<PerfilUsuario> findByName(String name);
 }
