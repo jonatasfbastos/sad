@@ -5,6 +5,8 @@
 package br.com.ifba.sad.usuario.dao;
 
 import br.com.ifba.sad.infrastructure.basedao.BaseDao;
+import br.com.ifba.sad.usuario.model.Usuario;
+import java.util.List;
 import javax.persistence.Query;
 
 /**
@@ -17,7 +19,7 @@ public class UsuarioDao extends BaseDao<Usuario> implements IUsuarioDao {
     public List<Usuario> findByName(String name) {
         
         // Pesquisa por nome no banco de dados
-        Query query = manager.createQuery("SELECT u FROM Usuario "
+        Query query = entityManager.createQuery("SELECT u FROM Usuario "
                 + "AS u WHERE u.name=:name");
         query.setParameter(1, name);
         

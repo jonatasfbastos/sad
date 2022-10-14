@@ -4,11 +4,16 @@
  */
 package br.com.ifba.sad.usuario.dao;
 
+import br.com.ifba.sad.usuario.model.Usuario;
+import br.com.ifba.sad.infrastructure.basedao.IBaseDao;
+
+import java.util.List;
+
 /**
  *
  * @author Lucas Bastos
  */
-public interface IUsuarioDao extends IBaseDAO<Usuario> {
+public interface IUsuarioDao extends IBaseDao<Usuario> {
     
     // Interface do DAO do usuário
     
