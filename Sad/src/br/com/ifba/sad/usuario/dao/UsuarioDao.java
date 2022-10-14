@@ -19,7 +19,7 @@ public class UsuarioDao extends BaseDao<Usuario> implements IUsuarioDao {
     public List<Usuario> findByLogin(String login) {
         
         //outra forma do find | "provisória"
-        String busca = "SELECT a FROM Tarefa AS a WHERE a.descricao like '%:login%' ";
+        String busca = "SELECT a FROM Tarefa AS a WHERE a.login like '%:login%' ";
         // inserindo comando na querry e inserindo os dados
         Query query = entityManager.createQuery(busca);
         query.setParameter("login", login);
