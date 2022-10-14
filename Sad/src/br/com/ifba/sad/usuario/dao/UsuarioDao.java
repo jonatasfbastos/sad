@@ -16,9 +16,16 @@ import javax.persistence.Query;
 public class UsuarioDao extends BaseDao<Usuario> implements IUsuarioDao {
     
     @Override
-    public List<Usuario> findByName(String name) {
+    public List<Usuario> findByLogin(String login) {
         
-        // Pesquisa por nome no banco de dados
+        //outra forma do find | "provisória"
+        String busca = "SELECT a FROM Tarefa AS a WHERE a.descricao like '%:login%' ";
+        // inserindo comando na querry e inserindo os dados
+        Query query = entityManager.createQuery(busca);
+        query.setParameter("login", login);
+        return query.getResultList();
+        
+        /*// Pesquisa por nome no banco de dados
         Query query = entityManager.createQuery("SELECT u FROM Usuario "
                 + "AS u WHERE u.name=:name");
         query.setParameter(1, name);
@@ -27,7 +34,7 @@ public class UsuarioDao extends BaseDao<Usuario> implements IUsuarioDao {
         List<Usuario> usuarios = query.getResultList();
         
         // Retorna resultados
-        return usuarios;
+        return usuarios;*/
         
     }
     
