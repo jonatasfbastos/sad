@@ -5,6 +5,7 @@
 package br.com.ifba.sad.perfilusuario.dao;
 
 import br.com.ifba.sad.infrastructure.basedao.IBaseDao;
+import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
 import java.util.List;
 
 /**

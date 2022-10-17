@@ -4,6 +4,7 @@
  */
 package br.com.ifba.sad.usuario.model;
 import br.com.ifba.sad.infrastructure.model.PersistenceEntity;
+import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
 
 /**
  *

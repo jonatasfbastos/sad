@@ -7,6 +7,7 @@ package br.com.ifba.sad.perfilusuario.service;
 import br.com.ifba.sad.infrastructure.exception.BusinessException;
 import br.com.ifba.sad.perfilusuario.dao.IPerfilUsuarioDao;
 import br.com.ifba.sad.perfilusuario.dao.PerfilUsuarioDao;
+import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
 import java.util.List;
 
 /**

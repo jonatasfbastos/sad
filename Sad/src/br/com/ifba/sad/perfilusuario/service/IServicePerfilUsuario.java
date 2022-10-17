@@ -4,6 +4,7 @@
  */
 package br.com.ifba.sad.perfilusuario.service;
 
+import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
 import java.util.List;
 
 /**
