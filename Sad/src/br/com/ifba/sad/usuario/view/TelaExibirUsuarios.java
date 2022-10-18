@@ -5,8 +5,10 @@
 package br.com.ifba.sad.usuario.view;
 
 import br.com.ifba.sad.infrastructure.service.Facade;
+import br.com.ifba.sad.infrastructure.service.FacadeInstance;
 import br.com.ifba.sad.infrastructure.support.StringUtil;
 import br.com.ifba.sad.usuario.model.Usuario;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -83,11 +85,21 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
         btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(0, 0, 0));
         btnEditar.setText("EDITAR");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnDeletar.setBackground(new java.awt.Color(217, 217, 217));
         btnDeletar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnDeletar.setForeground(new java.awt.Color(0, 0, 0));
         btnDeletar.setText("DELETAR");
+        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarActionPerformed(evt);
+            }
+        });
 
         lblProcurar.setBackground(new java.awt.Color(217, 217, 217));
         lblProcurar.setText("Procurar usuário");
@@ -207,6 +219,68 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        // TODO add your handling code here:
+        // Obtendo linha selecionada
+        long linha = tblDados.getSelectedRow();
+
+        if (linha == -1) {
+            // Exibe mensagem de erro
+            JOptionPane.showMessageDialog(rootPane, "Por favor, selecione uma linha da tabela.");
+
+            // Só dá continuidade à remoção se o usuário confirmar.
+        } else if (JOptionPane.showConfirmDialog(rootPane, "Os dados serão modificados."
+                + "\nDeseja continuar?") == 0) {
+
+            String login = (String) tblDados.getModel().getValueAt((int) linha, 2);
+            
+            // Acessando fachada para excluir dados
+            List<Usuario> usuarioRemover = FacadeInstance.getInstance().findByLogin(login);
+            
+            // Removendo usuário
+            FacadeInstance.getInstance().deleteUsuario(usuarioRemover.get(0));
+            
+            // Mensagem de sucesso.
+            JOptionPane.showMessageDialog(rootPane, "Dados removidos com sucesso!");
+
+        } else {
+            
+            // Se o usuário não confirmar o processo, exibe mensagem de cancelamento
+            JOptionPane.showMessageDialog(rootPane, "Exclusão cancelada." +
+                    "\nOs dados não foram alterados.");
+            
+        }
+        
+    }//GEN-LAST:event_btnDeletarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        // Obtendo linha selecionada
+        long linha = tblDados.getSelectedRow();
+
+        if (linha == -1) {
+            // Exibe mensagem de erro
+            JOptionPane.showMessageDialog(rootPane, "Por favor, selecione uma linha da tabela.");
+
+        } else {
+            String login = (String) tblDados.getModel().getValueAt((int) linha, 2);
+            
+            // Acessando fachada para editar dados
+            List<Usuario> usuarioEditar = FacadeInstance.getInstance().findByLogin(login);
+            
+            // Obtendo usuario a ser editado
+            Usuario usrEdit = usuarioEditar.get(0);
+            
+            // Ocultando tela atual
+            this.setVisible(false);
+            
+            // Abrindo tela de edição
+            TelaEditarUsuario telaEditar = new TelaEditarUsuario(usrEdit);
+            telaEditar.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments
