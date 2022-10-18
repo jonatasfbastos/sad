@@ -4,6 +4,12 @@
  */
 package br.com.ifba.sad.usuario.view;
 
+import br.com.ifba.sad.infrastructure.service.Facade;
+import br.com.ifba.sad.infrastructure.support.StringUtil;
+import br.com.ifba.sad.usuario.model.Usuario;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Leo
@@ -13,6 +19,13 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
     /**
      * Creates new form TelaExibirUsuario
      */
+    //instanciando objeto da fachada
+    Facade fac = new Facade();
+    
+    //instanciando novo objeto da Tela de cadastro
+    TelaCadastroUsuario tc = new TelaCadastroUsuario();
+    private boolean validaCampos;
+    
     public TelaExibirUsuarios() {
         initComponents();
     }
@@ -83,6 +96,11 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
         btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastrar.setText("CADASTRAR");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -138,6 +156,58 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+     private boolean validaCampos() {
+       StringUtil util = StringUtil.getInstance();
+        if(tc.txtNome.getText().equals("") && tc.txtMatricula.getText().equals("") && tc.txtSenha.getText().equals("") ){
+            JOptionPane.showMessageDialog(null, "Todos os campos são obrigatórios!!!", "CAMPOS OBRIGATÓRIOS", JOptionPane.ERROR_MESSAGE);
+            return false; 
+        }
+        else if(util.isNullOrEmpty(tc.txtNome.getText())){
+            JOptionPane.showMessageDialog(null, "Preencha o campo Nome!!!", "CAMPOS OBRIGATÓRIOS", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        else if(util.isNullOrEmpty(tc.txtMatricula.getText())){
+            JOptionPane.showMessageDialog(null, "Preencha o campo Matricula!!!", "CAMPOS OBRIGATÓRIOS", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        else if(util.isNullOrEmpty(tc.txtSenha.getText())){
+            JOptionPane.showMessageDialog(null, "Preencha o campo senha!!!", "CAMPOS OBRIGATÓRIOS", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        /*else if(util.isNullOrEmpty(tc.cbxPerfil.getSelectedItem()){
+            JOptionPane.showMessageDialog(null, "Escolha o tipo da conta!!.", "CAMPOS OBRIGATÓRIOS", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }*/
+        return true;
+   }
+    
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        // TODO add your handling code here:
+        //instanciando novo objeto da classe Usuario
+        
+        if(validaCampos == true){
+            
+            //instanciando novo objeto da classe Usuario
+            Usuario usuario = new Usuario();
+        
+            //pegando os dados
+            usuario.setNome(tc.txtNome.getText());
+            usuario.setLogin(tc.txtMatricula.getText());
+            //usuario.setPerfil(tc.cbxPerfil.getSelectedItem()); ainda falta a relação
+        
+            //cadastrando os dados no banco
+            fac.saveUsuario(usuario);
+        
+            //cadastrando os dados na tabela
+            DefaultTableModel tar = (DefaultTableModel) tblDados.getModel();
+            Object[] dados = {usuario.getId(),usuario.getNome(),usuario.getLogin(),usuario.getPerfil()};
+            tar.addRow(dados);
+            
+        }
+        
+    }//GEN-LAST:event_btnCadastrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -173,6 +243,7 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;

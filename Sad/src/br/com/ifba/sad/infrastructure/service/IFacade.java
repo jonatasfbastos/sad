@@ -5,6 +5,7 @@
 package br.com.ifba.sad.infrastructure.service;
 
 import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
+import br.com.ifba.sad.usuario.model.Usuario;
 import java.util.List;
 
 /**
@@ -19,5 +20,12 @@ public interface IFacade {
      public abstract void deletePerfilUsuario(PerfilUsuario perfilUsuario);
      public List<PerfilUsuario> getAllPerfilUsuario();
      public List<PerfilUsuario> findByNamePerfilUsuario(String nome);
+     
+     //=====================Usuario====================//
+     public abstract Usuario saveUsuario(Usuario usuario);
+     public abstract Usuario updateUsuario(Usuario usuario);
+     public abstract void deleteUsuario(Usuario usuario);
+     public List<Usuario> getAllUsuario();
+     public List<Usuario> findByLogin(String login);
      
 }

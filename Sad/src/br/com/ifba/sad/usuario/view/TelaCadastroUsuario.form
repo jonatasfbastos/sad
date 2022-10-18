@@ -56,9 +56,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblMatricula" min="-2" pref="269" max="-2" attributes="0"/>
-                              <Component id="lblSenha" min="-2" pref="269" max="-2" attributes="0"/>
-                              <Component id="lblNome" min="-2" pref="269" max="-2" attributes="0"/>
+                              <Component id="txtMatricula" min="-2" pref="269" max="-2" attributes="0"/>
+                              <Component id="txtSenha" min="-2" pref="269" max="-2" attributes="0"/>
+                              <Component id="txtNome" min="-2" pref="269" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -88,11 +88,11 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="14" max="32767" attributes="0"/>
-                  <Component id="lblNome" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="txtNome" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="lblMatricula" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="txtMatricula" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="lblSenha" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="txtSenha" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -131,38 +131,38 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Component class="javax.swing.JTextField" name="lblNome">
+        <Component class="javax.swing.JTextField" name="txtNome">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="d9" red="d9" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="nome"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lblNomeActionPerformed"/>
-          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="lblMatricula">
+        <Component class="javax.swing.JTextField" name="txtMatricula">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="d9" red="d9" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="matr&#xed;cula"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lblMatriculaActionPerformed"/>
-          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="lblSenha">
+        <Component class="javax.swing.JTextField" name="txtSenha">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="d9" red="d9" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="senha"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lblSenhaActionPerformed"/>
-          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btnVoltar">
           <Properties>
@@ -205,6 +205,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="CADASTRAR"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbxPerfil">
           <Properties>
@@ -221,11 +224,9 @@
               </StringArray>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxPerfilActionPerformed"/>
-          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">

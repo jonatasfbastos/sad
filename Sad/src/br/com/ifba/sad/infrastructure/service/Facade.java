@@ -7,6 +7,9 @@ package br.com.ifba.sad.infrastructure.service;
 import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
 import br.com.ifba.sad.perfilusuario.service.IServicePerfilUsuario;
 import br.com.ifba.sad.perfilusuario.service.ServicePerfilUsuario;
+import br.com.ifba.sad.usuario.model.Usuario;
+import br.com.ifba.sad.usuario.services.IServiceUsuario;
+import br.com.ifba.sad.usuario.services.ServiceUsuario;
 import java.util.List;
 
 /**
@@ -41,5 +44,36 @@ public class Facade implements IFacade {
      public List<PerfilUsuario> findByNamePerfilUsuario(String nome) {
           return servicePerfilUsuario.findByName(nome);
      }
+     
+     //=====================Usuario====================//
+     private final IServiceUsuario serviceUsuario = new ServiceUsuario();
+
+    @Override
+    public Usuario saveUsuario(Usuario usuario) {
+        return serviceUsuario.saveUsuario(usuario);
+    }
+
+    @Override
+    public Usuario updateUsuario(Usuario usuario) {
+        return serviceUsuario.updateUsuario(usuario);
+    }
+
+    @Override
+    public void deleteUsuario(Usuario usuario) {
+        serviceUsuario.deleteUsuario(usuario);
+    }
+
+    @Override
+    public List<Usuario> getAllUsuario() {
+        return serviceUsuario.getAllUsuario();
+    }
+
+    @Override
+    public List<Usuario> findByLogin(String login) {
+        return serviceUsuario.findByLogin(login);
+    }
+        
+     
+     
     
 }

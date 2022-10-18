@@ -28,9 +28,9 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        lblNome = new javax.swing.JTextField();
-        lblMatricula = new javax.swing.JTextField();
-        lblSenha = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
+        txtMatricula = new javax.swing.JTextField();
+        txtSenha = new javax.swing.JTextField();
         btnVoltar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnCadastrar = new javax.swing.JButton();
@@ -55,29 +55,14 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
             .addGap(0, 8, Short.MAX_VALUE)
         );
 
-        lblNome.setBackground(new java.awt.Color(217, 217, 217));
-        lblNome.setText("nome");
-        lblNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lblNomeActionPerformed(evt);
-            }
-        });
+        txtNome.setBackground(new java.awt.Color(217, 217, 217));
+        txtNome.setText("nome");
 
-        lblMatricula.setBackground(new java.awt.Color(217, 217, 217));
-        lblMatricula.setText("matrícula");
-        lblMatricula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lblMatriculaActionPerformed(evt);
-            }
-        });
+        txtMatricula.setBackground(new java.awt.Color(217, 217, 217));
+        txtMatricula.setText("matrícula");
 
-        lblSenha.setBackground(new java.awt.Color(217, 217, 217));
-        lblSenha.setText("senha");
-        lblSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lblSenhaActionPerformed(evt);
-            }
-        });
+        txtSenha.setBackground(new java.awt.Color(217, 217, 217));
+        txtSenha.setText("senha");
 
         btnVoltar.setBackground(new java.awt.Color(217, 217, 217));
         btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -93,15 +78,15 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastrar.setText("CADASTRAR");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
 
         cbxPerfil.setBackground(new java.awt.Color(217, 217, 217));
         cbxPerfil.setForeground(new java.awt.Color(0, 0, 0));
         cbxPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Discente", "Doscente" }));
-        cbxPerfil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxPerfilActionPerformed(evt);
-            }
-        });
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Tipo de conta:");
@@ -124,9 +109,9 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -148,11 +133,11 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -180,21 +165,13 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblNomeActionPerformed
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lblNomeActionPerformed
-
-    private void lblMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblMatriculaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lblMatriculaActionPerformed
-
-    private void lblSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lblSenhaActionPerformed
-
-    private void cbxPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPerfilActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxPerfilActionPerformed
+        
+        //chamando as tela de exibir cadastros
+        TelaExibirUsuarios te = new TelaExibirUsuarios();
+        te.setVisible(true);
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,14 +214,14 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JComboBox<String> cbxPerfil;
+    protected javax.swing.JComboBox<String> cbxPerfil;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField lblMatricula;
-    private javax.swing.JTextField lblNome;
-    private javax.swing.JTextField lblSenha;
+    protected javax.swing.JTextField txtMatricula;
+    protected javax.swing.JTextField txtNome;
+    protected javax.swing.JTextField txtSenha;
     // End of variables declaration//GEN-END:variables
 }
