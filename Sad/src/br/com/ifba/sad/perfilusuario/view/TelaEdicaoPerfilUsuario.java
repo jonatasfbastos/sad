@@ -5,17 +5,23 @@
  */
 package br.com.ifba.sad.perfilusuario.view;
 
+import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
+
 /**
  *
  * @author Jonas Dias
  */
 public class TelaEdicaoPerfilUsuario extends javax.swing.JFrame {
 
-     /**
-      * Creates new form TelaEdicaoPerfilUsuario
-      */
+     private PerfilUsuario perfilEdicao;
+     
      public TelaEdicaoPerfilUsuario() {
           initComponents();
+     }
+     
+     public TelaEdicaoPerfilUsuario(PerfilUsuario perfil) {
+          initComponents();
+          this.perfilEdicao = perfil;
      }
 
      /**
