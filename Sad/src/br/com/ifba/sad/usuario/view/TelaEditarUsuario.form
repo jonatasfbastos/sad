@@ -147,7 +147,7 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="d9" red="d9" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="matr&#xed;cula"/>
+            <Property name="text" type="java.lang.String" value="login"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lblMatriculaActionPerformed"/>
@@ -242,7 +242,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/br/com/ifba/sad/usuario/view/1de27e8ca1dba2329be08206b33e26fb.png"/>
+              <Image iconType="3" name="/br/com/ifba/sad/usuario/imagens/1de27e8ca1dba2329be08206b33e26fb.png"/>
             </Property>
           </Properties>
         </Component>

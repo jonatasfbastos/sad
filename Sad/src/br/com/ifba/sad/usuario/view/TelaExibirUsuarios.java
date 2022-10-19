@@ -91,6 +91,7 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
 
         btnEditar.setBackground(new java.awt.Color(217, 217, 217));
         btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(0, 0, 0));
         btnEditar.setText("EDITAR");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +101,7 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
 
         btnDeletar.setBackground(new java.awt.Color(217, 217, 217));
         btnDeletar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnDeletar.setForeground(new java.awt.Color(0, 0, 0));
         btnDeletar.setText("DELETAR");
         btnDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +119,7 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
 
         btnCadastrar.setBackground(new java.awt.Color(217, 217, 217));
         btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastrar.setText("CADASTRAR");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

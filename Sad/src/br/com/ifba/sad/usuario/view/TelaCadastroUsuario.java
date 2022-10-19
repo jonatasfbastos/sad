@@ -68,7 +68,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         txtNome.setText("nome");
 
         txtMatricula.setBackground(new java.awt.Color(217, 217, 217));
-        txtMatricula.setText("matrícula");
+        txtMatricula.setText("login");
 
         txtSenha.setBackground(new java.awt.Color(217, 217, 217));
         txtSenha.setText("senha");

@@ -85,7 +85,7 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
         });
 
         lblMatricula.setBackground(new java.awt.Color(217, 217, 217));
-        lblMatricula.setText("matrícula");
+        lblMatricula.setText("login");
         lblMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lblMatriculaActionPerformed(evt);
@@ -132,7 +132,7 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Tipo de conta:");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/usuario/view/1de27e8ca1dba2329be08206b33e26fb.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/usuario/imagens/1de27e8ca1dba2329be08206b33e26fb.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
