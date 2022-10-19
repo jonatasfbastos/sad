@@ -20,6 +20,9 @@ public interface IServicePerfilUsuario {
     public abstract void deletePerfilUsuario(PerfilUsuario perfilUsuario);
      // Metodo que retorna todos os PerfilUsuario da base de dados
     public abstract List<PerfilUsuario> getAllPerfilUsuario();
+    // Método que retorna a lista com os perfilUsuario com o nome informado
+    public List<PerfilUsuario> findByName(String nome);
+    // Método que retorna o perfilUsuario com o id informado
+    public PerfilUsuario findById(Long id);
     
-    public List<PerfilUsuario> findByName(String name);
 }

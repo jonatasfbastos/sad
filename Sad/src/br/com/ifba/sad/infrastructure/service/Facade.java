@@ -45,6 +45,11 @@ public class Facade implements IFacade {
           return servicePerfilUsuario.findByName(nome);
      }
      
+      @Override
+     public PerfilUsuario findByIdPerfilUsuario(Long id) {
+          return servicePerfilUsuario.findById(id);
+     }
+     
      //=====================Usuario====================//
      private final IServiceUsuario serviceUsuario = new ServiceUsuario();
 

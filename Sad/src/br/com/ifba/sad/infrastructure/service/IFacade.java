@@ -20,6 +20,7 @@ public interface IFacade {
      public abstract void deletePerfilUsuario(PerfilUsuario perfilUsuario);
      public List<PerfilUsuario> getAllPerfilUsuario();
      public List<PerfilUsuario> findByNamePerfilUsuario(String nome);
+     public PerfilUsuario findByIdPerfilUsuario(Long id);
      
      //=====================Usuario====================//
      public abstract Usuario saveUsuario(Usuario usuario);

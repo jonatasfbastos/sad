@@ -83,5 +83,10 @@ public class ServicePerfilUsuario implements IServicePerfilUsuario{
             return perfilUsuarioDao.findByName(name);
         } 
     }
+
+     @Override
+     public PerfilUsuario findById(Long id) {
+          return perfilUsuarioDao.findById(id);
+     }
     
 }
