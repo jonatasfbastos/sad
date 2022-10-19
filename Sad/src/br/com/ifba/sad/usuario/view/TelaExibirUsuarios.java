@@ -109,9 +109,9 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
 
         lblProcurar.setBackground(new java.awt.Color(217, 217, 217));
         lblProcurar.setText("Procurar usuário");
-        lblProcurar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lblProcurarActionPerformed(evt);
+        lblProcurar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lblProcurarKeyPressed(evt);
             }
         });
 
@@ -252,8 +252,7 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void lblProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblProcurarActionPerformed
-        // Object[] usuario;
+    private void lblProcurarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblProcurarKeyPressed
         String nome = lblProcurar.getText();
         int i;
         List<Usuario> buscaUsuario = FacadeInstance.getInstance().getAllUsuario();
@@ -269,11 +268,8 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
                 tblaux.addRow(new Object[]{buscaUsuario.get(i).getId() + buscaUsuario.get(i).getNome() + buscaUsuario.get(i).getLogin() + buscaUsuario.get(i).getPerfil()});
             }
         }
-    }//GEN-LAST:event_lblProcurarActionPerformed
+    }//GEN-LAST:event_lblProcurarKeyPressed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

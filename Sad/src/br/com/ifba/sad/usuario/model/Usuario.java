@@ -26,7 +26,7 @@ public class Usuario extends PersistenceEntity{
     private String nome;
     private String login;
     private String senha;
-    private PerfilUsuario perfil;
+    
 
     //getterres e setterres de usuario
     public String getNome() {
