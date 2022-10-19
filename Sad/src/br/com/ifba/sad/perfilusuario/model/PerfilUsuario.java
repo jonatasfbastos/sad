@@ -23,6 +23,8 @@ import javax.persistence.Table;
 public class PerfilUsuario extends PersistenceEntity {
      
      private String nome;
+     @OneToMany(mappedBy = "perfil_usuarios")
+     private List <Usuario> usuario;
      private String descricao;
      
      @OneToMany(mappedBy = "perfil", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -54,5 +56,13 @@ public class PerfilUsuario extends PersistenceEntity {
      public void setUsuarios(List<Usuario> usuarios) {
           this.usuarios = usuarios;
      }
+
+    public List<Usuario> getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(List<Usuario> usuario) {
+        this.usuario = usuario;
+    }
      
 }

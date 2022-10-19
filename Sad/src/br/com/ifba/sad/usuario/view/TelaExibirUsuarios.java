@@ -8,6 +8,7 @@ import br.com.ifba.sad.infrastructure.service.FacadeInstance;
 import br.com.ifba.sad.usuario.model.Usuario;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -19,12 +20,29 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
     /**
      * Creates new form TelaExibirUsuario
      */
+    DefaultTableModel listaTabela;
+    List<Usuario> lista;
+    List<Usuario> listaBuscar;
+    
     
     public TelaExibirUsuarios() {
         initComponents();
         this.setLocationRelativeTo(null);//comando para iniciar a tela no centro do monitor
     }
 
+    // Metodo para atualizar a tabela na view
+
+    private void atualizarTabela(List<Usuario> listaUsuario) {
+        this.listaTabela = new DefaultTableModel(null,
+                new String[] { "ID", "Login", "Senha", "Nome", "ID_PerfilUsuario"});
+
+        for (Usuario usu : listaUsuario) {
+            listaTabela.addRow(new Object[] { usu.getId(), usu.getLogin(), usu.getSenha(),
+                    usu.getNome(), usu.getPerfil().getId()});
+        }
+
+        this.tblDados.setModel(listaTabela);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,15 +73,7 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
             new String [] {
                 "ID", "Nome", "Login", "Perfil do usuário"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(tblDados);
 
         jPanel2.setBackground(new java.awt.Color(43, 76, 126));
@@ -81,7 +91,6 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
 
         btnEditar.setBackground(new java.awt.Color(217, 217, 217));
         btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnEditar.setForeground(new java.awt.Color(0, 0, 0));
         btnEditar.setText("EDITAR");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +100,6 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
 
         btnDeletar.setBackground(new java.awt.Color(217, 217, 217));
         btnDeletar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnDeletar.setForeground(new java.awt.Color(0, 0, 0));
         btnDeletar.setText("DELETAR");
         btnDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,10 +109,14 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
 
         lblProcurar.setBackground(new java.awt.Color(217, 217, 217));
         lblProcurar.setText("Procurar usuário");
+        lblProcurar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblProcurarActionPerformed(evt);
+            }
+        });
 
         btnCadastrar.setBackground(new java.awt.Color(217, 217, 217));
         btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastrar.setText("CADASTRAR");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -239,6 +251,25 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void lblProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblProcurarActionPerformed
+        // Object[] usuario;
+        String nome = lblProcurar.getText();
+        int i;
+        List<Usuario> buscaUsuario = FacadeInstance.getInstance().getAllUsuario();
+
+        for (i = 0; i < buscaUsuario.size(); i++) {
+            if (nome.equals(buscaUsuario.get(i).getNome())) {
+                this.listaBuscar = FacadeInstance.getInstance().findByName(nome);
+                this.atualizarTabela(listaBuscar);
+                
+                DefaultTableModel tblaux = (DefaultTableModel)tblDados.getModel();
+                
+               // new Object[] usuario = (buscaUsuario.get(i).getId() + buscaUsuario.get(i).getNome() + buscaUsuario.get(i).getLogin() + buscaUsuario.get(i).getPerfil());
+                tblaux.addRow(new Object[]{buscaUsuario.get(i).getId() + buscaUsuario.get(i).getNome() + buscaUsuario.get(i).getLogin() + buscaUsuario.get(i).getPerfil()});
+            }
+        }
+    }//GEN-LAST:event_lblProcurarActionPerformed
 
     /**
      * @param args the command line arguments

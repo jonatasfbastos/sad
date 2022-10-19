@@ -6,6 +6,8 @@ package br.com.ifba.sad.usuario.model;
 import br.com.ifba.sad.infrastructure.model.PersistenceEntity;
 import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -15,6 +17,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "usuario")
 public class Usuario extends PersistenceEntity{
+    
+    @ManyToOne
+    @JoinColumn(name = "PerfilUsuario_ID", referencedColumnName = "ID")
+    private PerfilUsuario Perfilusuario;
+    
     //variaveis de usuario
     private String nome;
     private String login;
