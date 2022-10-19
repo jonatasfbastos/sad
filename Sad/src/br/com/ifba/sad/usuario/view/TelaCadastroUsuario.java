@@ -6,7 +6,9 @@ package br.com.ifba.sad.usuario.view;
 
 import br.com.ifba.sad.infrastructure.service.FacadeInstance;
 import br.com.ifba.sad.infrastructure.support.StringUtil;
+import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
 import br.com.ifba.sad.usuario.model.Usuario;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,6 +19,13 @@ import javax.swing.table.DefaultTableModel;
 public class TelaCadastroUsuario extends javax.swing.JFrame {
 
     private boolean validaCampos;
+    private DefaultTableModel tableModelPro;
+    
+    //instanciando novo objeto da classe Usuario
+    Usuario usuario = new Usuario();
+    
+    //instanciando objeto da tela de exibir
+    TelaExibirUsuarios telaex = new TelaExibirUsuarios();
 
     /**
      * Creates new form CadastrarUsuario
@@ -24,6 +33,8 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
     public TelaCadastroUsuario() {
         initComponents();
         this.setLocationRelativeTo(null);//comando para iniciar a tela no centro do monitor
+        //exibe os dados dos usuarios na tabela
+        this.listUsuario(FacadeInstance.getInstance().getAllUsuario());
     }
 
     /**
@@ -204,37 +215,48 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Preencha o campo senha!!!", "CAMPOS OBRIGATÓRIOS", JOptionPane.WARNING_MESSAGE);
             return false;
         }
-        /*else if(util.isNullOrEmpty(cbxPerfil.getSelectedItem()){
+        else if(util.isNullOrEmpty((String) cbxPerfil.getSelectedItem())){
             JOptionPane.showMessageDialog(null, "Escolha o tipo da conta!!.", "CAMPOS OBRIGATÓRIOS", JOptionPane.WARNING_MESSAGE);
             return false;
-        }*/
+        }
         return true;
+   }
+    
+   public void listUsuario(List<Usuario> usuarioList){
+        tableModelPro = new DefaultTableModel(null, 
+            new String [] {"ID","Nome","Login","Perfil do usuário"});
+        
+        //o for each exibe a lista de usuarios
+        for(Usuario usuario: usuarioList){
+            tableModelPro.addRow(new Object[] {usuario.getId(),usuario.getNome(),usuario.getLogin(),usuario.getPerfilusuario()});
+        }
+        
+        //adiciona a tabela no JFrame
+        telaex.tblDados.setModel(tableModelPro);
+    }
+   
+   public void cadastrarDados(){
+       //cadastrando os dados na tabela
+       DefaultTableModel tar = (DefaultTableModel) telaex.tblDados.getModel();
+       Object[] dados = {usuario.getId(),usuario.getNome(),usuario.getLogin(),usuario.getPerfilusuario()};
+       tar.addRow(dados);
    }
     
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
-        
-        //instanciando objeto da tela de exibir
-        TelaExibirUsuarios telaex = new TelaExibirUsuarios();
-        
         if(validaCampos == true){
-            
-            //instanciando novo objeto da classe Usuario
-            Usuario usuario = new Usuario();
         
             //pegando os dados
             usuario.setNome(txtNome.getText());
             usuario.setLogin(txtMatricula.getText());
-            //usuario.setPerfil(cbxPerfil.getSelectedItem()); ainda falta a relação
+            usuario.setPerfilusuario((PerfilUsuario) cbxPerfil.getSelectedItem()); 
         
             //cadastrando os dados no banco
             FacadeInstance.getInstance().saveUsuario(usuario);
         
-            //cadastrando os dados na tabela
-            DefaultTableModel tar = (DefaultTableModel) telaex.tblDados.getModel();
-            Object[] dados = {usuario.getId(),usuario.getNome(),usuario.getLogin(),usuario.getPerfilusuario()};
-            tar.addRow(dados);
+            cadastrarDados();
             
+            //exibindo mensagem de confirmação do cadastro
             JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!!");
             
         }   
@@ -251,6 +273,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */
