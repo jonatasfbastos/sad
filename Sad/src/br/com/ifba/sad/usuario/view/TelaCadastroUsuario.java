@@ -232,7 +232,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         
             //cadastrando os dados na tabela
             DefaultTableModel tar = (DefaultTableModel) telaex.tblDados.getModel();
-            Object[] dados = {usuario.getId(),usuario.getNome(),usuario.getLogin(),usuario.getPerfil()};
+            Object[] dados = {usuario.getId(),usuario.getNome(),usuario.getLogin(),usuario.getPerfilusuario()};
             tar.addRow(dados);
             
             JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!!");

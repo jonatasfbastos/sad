@@ -53,14 +53,15 @@ public class Usuario extends PersistenceEntity{
         this.senha = senha;
     }
 
-    public PerfilUsuario getPerfil() {
-        return perfil;
+    public PerfilUsuario getPerfilusuario() {
+        return Perfilusuario;
     }
 
-    public void setPerfil(PerfilUsuario perfil) {
-        this.perfil = perfil;
+    public void setPerfilusuario(PerfilUsuario Perfilusuario) {
+        this.Perfilusuario = Perfilusuario;
     }
 
+    
     
     
 }

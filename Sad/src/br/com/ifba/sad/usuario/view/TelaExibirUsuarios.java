@@ -38,7 +38,7 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
 
         for (Usuario usu : listaUsuario) {
             listaTabela.addRow(new Object[] { usu.getId(), usu.getLogin(), usu.getSenha(),
-                    usu.getNome(), usu.getPerfil().getId()});
+                    usu.getNome(), usu.getPerfilusuario().getId()});
         }
 
         this.tblDados.setModel(listaTabela);
@@ -268,7 +268,7 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
                 DefaultTableModel tblaux = (DefaultTableModel)tblDados.getModel();
                 
                // new Object[] usuario = (buscaUsuario.get(i).getId() + buscaUsuario.get(i).getNome() + buscaUsuario.get(i).getLogin() + buscaUsuario.get(i).getPerfil());
-                tblaux.addRow(new Object[]{buscaUsuario.get(i).getId() + buscaUsuario.get(i).getNome() + buscaUsuario.get(i).getLogin() + buscaUsuario.get(i).getPerfil()});
+                tblaux.addRow(new Object[]{buscaUsuario.get(i).getId() + buscaUsuario.get(i).getNome() + buscaUsuario.get(i).getLogin() + buscaUsuario.get(i).getPerfilusuario()});
             }
         }
     }//GEN-LAST:event_lblProcurarKeyPressed
