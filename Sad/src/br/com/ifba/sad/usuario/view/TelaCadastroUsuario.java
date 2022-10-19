@@ -4,11 +4,19 @@
  */
 package br.com.ifba.sad.usuario.view;
 
+import br.com.ifba.sad.infrastructure.service.FacadeInstance;
+import br.com.ifba.sad.infrastructure.support.StringUtil;
+import br.com.ifba.sad.usuario.model.Usuario;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author João P. Arquim
  */
 public class TelaCadastroUsuario extends javax.swing.JFrame {
+
+    private boolean validaCampos;
 
     /**
      * Creates new form CadastrarUsuario
@@ -69,6 +77,11 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnVoltar.setForeground(new java.awt.Color(0, 0, 0));
         btnVoltar.setText("VOLTAR");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -166,13 +179,70 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private boolean validaCampos() {
+       StringUtil util = StringUtil.getInstance();
+        if(txtNome.getText().equals("") && txtMatricula.getText().equals("") && txtSenha.getText().equals("") ){
+            JOptionPane.showMessageDialog(null, "Todos os campos são obrigatórios!!!", "CAMPOS OBRIGATÓRIOS", JOptionPane.ERROR_MESSAGE);
+            return false; 
+        }
+        else if(util.isNullOrEmpty(txtNome.getText())){
+            JOptionPane.showMessageDialog(null, "Preencha o campo Nome!!!", "CAMPOS OBRIGATÓRIOS", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        else if(util.isNullOrEmpty(txtMatricula.getText())){
+            JOptionPane.showMessageDialog(null, "Preencha o campo Matricula!!!", "CAMPOS OBRIGATÓRIOS", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        else if(util.isNullOrEmpty(txtSenha.getText())){
+            JOptionPane.showMessageDialog(null, "Preencha o campo senha!!!", "CAMPOS OBRIGATÓRIOS", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        /*else if(util.isNullOrEmpty(cbxPerfil.getSelectedItem()){
+            JOptionPane.showMessageDialog(null, "Escolha o tipo da conta!!.", "CAMPOS OBRIGATÓRIOS", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }*/
+        return true;
+   }
+    
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
         
-        //chamando as tela de exibir cadastros
-        TelaExibirUsuarios te = new TelaExibirUsuarios();
-        te.setVisible(true);
+        //instanciando objeto da tela de exibir
+        TelaExibirUsuarios telaex = new TelaExibirUsuarios();
+        
+        if(validaCampos == true){
+            
+            //instanciando novo objeto da classe Usuario
+            Usuario usuario = new Usuario();
+        
+            //pegando os dados
+            usuario.setNome(txtNome.getText());
+            usuario.setLogin(txtMatricula.getText());
+            //usuario.setPerfil(cbxPerfil.getSelectedItem()); ainda falta a relação
+        
+            //cadastrando os dados no banco
+            FacadeInstance.getInstance().saveUsuario(usuario);
+        
+            //cadastrando os dados na tabela
+            DefaultTableModel tar = (DefaultTableModel) telaex.tblDados.getModel();
+            Object[] dados = {usuario.getId(),usuario.getNome(),usuario.getLogin(),usuario.getPerfil()};
+            tar.addRow(dados);
+            
+            JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!!");
+            
+        }   
+        
     }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+        //chamando a tela de exibir
+        TelaExibirUsuarios tela = new TelaExibirUsuarios();
+        tela.setVisible(true);
+        
+        //ocultando a tela de cadastro
+        this.setVisible(false);
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments

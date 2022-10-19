@@ -4,13 +4,11 @@
  */
 package br.com.ifba.sad.usuario.view;
 
-import br.com.ifba.sad.infrastructure.service.Facade;
 import br.com.ifba.sad.infrastructure.service.FacadeInstance;
-import br.com.ifba.sad.infrastructure.support.StringUtil;
 import br.com.ifba.sad.usuario.model.Usuario;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -21,10 +19,6 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
     /**
      * Creates new form TelaExibirUsuario
      */
-    
-    //instanciando novo objeto da Tela de cadastro
-    TelaCadastroUsuario tc = new TelaCadastroUsuario();
-    private boolean validaCampos;
     
     public TelaExibirUsuarios() {
         initComponents();
@@ -56,15 +50,20 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
         tblDados.setBackground(new java.awt.Color(217, 217, 217));
         tblDados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nome", "Login", "Perfil do usuário"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblDados);
 
         jPanel2.setBackground(new java.awt.Color(43, 76, 126));
@@ -168,53 +167,15 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-     private boolean validaCampos() {
-       StringUtil util = StringUtil.getInstance();
-        if(tc.txtNome.getText().equals("") && tc.txtMatricula.getText().equals("") && tc.txtSenha.getText().equals("") ){
-            JOptionPane.showMessageDialog(null, "Todos os campos são obrigatórios!!!", "CAMPOS OBRIGATÓRIOS", JOptionPane.ERROR_MESSAGE);
-            return false; 
-        }
-        else if(util.isNullOrEmpty(tc.txtNome.getText())){
-            JOptionPane.showMessageDialog(null, "Preencha o campo Nome!!!", "CAMPOS OBRIGATÓRIOS", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-        else if(util.isNullOrEmpty(tc.txtMatricula.getText())){
-            JOptionPane.showMessageDialog(null, "Preencha o campo Matricula!!!", "CAMPOS OBRIGATÓRIOS", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-        else if(util.isNullOrEmpty(tc.txtSenha.getText())){
-            JOptionPane.showMessageDialog(null, "Preencha o campo senha!!!", "CAMPOS OBRIGATÓRIOS", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-        /*else if(util.isNullOrEmpty(tc.cbxPerfil.getSelectedItem()){
-            JOptionPane.showMessageDialog(null, "Escolha o tipo da conta!!.", "CAMPOS OBRIGATÓRIOS", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }*/
-        return true;
-   }
-    
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here: 
-        if(validaCampos == true){
-            
-            //instanciando novo objeto da classe Usuario
-            Usuario usuario = new Usuario();
         
-            //pegando os dados
-            usuario.setNome(tc.txtNome.getText());
-            usuario.setLogin(tc.txtMatricula.getText());
-            //usuario.setPerfil(tc.cbxPerfil.getSelectedItem()); ainda falta a relação
+        //chamando a tela de cadastro
+        TelaCadastroUsuario telacadastro = new TelaCadastroUsuario();
+        telacadastro.setVisible(true);
         
-            //cadastrando os dados no banco
-            FacadeInstance.getInstance().saveUsuario(usuario);
-        
-            //cadastrando os dados na tabela
-            DefaultTableModel tar = (DefaultTableModel) tblDados.getModel();
-            Object[] dados = {usuario.getId(),usuario.getNome(),usuario.getLogin(),usuario.getPerfil()};
-            tar.addRow(dados);
-            
-        }
-        
+        //ocultando a tela de exibir
+        this.setVisible(false);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
@@ -324,6 +285,6 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField lblProcurar;
-    private javax.swing.JTable tblDados;
+    protected javax.swing.JTable tblDados;
     // End of variables declaration//GEN-END:variables
 }
