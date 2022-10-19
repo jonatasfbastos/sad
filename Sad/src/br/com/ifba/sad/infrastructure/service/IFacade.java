@@ -28,5 +28,6 @@ public interface IFacade {
      public abstract void deleteUsuario(Usuario usuario);
      public List<Usuario> getAllUsuario();
      public List<Usuario> findByLogin(String login);
+     public List<Usuario> findByName(String name);
      
 }

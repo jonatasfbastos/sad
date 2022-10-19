@@ -77,6 +77,11 @@ public class Facade implements IFacade {
     public List<Usuario> findByLogin(String login) {
         return serviceUsuario.findByLogin(login);
     }
+    
+    @Override
+    public List<Usuario> findByName(String name) {
+        return serviceUsuario.findByName(name);
+    }
         
      
      

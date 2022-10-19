@@ -18,5 +18,6 @@ public interface IUsuarioDao extends IBaseDao<Usuario> {
     // Interface do DAO do usuário
     
     List<Usuario> findByLogin(String login);
+    List<Usuario> findByName(String name);
     
 }

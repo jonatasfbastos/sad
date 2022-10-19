@@ -25,17 +25,18 @@ public class UsuarioDao extends BaseDao<Usuario> implements IUsuarioDao {
         query.setParameter("login", login);
         return query.getResultList();
         
-        /*// Pesquisa por nome no banco de dados
+    }
+    
+    @Override
+    public List<Usuario> findByName(String name) {
+        // Pesquisa por nome no banco de dados
         Query query = entityManager.createQuery("SELECT u FROM Usuario "
-                + "AS u WHERE u.name=:name");
+                + "AS u WHERE u.nome=:name");
         query.setParameter(1, name);
-        
         // Salva resultados na lista
         List<Usuario> usuarios = query.getResultList();
-        
         // Retorna resultados
-        return usuarios;*/
-        
+        return usuarios;
     }
     
 }
