@@ -23,13 +23,158 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="e6" green="e0" red="dc" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="btnVoltar" min="-2" pref="138" max="-2" attributes="0"/>
+                  <EmptySpace pref="45" max="32767" attributes="0"/>
+                  <Component id="btnAtualizar" min="-2" pref="138" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              </Group>
+              <Component id="pnlDesignLinha" alignment="1" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblDescricao" alignment="0" min="-2" pref="269" max="-2" attributes="0"/>
+                              <Component id="lblNome" alignment="0" min="-2" pref="269" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                          <Component id="lblMsgDadosAtualizacao" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="lblIconSad" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lblIconSad" min="-2" pref="73" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="lblMsgDadosAtualizacao" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="lblNome" min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="lblDescricao" min="-2" pref="141" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="pnlDesignLinha" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="btnAtualizar" alignment="0" min="-2" pref="47" max="-2" attributes="0"/>
+                      <Component id="btnVoltar" alignment="0" min="-2" pref="47" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="pnlDesignLinha">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="7e" green="4c" red="2b" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
+        <Component class="javax.swing.JTextField" name="lblNome">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="d9" green="d9" red="d9" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="nome"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="lblDescricao">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="d9" green="d9" red="d9" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="descri&#xe7;&#xe3;o"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnVoltar">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="d9" green="d9" red="d9" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="VOLTAR"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblMsgDadosAtualizacao">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="INSIRA OS DADOS PARA ATUALIZA&#xc7;&#xc3;O"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnAtualizar">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="d9" green="d9" red="d9" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="ATUALIZAR"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblIconSad">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/br/com/ifba/sad/usuario/imagens/1de27e8ca1dba2329be08206b33e26fb.png"/>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
 </Form>
