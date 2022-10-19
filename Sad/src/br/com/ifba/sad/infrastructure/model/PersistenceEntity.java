@@ -14,7 +14,7 @@ import javax.persistence.MappedSuperclass;
  */
 @MappedSuperclass
 public class PersistenceEntity {
-    private Long id;
+    private long id;
 
     @Id @GeneratedValue
     public Long getId() {
