@@ -15,6 +15,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
      */
     public TelaCadastroUsuario() {
         initComponents();
+        this.setLocationRelativeTo(null);//comando para iniciar a tela no centro do monitor
     }
 
     /**
@@ -220,8 +221,8 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    protected javax.swing.JTextField txtMatricula;
-    protected javax.swing.JTextField txtNome;
-    protected javax.swing.JTextField txtSenha;
+    public javax.swing.JTextField txtMatricula;
+    public javax.swing.JTextField txtNome;
+    public javax.swing.JTextField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

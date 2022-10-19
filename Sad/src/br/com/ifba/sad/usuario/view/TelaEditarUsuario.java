@@ -21,6 +21,7 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
      */
     public TelaEditarUsuario() {
         initComponents();
+        this.setLocationRelativeTo(null);//comando para iniciar a tela no centro do monitor
     }
     
     public TelaEditarUsuario(Usuario user) {

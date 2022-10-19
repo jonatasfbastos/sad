@@ -21,8 +21,6 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
     /**
      * Creates new form TelaExibirUsuario
      */
-    //instanciando objeto da fachada
-    Facade fac = new Facade();
     
     //instanciando novo objeto da Tela de cadastro
     TelaCadastroUsuario tc = new TelaCadastroUsuario();
@@ -30,6 +28,7 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
     
     public TelaExibirUsuarios() {
         initComponents();
+        this.setLocationRelativeTo(null);//comando para iniciar a tela no centro do monitor
     }
 
     /**
@@ -195,9 +194,7 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
    }
     
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        // TODO add your handling code here:
-        //instanciando novo objeto da classe Usuario
-        
+        // TODO add your handling code here: 
         if(validaCampos == true){
             
             //instanciando novo objeto da classe Usuario
@@ -209,7 +206,7 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
             //usuario.setPerfil(tc.cbxPerfil.getSelectedItem()); ainda falta a relação
         
             //cadastrando os dados no banco
-            fac.saveUsuario(usuario);
+            FacadeInstance.getInstance().saveUsuario(usuario);
         
             //cadastrando os dados na tabela
             DefaultTableModel tar = (DefaultTableModel) tblDados.getModel();
