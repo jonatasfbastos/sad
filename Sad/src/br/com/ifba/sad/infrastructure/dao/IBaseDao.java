@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.ifba.sad.infrastructure.basedao;
+package br.com.ifba.sad.infrastructure.dao;
 
 import br.com.ifba.sad.infrastructure.model.PersistenceEntity;
 import java.util.List;
