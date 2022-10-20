@@ -4,7 +4,7 @@
  */
 package br.com.ifba.sad.usuario.dao;
 
-import br.com.ifba.sad.infrastructure.basedao.BaseDao;
+import br.com.ifba.sad.infrastructure.dao.BaseDao;
 import br.com.ifba.sad.usuario.model.Usuario;
 import java.util.List;
 import javax.persistence.Query;
