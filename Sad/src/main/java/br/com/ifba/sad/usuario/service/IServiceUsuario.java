@@ -19,8 +19,9 @@ public interface IServiceUsuario {
     public abstract Usuario updateUsuario(Usuario usuario);
     // Metodo que retorna todos os usuarios da base de dados
     public abstract List<Usuario> getAllUsuario();
+    
     // procura o usuario por nome
-    public List<Usuario> findByLogin(String name);
+    //public List<Usuario> findByLogin(String name);
     // Procura usuário por nome
-    public List<Usuario> findByName(String name);
+    //public List<Usuario> findByName(String name);
 }

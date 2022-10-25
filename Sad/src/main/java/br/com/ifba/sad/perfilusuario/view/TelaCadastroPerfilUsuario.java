@@ -5,10 +5,11 @@
  */
 package br.com.ifba.sad.perfilusuario.view;
 
-import br.com.ifba.sad.infrastructure.service.FacadeInstance;
+import br.com.ifba.sad.infrastructure.service.IFacade;
 import br.com.ifba.sad.infrastructure.support.StringUtil;
 import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
 import javax.swing.JOptionPane;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -17,6 +18,9 @@ import javax.swing.JOptionPane;
 public class TelaCadastroPerfilUsuario extends javax.swing.JFrame {
 
     private final PerfilUsuario perfilUsuario;
+    
+    @Autowired
+    private IFacade facade;
     
      public TelaCadastroPerfilUsuario() {
           initComponents();
@@ -175,7 +179,7 @@ public class TelaCadastroPerfilUsuario extends javax.swing.JFrame {
         }
         
         try {
-            FacadeInstance.getInstance().savePerfilUsuario(this.perfilUsuario);
+            this.facade.savePerfilUsuario(this.perfilUsuario);
             TelaExibirPerfilUsuario telaExibir = new TelaExibirPerfilUsuario();
             this.setVisible(false);
             telaExibir.setVisible(true);

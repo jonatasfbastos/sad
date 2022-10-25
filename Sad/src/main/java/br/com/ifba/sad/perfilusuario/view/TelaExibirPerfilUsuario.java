@@ -5,11 +5,12 @@
  */
 package br.com.ifba.sad.perfilusuario.view;
 
-import br.com.ifba.sad.infrastructure.service.FacadeInstance;
+import br.com.ifba.sad.infrastructure.service.IFacade;
 import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -18,7 +19,10 @@ import javax.swing.table.DefaultTableModel;
 public class TelaExibirPerfilUsuario extends javax.swing.JFrame {
 
      private List<PerfilUsuario> perfis;
-
+     
+     @Autowired
+     private IFacade facade;
+     
      public TelaExibirPerfilUsuario() {
           initComponents();
           super.setLocationRelativeTo(null);
@@ -28,7 +32,7 @@ public class TelaExibirPerfilUsuario extends javax.swing.JFrame {
      // Método que realiza a atualização dos dados na tabela.
      private void atualizaTabela() {
           try {
-               this.perfis = FacadeInstance.getInstance().getAllPerfilUsuario();
+               this.perfis = this.facade.getAllPerfilUsuario();
           } catch (Exception error) {
                JOptionPane.showMessageDialog(null, error,
                        "Erro ao buscar perfils!", JOptionPane.ERROR_MESSAGE);
@@ -215,7 +219,7 @@ public class TelaExibirPerfilUsuario extends javax.swing.JFrame {
                Caso ocorra erro, mostra um JOptionPane.
            */
           try {
-               PerfilUsuario perfil = FacadeInstance.getInstance().findByIdPerfilUsuario(id);
+               PerfilUsuario perfil = this.facade.findByIdPerfilUsuario(id);
                TelaEdicaoPerfilUsuario telaEdicao = new TelaEdicaoPerfilUsuario(perfil);
                this.setVisible(false);
                telaEdicao.setVisible(true);
@@ -245,8 +249,8 @@ public class TelaExibirPerfilUsuario extends javax.swing.JFrame {
                Caso ocorra erro, mostra um JOptionPane.
            */
           try {
-               PerfilUsuario perfil = FacadeInstance.getInstance().findByIdPerfilUsuario(id);
-               FacadeInstance.getInstance().deletePerfilUsuario(perfil);
+               PerfilUsuario perfil = this.facade.findByIdPerfilUsuario(id);
+               this.facade.deletePerfilUsuario(perfil);
                this.atualizaTabela();
           } catch (Exception error) {
                JOptionPane.showMessageDialog(null, error,
@@ -272,7 +276,7 @@ public class TelaExibirPerfilUsuario extends javax.swing.JFrame {
           */
           if (this.perfis == null || this.perfis.isEmpty()) {
                try {
-                    this.perfis = FacadeInstance.getInstance().getAllPerfilUsuario();
+                    this.perfis = this.facade.getAllPerfilUsuario();
                } catch (Exception error) {
                     JOptionPane.showMessageDialog(null, error,
                             "Erro ao buscar perfils!", JOptionPane.ERROR_MESSAGE);

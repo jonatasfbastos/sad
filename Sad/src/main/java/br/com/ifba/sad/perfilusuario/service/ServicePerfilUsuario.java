@@ -6,14 +6,16 @@ package br.com.ifba.sad.perfilusuario.service;
 
 import br.com.ifba.sad.infrastructure.exception.BusinessException;
 import br.com.ifba.sad.perfilusuario.dao.IPerfilUsuarioDao;
-import br.com.ifba.sad.perfilusuario.dao.PerfilUsuarioDao;
 import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Felipe
  */
+@Service
 public class ServicePerfilUsuario implements IServicePerfilUsuario{
     
      //================= CONSTANTES =============================================
@@ -31,15 +33,15 @@ public class ServicePerfilUsuario implements IServicePerfilUsuario{
     public final static String PERFILUSUARIO_INVALIDO = "PerfilUsuario inválido";
     
      //================= OBJETO =================================================
-    
-    private final IPerfilUsuarioDao perfilUsuarioDao = new PerfilUsuarioDao();
+    @Autowired
+    private IPerfilUsuarioDao perfilUsuarioDao;
 
      //================= MÉTODOS ================================================
     @Override
     public PerfilUsuario savePerfilUsuario(PerfilUsuario perfilUsuario) {
        if(perfilUsuario == null){
             throw new BusinessException(PERFILUSUARIO_NULL);
-        } else if(perfilUsuarioDao.findById(perfilUsuario.getId()) != null) {
+        } else if(perfilUsuarioDao.existsById(perfilUsuario.getId()) == true) {
             throw new BusinessException(PERFILUSUARIO_EXISTE);
         } else {
             return perfilUsuarioDao.save(perfilUsuario);
@@ -50,10 +52,10 @@ public class ServicePerfilUsuario implements IServicePerfilUsuario{
     public PerfilUsuario updatePerfilUsuario(PerfilUsuario perfilUsuario) {
         if(perfilUsuario == null){
             throw new BusinessException(PERFILUSUARIO_NULL);
-        } else if(perfilUsuarioDao.findById(perfilUsuario.getId()) == null) {
+        } else if(perfilUsuarioDao.existsById(perfilUsuario.getId()) == false) {
             throw new BusinessException(PERFILUSUARIO_NAO_EXISTE);
         } else {
-            return perfilUsuarioDao.update(perfilUsuario);
+            return perfilUsuarioDao.save(perfilUsuario);
         }
     }
 
@@ -61,7 +63,7 @@ public class ServicePerfilUsuario implements IServicePerfilUsuario{
     public void deletePerfilUsuario(PerfilUsuario perfilUsuario) {
         if(perfilUsuario == null){
             throw new BusinessException(PERFILUSUARIO_NULL);
-        } else if(perfilUsuarioDao.findById(perfilUsuario.getId()) != null) {
+        } else if(perfilUsuarioDao.existsById(perfilUsuario.getId()) == true) {
             perfilUsuarioDao.delete(perfilUsuario);
         }else{ 
             throw new BusinessException(PERFILUSUARIO_NAO_EXISTE);
@@ -72,7 +74,8 @@ public class ServicePerfilUsuario implements IServicePerfilUsuario{
     public List<PerfilUsuario> getAllPerfilUsuario() {
         return this.perfilUsuarioDao.findAll();
     }
-
+    
+    /*
     @Override
     public List<PerfilUsuario> findByName(String name) {
         if(name == null) {
@@ -83,10 +86,11 @@ public class ServicePerfilUsuario implements IServicePerfilUsuario{
             return perfilUsuarioDao.findByName(name);
         } 
     }
-
+    */
+    
      @Override
      public PerfilUsuario findById(Long id) {
-          return perfilUsuarioDao.findById(id);
+          return perfilUsuarioDao.getReferenceById(id);
      }
     
 }

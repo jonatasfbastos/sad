@@ -4,16 +4,21 @@
  */
 package br.com.ifba.sad.usuario.view;
 
-import br.com.ifba.sad.infrastructure.service.FacadeInstance;
+import br.com.ifba.sad.infrastructure.service.IFacade;
 import br.com.ifba.sad.usuario.model.Usuario;
 import javax.swing.JOptionPane;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
  * @author João P. Arquim
  */
-public class TelaEditarUsuario extends javax.swing.JFrame {
 
+public class TelaEditarUsuario extends javax.swing.JFrame {
+    
+    @Autowired
+    private IFacade facade;
+    
     private Usuario userEdit;
     
     /**
@@ -234,7 +239,7 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
             userEdit.setSenha(lblSenha.getText());
             
             // Acessando fachada para alterar dados
-            FacadeInstance.getInstance().updateUsuario(userEdit);
+            this.facade.updateUsuario(userEdit);
             
             // Mensagem de sucesso.
             JOptionPane.showMessageDialog(rootPane, "Dados alterados com sucesso!");

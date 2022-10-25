@@ -4,11 +4,12 @@
  */
 package br.com.ifba.sad.usuario.view;
 
-import br.com.ifba.sad.infrastructure.service.FacadeInstance;
+import br.com.ifba.sad.infrastructure.service.IFacade;
 import br.com.ifba.sad.usuario.model.Usuario;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 /**
@@ -17,9 +18,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TelaExibirUsuarios extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaExibirUsuario
-     */
+    @Autowired
+    private IFacade facade;
+    
     DefaultTableModel listaTabela;
     List<Usuario> lista;
     List<Usuario> listaBuscar;
@@ -209,10 +210,10 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
             String login = (String) tblDados.getModel().getValueAt((int) linha, 2);
             
             // Acessando fachada para excluir dados
-            List<Usuario> usuarioRemover = FacadeInstance.getInstance().findByLogin(login);
+//            List<Usuario> usuarioRemover = this.facade.findByLogin(login);
             
             // Removendo usuário
-            FacadeInstance.getInstance().deleteUsuario(usuarioRemover.get(0));
+//            this.facade.deleteUsuario(usuarioRemover.get(0));
             
             // Mensagem de sucesso.
             JOptionPane.showMessageDialog(rootPane, "Dados removidos com sucesso!");
@@ -240,17 +241,17 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
             String login = (String) tblDados.getModel().getValueAt((int) linha, 2);
             
             // Acessando fachada para editar dados
-            List<Usuario> usuarioEditar = FacadeInstance.getInstance().findByLogin(login);
+//            List<Usuario> usuarioEditar = this.facade.findByLogin(login);
             
             // Obtendo usuario a ser editado
-            Usuario usrEdit = usuarioEditar.get(0);
+//            Usuario usrEdit = usuarioEditar.get(0);
             
             // Ocultando tela atual
             this.setVisible(false);
             
             // Abrindo tela de edição
-            TelaEditarUsuario telaEditar = new TelaEditarUsuario(usrEdit);
-            telaEditar.setVisible(true);
+//            TelaEditarUsuario telaEditar = new TelaEditarUsuario(usrEdit);
+//            telaEditar.setVisible(true);
         }
         
     }//GEN-LAST:event_btnEditarActionPerformed
@@ -258,11 +259,11 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
     private void lblProcurarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblProcurarKeyPressed
         String nome = lblProcurar.getText();
         int i;
-        List<Usuario> buscaUsuario = FacadeInstance.getInstance().getAllUsuario();
+        List<Usuario> buscaUsuario = this.facade.getAllUsuario();
 
         for (i = 0; i < buscaUsuario.size(); i++) {
             if (nome.equals(buscaUsuario.get(i).getNome())) {
-                this.listaBuscar = FacadeInstance.getInstance().findByName(nome);
+//                this.listaBuscar = this.facade.findByName(nome);
                 this.atualizarTabela(listaBuscar);
                 
                 DefaultTableModel tblaux = (DefaultTableModel)tblDados.getModel();

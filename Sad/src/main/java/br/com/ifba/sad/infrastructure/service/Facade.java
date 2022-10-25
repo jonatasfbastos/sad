@@ -6,20 +6,23 @@ package br.com.ifba.sad.infrastructure.service;
 
 import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
 import br.com.ifba.sad.perfilusuario.service.IServicePerfilUsuario;
-import br.com.ifba.sad.perfilusuario.service.ServicePerfilUsuario;
 import br.com.ifba.sad.usuario.model.Usuario;
 import br.com.ifba.sad.usuario.service.IServiceUsuario;
-import br.com.ifba.sad.usuario.service.ServiceUsuario;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 /**
  *
  * @author clebinho
  */
+@Controller
 public class Facade implements IFacade {
 
      //=====================PerfilUsuario====================//
-     private final IServicePerfilUsuario servicePerfilUsuario = new ServicePerfilUsuario();
+    @Autowired
+     private IServicePerfilUsuario servicePerfilUsuario;
+    
      @Override
      public PerfilUsuario savePerfilUsuario(PerfilUsuario perfilUsuario) {
           return servicePerfilUsuario.savePerfilUsuario(perfilUsuario);
@@ -39,11 +42,6 @@ public class Facade implements IFacade {
      public List<PerfilUsuario> getAllPerfilUsuario() {
           return servicePerfilUsuario.getAllPerfilUsuario();
      }
-
-     @Override
-     public List<PerfilUsuario> findByNamePerfilUsuario(String nome) {
-          return servicePerfilUsuario.findByName(nome);
-     }
      
       @Override
      public PerfilUsuario findByIdPerfilUsuario(Long id) {
@@ -51,7 +49,8 @@ public class Facade implements IFacade {
      }
      
      //=====================Usuario====================//
-     private final IServiceUsuario serviceUsuario = new ServiceUsuario();
+     @Autowired
+     private IServiceUsuario serviceUsuario;
 
     @Override
     public Usuario saveUsuario(Usuario usuario) {
@@ -72,18 +71,6 @@ public class Facade implements IFacade {
     public List<Usuario> getAllUsuario() {
         return serviceUsuario.getAllUsuario();
     }
-
-    @Override
-    public List<Usuario> findByLogin(String login) {
-        return serviceUsuario.findByLogin(login);
-    }
-    
-    @Override
-    public List<Usuario> findByName(String name) {
-        return serviceUsuario.findByName(name);
-    }
-        
-     
-     
+  
     
 }

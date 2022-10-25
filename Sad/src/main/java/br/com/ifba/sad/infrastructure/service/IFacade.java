@@ -19,7 +19,6 @@ public interface IFacade {
      public abstract PerfilUsuario updatePerfilUsuario(PerfilUsuario perfilUsuario);
      public abstract void deletePerfilUsuario(PerfilUsuario perfilUsuario);
      public List<PerfilUsuario> getAllPerfilUsuario();
-     public List<PerfilUsuario> findByNamePerfilUsuario(String nome);
      public PerfilUsuario findByIdPerfilUsuario(Long id);
      
      //=====================Usuario====================//
@@ -27,7 +26,5 @@ public interface IFacade {
      public abstract Usuario updateUsuario(Usuario usuario);
      public abstract void deleteUsuario(Usuario usuario);
      public List<Usuario> getAllUsuario();
-     public List<Usuario> findByLogin(String login);
-     public List<Usuario> findByName(String name);
      
 }

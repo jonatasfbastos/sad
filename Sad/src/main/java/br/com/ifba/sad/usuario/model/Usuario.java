@@ -6,7 +6,10 @@ package br.com.ifba.sad.usuario.model;
 
 import br.com.ifba.sad.infrastructure.model.PersistenceEntity;
 import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
+import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -17,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "usuario")
-public class Usuario extends PersistenceEntity {
+public class Usuario extends PersistenceEntity implements Serializable {
 
     //variaveis de usuario
     private String nome;

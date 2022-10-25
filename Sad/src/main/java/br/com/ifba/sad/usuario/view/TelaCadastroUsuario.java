@@ -4,20 +4,24 @@
  */
 package br.com.ifba.sad.usuario.view;
 
-import br.com.ifba.sad.infrastructure.service.FacadeInstance;
+import br.com.ifba.sad.infrastructure.service.IFacade;
 import br.com.ifba.sad.infrastructure.support.StringUtil;
 import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
 import br.com.ifba.sad.usuario.model.Usuario;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
  * @author João P. Arquim
  */
 public class TelaCadastroUsuario extends javax.swing.JFrame {
-
+    
+    @Autowired
+    private IFacade facade;
+    
     private boolean validaCampos;
     private DefaultTableModel tableModelPro;
     
@@ -34,7 +38,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);//comando para iniciar a tela no centro do monitor
         //exibe os dados dos usuarios na tabela
-        this.listUsuario(FacadeInstance.getInstance().getAllUsuario());
+        this.listUsuario(this.facade.getAllUsuario());
     }
 
     /**
@@ -240,7 +244,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
             usuario.setPerfilusuario((PerfilUsuario) cbxPerfil.getSelectedItem()); 
         
             //cadastrando os dados no banco
-            FacadeInstance.getInstance().saveUsuario(usuario);
+            this.facade.saveUsuario(usuario);
         
             cadastrarDados();
             

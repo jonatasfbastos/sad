@@ -4,15 +4,17 @@
  */
 package br.com.ifba.sad.usuario.service;
 
-import br.com.ifba.sad.usuario.dao.UsuarioDao;
 import br.com.ifba.sad.usuario.dao.IUsuarioDao;
 import br.com.ifba.sad.usuario.model.Usuario;
 import br.com.ifba.sad.infrastructure.exception.BusinessException;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 /**
  *
  * @author Pedro Henrique
  */
+@Service
 public class ServiceUsuario implements IServiceUsuario {
     
     //constantes
@@ -28,14 +30,14 @@ public class ServiceUsuario implements IServiceUsuario {
     //mensagem de erro se o Usuario for inválido;
     public final static String USUARIO_INVALIDO = "Usuario inválido";
     
-    //objeto
-     private final IUsuarioDao UsuarioDao = new UsuarioDao();
+    @Autowired
+     private IUsuarioDao UsuarioDao;
      
      @Override
     public Usuario saveUsuario(Usuario usuario) {
         if(usuario == null){
             throw new BusinessException(USUARIO_NULL);
-        } else if(UsuarioDao.findById(usuario.getId()) != null){
+        } else if(UsuarioDao.existsById(usuario.getId()) == true){
             throw new BusinessException(USUARIO_EXISTE);
         } else {
             return UsuarioDao.save(usuario);
@@ -46,10 +48,10 @@ public class ServiceUsuario implements IServiceUsuario {
     public Usuario updateUsuario(Usuario usuario) {
         if(usuario == null){
             throw new BusinessException(USUARIO_NULL);
-        } else if(UsuarioDao.findById(usuario.getId()) == null) {
-            throw new BusinessException(USUARIO_EXISTE);
+        } else if(UsuarioDao.existsById(usuario.getId()) == false) {
+            throw new BusinessException(USUARIO_NAO_EXISTE);
         } else {
-            return UsuarioDao.update(usuario);
+            return UsuarioDao.save(usuario);
         }    
     }
 
@@ -57,7 +59,7 @@ public class ServiceUsuario implements IServiceUsuario {
     public void deleteUsuario(Usuario usuario) {
         if(usuario == null){
             throw new BusinessException(USUARIO_NULL);
-        }else if(this.UsuarioDao.findById(usuario.getId()) != null) {
+        }else if(this.UsuarioDao.existsById(usuario.getId()) == true) {
             this.UsuarioDao.delete(usuario);
             return;
         }
@@ -68,7 +70,8 @@ public class ServiceUsuario implements IServiceUsuario {
     public List<Usuario> getAllUsuario() {
         return this.UsuarioDao.findAll();    
     }
-
+    
+    /*
     @Override
     public List<Usuario> findByLogin(String login) {
         if(login == null) {
@@ -90,5 +93,6 @@ public class ServiceUsuario implements IServiceUsuario {
             return UsuarioDao.findByName(name);
         }
     }
+    */
     
 }
