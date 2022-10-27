@@ -25,7 +25,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
     @Autowired
     private IFacade facade;
     @Autowired @Lazy
-    TelaExibirUsuarios tela;
+    private TelaExibirUsuarios tela;
     
     private boolean validaCampos;
     private DefaultTableModel tableModelPro;
@@ -186,79 +186,56 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private boolean validaCampos() {
-       StringUtil util = StringUtil.getInstance();
-        if(txtNome.getText().equals("") && txtMatricula.getText().equals("") && txtSenha.getText().equals("") ){
-            JOptionPane.showMessageDialog(null, "Todos os campos são obrigatórios!!!", "CAMPOS OBRIGATÓRIOS", JOptionPane.ERROR_MESSAGE);
-            return false; 
-        }
-        else if(util.isNullOrEmpty(txtNome.getText())){
-            JOptionPane.showMessageDialog(null, "Preencha o campo Nome!!!", "CAMPOS OBRIGATÓRIOS", JOptionPane.WARNING_MESSAGE);
+    private boolean validaCampos(Usuario usuario) {
+       StringUtil validacao = StringUtil.getInstance();
+         if (validacao.isEmpty(usuario.getNome()) || 
+                 validacao.isEmpty(usuario.getLogin())||
+                 validacao.isEmpty(usuario.getSenha()) 
+                // || validacao.isEmpty(usuario.getPerfilusuario())
+                 ){
             return false;
-        }
-        else if(util.isNullOrEmpty(txtMatricula.getText())){
-            JOptionPane.showMessageDialog(null, "Preencha o campo Matricula!!!", "CAMPOS OBRIGATÓRIOS", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-        else if(util.isNullOrEmpty(txtSenha.getText())){
-            JOptionPane.showMessageDialog(null, "Preencha o campo senha!!!", "CAMPOS OBRIGATÓRIOS", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-        else if(util.isNullOrEmpty((String) cbxPerfil.getSelectedItem())){
-            JOptionPane.showMessageDialog(null, "Escolha o tipo da conta!!.", "CAMPOS OBRIGATÓRIOS", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
+         }
         return true;
-   }
-    
-   public void listUsuario(List<Usuario> usuarioList ){
-        tableModelPro = new DefaultTableModel(null, 
-            new String [] {"ID","Nome","Login","Perfil do usuário"});
-        
-        //o for each exibe a lista de usuarios
-        for(Usuario usuario: usuarioList){
-            tableModelPro.addRow(new Object[] {usuario.getId(),usuario.getNome(),usuario.getLogin(),usuario.getPerfilusuario()});
-        }
-        
-        //adiciona a tabela no JFrame
-        tela.tblDados.setModel(tableModelPro);
-    }
-   
-   public void cadastrarDados(){
-       //cadastrando os dados na tabela
-       DefaultTableModel tar = (DefaultTableModel) tela.tblDados.getModel();
-       Object[] dados = {usuario.getId(),usuario.getNome(),usuario.getLogin(),usuario.getPerfilusuario()};
-       tar.addRow(dados);
    }
     
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
-        if(validaCampos == true){
+        Usuario usuario = new Usuario();
         
-            //pegando os dados
-            usuario.setNome(txtNome.getText());
-            usuario.setLogin(txtMatricula.getText());
-            usuario.setPerfilusuario((PerfilUsuario) cbxPerfil.getSelectedItem()); 
+        String nome = txtNome.getText();
+        String login = txtMatricula.getText();
+        String senha = txtSenha.getText();
+       // usuario.setPerfilusuario((PerfilUsuario) cbxPerfil.getSelectedItem()); 
         
-            //cadastrando os dados no banco
+        usuario.setNome(nome);
+        usuario.setLogin(login);
+        usuario.setSenha(senha);
+      //  usuario.setPerfilusuario(Perfilusuario);
+        
+        if (this.validaCampos(usuario) == false) {
+            JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos e tente novamente!", 
+                    "Preencha os Campos!", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        try {
             this.facade.saveUsuario(usuario);
-        
-            cadastrarDados();
-            
-            //exibindo mensagem de confirmação do cadastro
-            JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!!");
-            
-        }   
-        
+            this.setVisible(false);
+            this.tela.setVisible(true);
+            this.tela.atualizarTabela();
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, error, 
+                    "Erro ao cadastrar!", JOptionPane.ERROR_MESSAGE);
+         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
+       //ocultando a tela de cadastro
+        this.setVisible(false);
         //chamando a tela de exibir
         this.tela.setVisible(true);
+        this.tela.atualizarTabela();
         
-        //ocultando a tela de cadastro
-        this.setVisible(false);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     

@@ -29,8 +29,8 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
     private TelaCadastroUsuario telaCadastro;
     
     DefaultTableModel listaTabela;
-    List<Usuario> lista;
-    List<Usuario> listaBuscar;
+    private List<Usuario> usuarios;
+   
     
     public TelaExibirUsuarios() {
         initComponents();
@@ -38,20 +38,25 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
     }
 
     // Metodo para atualizar a tabela na view
-    /*
-    private void atualizarTabela() {
-        
-        this.listaTabela = new DefaultTableModel(null,
-                new String[] { "ID", "Login", "Senha", "Nome", "ID_PerfilUsuario"});
+    @PostConstruct
+    public void atualizarTabela() {
+          try {
+               this.usuarios = this.facade.getAllUsuario();
+          } catch (Exception error) {
+               JOptionPane.showMessageDialog(null, error,
+                       "Erro ao buscar usuários!", JOptionPane.ERROR_MESSAGE);
+               return;
+          }
 
-        for (Usuario usu : listaUsuario) {
-            listaTabela.addRow(new Object[] { usu.getId(), usu.getLogin(), usu.getSenha(),
+          DefaultTableModel tabelaDados = (DefaultTableModel) tblDados.getModel();
+          tabelaDados.setNumRows(0);
+          
+        for (Usuario usu : usuarios) {
+            tabelaDados.addRow(new Object[] { usu.getId(), usu.getLogin(), usu.getSenha(),
                     usu.getNome(), usu.getPerfilusuario().getId()});
         }
-
-        this.tblDados.setModel(listaTabela);
     }
-    */
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -200,7 +205,6 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
-        /*
         // Obtendo linha selecionada
         long linha = tblDados.getSelectedRow();
 
@@ -230,11 +234,10 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
                     "\nOs dados não foram alterados.");
             
         }
-        */
+        
     }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        /*
         // Obtendo linha selecionada
         long linha = tblDados.getSelectedRow();
 
@@ -259,27 +262,32 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
             this.setVisible(false);
             this.telaEditar.setUsuario(usrEdit);
         }
-        */
+      
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void lblProcurarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblProcurarKeyPressed
-        /*
-        String nome = lblProcurar.getText();
-        int i;
-        List<Usuario> buscaUsuario = this.facade.getAllUsuario();
+          // Obtém a string busca convertendo para letras minúsculas.
+          String nome = lblProcurar.getText().toLowerCase();
 
-        for (i = 0; i < buscaUsuario.size(); i++) {
-            if (nome.equals(buscaUsuario.get(i).getNome())) {
-//                this.listaBuscar = this.facade.findByName(nome);
-                this.atualizarTabela(listaBuscar);
-                
-                DefaultTableModel tblaux = (DefaultTableModel)tblDados.getModel();
-                
-               // new Object[] usuario = (buscaUsuario.get(i).getId() + buscaUsuario.get(i).getNome() + buscaUsuario.get(i).getLogin() + buscaUsuario.get(i).getPerfil());
-                tblaux.addRow(new Object[]{buscaUsuario.get(i).getId() + buscaUsuario.get(i).getNome() + buscaUsuario.get(i).getLogin() + buscaUsuario.get(i).getPerfilusuario()});
-            }
-        }
-        */
+          if (this.usuarios == null || this.usuarios.isEmpty()) {
+               try {
+                    this.usuarios = this.facade.findByNomeUsuario(nome);
+               } catch (Exception error) {
+                    JOptionPane.showMessageDialog(null, error,
+                            "Erro ao buscar usuários!", JOptionPane.ERROR_MESSAGE);
+               }
+          }
+          // Obtém o modelo atual da tabela.
+          DefaultTableModel tabelaDados = (DefaultTableModel) tblDados.getModel();
+          tabelaDados.setNumRows(0);
+
+          // Adiciona à tabela todos os usuários em que o nome contenha a busca informada.
+          for (Usuario usu: usuarios) {
+               if (usu.getNome().toLowerCase().contains(nome)) {
+                    tabelaDados.addRow(new Object[]{usu.getId(), usu.getLogin(), usu.getSenha(),
+                    usu.getNome(), usu.getPerfilusuario().getId()});
+               }
+          }
     }//GEN-LAST:event_lblProcurarKeyPressed
 
     public static void main(String args[]) {
