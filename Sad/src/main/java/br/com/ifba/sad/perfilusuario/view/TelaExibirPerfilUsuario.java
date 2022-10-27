@@ -19,7 +19,6 @@ import org.springframework.stereotype.Component;
  * @author Jonas Dias
  */
 @Component
-@SuppressWarnings("unchecked")
 public class TelaExibirPerfilUsuario extends javax.swing.JFrame {
     
     @Autowired
@@ -281,7 +280,7 @@ public class TelaExibirPerfilUsuario extends javax.swing.JFrame {
           */
           if (this.perfis == null || this.perfis.isEmpty()) {
                try {
-                    this.perfis = this.facade.getAllPerfilUsuario();
+                    this.perfis = this.facade.findByNomePerfilUsuario(busca);
                } catch (Exception error) {
                     JOptionPane.showMessageDialog(null, error,
                             "Erro ao buscar perfils!", JOptionPane.ERROR_MESSAGE);
