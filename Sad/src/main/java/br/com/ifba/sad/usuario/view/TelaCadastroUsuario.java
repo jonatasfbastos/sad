@@ -12,33 +12,30 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author João P. Arquim
  */
+@Component
 public class TelaCadastroUsuario extends javax.swing.JFrame {
     
     @Autowired
     private IFacade facade;
+    @Autowired @Lazy
+    TelaExibirUsuarios tela;
     
     private boolean validaCampos;
     private DefaultTableModel tableModelPro;
     
     //instanciando novo objeto da classe Usuario
     Usuario usuario = new Usuario();
-    
-    //instanciando objeto da tela de exibir
-    TelaExibirUsuarios telaex = new TelaExibirUsuarios();
 
-    /**
-     * Creates new form CadastrarUsuario
-     */
     public TelaCadastroUsuario() {
         initComponents();
         this.setLocationRelativeTo(null);//comando para iniciar a tela no centro do monitor
-        //exibe os dados dos usuarios na tabela
-        this.listUsuario(this.facade.getAllUsuario());
     }
 
     /**
@@ -214,7 +211,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         return true;
    }
     
-   public void listUsuario(List<Usuario> usuarioList){
+   public void listUsuario(List<Usuario> usuarioList ){
         tableModelPro = new DefaultTableModel(null, 
             new String [] {"ID","Nome","Login","Perfil do usuário"});
         
@@ -224,12 +221,12 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         }
         
         //adiciona a tabela no JFrame
-        telaex.tblDados.setModel(tableModelPro);
+        tela.tblDados.setModel(tableModelPro);
     }
    
    public void cadastrarDados(){
        //cadastrando os dados na tabela
-       DefaultTableModel tar = (DefaultTableModel) telaex.tblDados.getModel();
+       DefaultTableModel tar = (DefaultTableModel) tela.tblDados.getModel();
        Object[] dados = {usuario.getId(),usuario.getNome(),usuario.getLogin(),usuario.getPerfilusuario()};
        tar.addRow(dados);
    }
@@ -258,8 +255,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
         //chamando a tela de exibir
-        TelaExibirUsuarios tela = new TelaExibirUsuarios();
-        tela.setVisible(true);
+        this.tela.setVisible(true);
         
         //ocultando a tela de cadastro
         this.setVisible(false);

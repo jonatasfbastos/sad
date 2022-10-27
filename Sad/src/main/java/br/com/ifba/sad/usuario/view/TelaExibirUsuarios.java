@@ -7,24 +7,30 @@ package br.com.ifba.sad.usuario.view;
 import br.com.ifba.sad.infrastructure.service.IFacade;
 import br.com.ifba.sad.usuario.model.Usuario;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
 /**
  *
  * @author Leo
  */
+@Component
 public class TelaExibirUsuarios extends javax.swing.JFrame {
 
     @Autowired
     private IFacade facade;
+    @Autowired
+    private TelaEditarUsuario telaEditar;
+    @Autowired
+    private TelaCadastroUsuario telaCadastro;
     
     DefaultTableModel listaTabela;
     List<Usuario> lista;
     List<Usuario> listaBuscar;
-    
     
     public TelaExibirUsuarios() {
         initComponents();
@@ -32,8 +38,9 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
     }
 
     // Metodo para atualizar a tabela na view
-
-    private void atualizarTabela(List<Usuario> listaUsuario) {
+    /*
+    private void atualizarTabela() {
+        
         this.listaTabela = new DefaultTableModel(null,
                 new String[] { "ID", "Login", "Senha", "Nome", "ID_PerfilUsuario"});
 
@@ -44,6 +51,8 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
 
         this.tblDados.setModel(listaTabela);
     }
+    */
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -184,18 +193,14 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
 
     
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        // TODO add your handling code here: 
-        
         //chamando a tela de cadastro
-        TelaCadastroUsuario telacadastro = new TelaCadastroUsuario();
-        telacadastro.setVisible(true);
-        
+        this.telaCadastro.setVisible(true);
         //ocultando a tela de exibir
         this.setVisible(false);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
-        // TODO add your handling code here:
+        /*
         // Obtendo linha selecionada
         long linha = tblDados.getSelectedRow();
 
@@ -210,10 +215,10 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
             String login = (String) tblDados.getModel().getValueAt((int) linha, 2);
             
             // Acessando fachada para excluir dados
-//            List<Usuario> usuarioRemover = this.facade.findByLogin(login);
+            List<Usuario> usuarioRemover = this.facade.findByLoginUsuario(login);
             
             // Removendo usuário
-//            this.facade.deleteUsuario(usuarioRemover.get(0));
+            this.facade.deleteUsuario(usuarioRemover.get(0));
             
             // Mensagem de sucesso.
             JOptionPane.showMessageDialog(rootPane, "Dados removidos com sucesso!");
@@ -225,11 +230,11 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
                     "\nOs dados não foram alterados.");
             
         }
-        
+        */
     }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
+        /*
         // Obtendo linha selecionada
         long linha = tblDados.getSelectedRow();
 
@@ -241,22 +246,24 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
             String login = (String) tblDados.getModel().getValueAt((int) linha, 2);
             
             // Acessando fachada para editar dados
-//            List<Usuario> usuarioEditar = this.facade.findByLogin(login);
+            List<Usuario> usuarioEditar = this.facade.findByLoginUsuario(login);
             
             // Obtendo usuario a ser editado
-//            Usuario usrEdit = usuarioEditar.get(0);
+            Usuario usrEdit = usuarioEditar.get(0);
             
             // Ocultando tela atual
             this.setVisible(false);
             
-            // Abrindo tela de edição
-//            TelaEditarUsuario telaEditar = new TelaEditarUsuario(usrEdit);
-//            telaEditar.setVisible(true);
+            //Abrindo tela de edição
+            this.telaEditar.setVisible(true);
+            this.setVisible(false);
+            this.telaEditar.setUsuario(usrEdit);
         }
-        
+        */
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void lblProcurarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblProcurarKeyPressed
+        /*
         String nome = lblProcurar.getText();
         int i;
         List<Usuario> buscaUsuario = this.facade.getAllUsuario();
@@ -272,6 +279,7 @@ public class TelaExibirUsuarios extends javax.swing.JFrame {
                 tblaux.addRow(new Object[]{buscaUsuario.get(i).getId() + buscaUsuario.get(i).getNome() + buscaUsuario.get(i).getLogin() + buscaUsuario.get(i).getPerfilusuario()});
             }
         }
+        */
     }//GEN-LAST:event_lblProcurarKeyPressed
 
     public static void main(String args[]) {

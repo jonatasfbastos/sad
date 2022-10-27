@@ -8,17 +8,20 @@ import br.com.ifba.sad.infrastructure.service.IFacade;
 import br.com.ifba.sad.usuario.model.Usuario;
 import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author João P. Arquim
  */
-
+@Component
 public class TelaEditarUsuario extends javax.swing.JFrame {
     
     @Autowired
     private IFacade facade;
-    
+    @Autowired @Lazy
+    private TelaExibirUsuarios tela;
     private Usuario userEdit;
     
     /**
@@ -29,16 +32,12 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);//comando para iniciar a tela no centro do monitor
     }
     
-    public TelaEditarUsuario(Usuario user) {
-        initComponents();
-        
-        userEdit = user;
-        
+    public void setUsuario(Usuario user) {
+        this.userEdit = user;
         // Preenchendo campos para visualização
         lblNome.setText(user.getNome());
         lblMatricula.setText(user.getLogin());
         lblSenha.setText(user.getSenha());
-        
         // Desativando combobox de perfil
         cbxPerfil.setEnabled(false);
     }
@@ -256,8 +255,7 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
         this.setVisible(false);
         
         // Exibindo tela de usuários novamente
-        TelaExibirUsuarios tela = new TelaExibirUsuarios();
-        tela.setVisible(true);
+       this.tela.setVisible(true);
         
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
