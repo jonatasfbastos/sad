@@ -48,6 +48,11 @@ public class Facade implements IFacade {
           return servicePerfilUsuario.findById(id);
      }
      
+    @Override
+     public List<PerfilUsuario> findByNomePerfilUsuario(String nome) {
+         return servicePerfilUsuario.findByNome(nome);
+     }
+     
      //=====================Usuario====================//
      @Autowired
      private IServiceUsuario serviceUsuario;
@@ -71,6 +76,15 @@ public class Facade implements IFacade {
     public List<Usuario> getAllUsuario() {
         return serviceUsuario.getAllUsuario();
     }
-  
     
+    @Override
+    public List<Usuario> findByNomeUsuario(String nome) {
+        return serviceUsuario.findByNome(nome);
+    }
+    
+    @Override
+     public List<Usuario> findByLoginUsuario(String login) {
+         return serviceUsuario.findByLogin(login);
+     }
+     
 }

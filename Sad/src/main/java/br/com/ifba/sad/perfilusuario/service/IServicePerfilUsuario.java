@@ -29,6 +29,6 @@ public interface IServicePerfilUsuario {
     public PerfilUsuario findById(Long id);
     
     // Método que retorna a lista com os perfilUsuario com o nome informado
-    //public List<PerfilUsuario> findByName(String nome);
+    public List<PerfilUsuario> findByNome(String nome);
         
 }

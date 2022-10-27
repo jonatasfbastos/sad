@@ -21,7 +21,7 @@ public interface IServiceUsuario {
     public abstract List<Usuario> getAllUsuario();
     
     // procura o usuario por nome
-    //public List<Usuario> findByLogin(String name);
+    public List<Usuario> findByLogin(String login);
     // Procura usuário por nome
-    //public List<Usuario> findByName(String name);
+    public List<Usuario> findByNome(String nome);
 }

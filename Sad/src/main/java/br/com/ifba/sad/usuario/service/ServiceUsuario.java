@@ -71,7 +71,6 @@ public class ServiceUsuario implements IServiceUsuario {
         return this.UsuarioDao.findAll();    
     }
     
-    /*
     @Override
     public List<Usuario> findByLogin(String login) {
         if(login == null) {
@@ -84,15 +83,14 @@ public class ServiceUsuario implements IServiceUsuario {
     }
     
     @Override
-    public List<Usuario> findByName(String name) {
-        if(name == null) {
+    public List<Usuario> findByNome(String nome) {
+        if(nome == null) {
             throw new BusinessException("nome null");
-        } else if(name.isEmpty()) {
+        } else if(nome.isEmpty()) {
             throw new BusinessException("nome vazio");
         } else {
-            return UsuarioDao.findByName(name);
+            return UsuarioDao.findByNome(nome);
         }
     }
-    */
     
 }

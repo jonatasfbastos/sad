@@ -54,6 +54,5 @@ public class PerfilUsuario extends PersistenceEntity implements Serializable {
      public void setUsuarios(List<Usuario> usuarios) {
           this.usuarios = usuarios;
      }
-
      
 }

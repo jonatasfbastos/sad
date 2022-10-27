@@ -5,6 +5,7 @@
 package br.com.ifba.sad.perfilusuario.dao;
 
 import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,5 +15,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface IPerfilUsuarioDao extends JpaRepository<PerfilUsuario, Long> {
-    //public List<PerfilUsuario> findByName(String nome);
+    
+    public List<PerfilUsuario> findByNome(String nome);
+
 }

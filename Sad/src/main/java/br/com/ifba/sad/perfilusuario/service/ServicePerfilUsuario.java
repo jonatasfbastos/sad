@@ -16,21 +16,21 @@ import org.springframework.stereotype.Service;
  * @author Felipe
  */
 @Service
-public class ServicePerfilUsuario implements IServicePerfilUsuario{
+public class ServicePerfilUsuario implements IServicePerfilUsuario {
     
      //================= CONSTANTES =============================================
     
     //mensagem de erro se o PerfilDeUsuario for null;
-    public final static String PERFILUSUARIO_NULL = "PerfilUsuario null";
+    public final static String PERFILUSUARIO_NULL = "Perfil usuário null";
     
     //mensagem de erro se o PerfilDeUsuario já existir;
-    public final static String PERFILUSUARIO_EXISTE = "O PerfilUsuario já existe,";
+    public final static String PERFILUSUARIO_EXISTE = "O perfil usuário já existe";
     
     //mensagem de erro se o PerfilDeUsuario não existir no banco;
-    public final static String PERFILUSUARIO_NAO_EXISTE = "O PerfilUsuario não existe na base de dados";
+    public final static String PERFILUSUARIO_NAO_EXISTE = "O perfil usuário não existe na base de dados";
     
     //mensagem de erro se o PerfilDeUsuario for inválido;
-    public final static String PERFILUSUARIO_INVALIDO = "PerfilUsuario inválido";
+    public final static String PERFILUSUARIO_INVALIDO = "Perfil usuário inválido";
     
      //================= OBJETO =================================================
     @Autowired
@@ -41,7 +41,7 @@ public class ServicePerfilUsuario implements IServicePerfilUsuario{
     public PerfilUsuario savePerfilUsuario(PerfilUsuario perfilUsuario) {
        if(perfilUsuario == null){
             throw new BusinessException(PERFILUSUARIO_NULL);
-        } else if(perfilUsuarioDao.existsById(perfilUsuario.getId()) == true) {
+        } else if(this.verificarSeExiste(perfilUsuario) == true) {
             throw new BusinessException(PERFILUSUARIO_EXISTE);
         } else {
             return perfilUsuarioDao.save(perfilUsuario);
@@ -52,7 +52,7 @@ public class ServicePerfilUsuario implements IServicePerfilUsuario{
     public PerfilUsuario updatePerfilUsuario(PerfilUsuario perfilUsuario) {
         if(perfilUsuario == null){
             throw new BusinessException(PERFILUSUARIO_NULL);
-        } else if(perfilUsuarioDao.existsById(perfilUsuario.getId()) == false) {
+        } else if(this.verificarSeExiste(perfilUsuario) == false) {
             throw new BusinessException(PERFILUSUARIO_NAO_EXISTE);
         } else {
             return perfilUsuarioDao.save(perfilUsuario);
@@ -63,7 +63,7 @@ public class ServicePerfilUsuario implements IServicePerfilUsuario{
     public void deletePerfilUsuario(PerfilUsuario perfilUsuario) {
         if(perfilUsuario == null){
             throw new BusinessException(PERFILUSUARIO_NULL);
-        } else if(perfilUsuarioDao.existsById(perfilUsuario.getId()) == true) {
+        } else if(this.verificarSeExiste(perfilUsuario) == true) {
             perfilUsuarioDao.delete(perfilUsuario);
         }else{ 
             throw new BusinessException(PERFILUSUARIO_NAO_EXISTE);
@@ -75,22 +75,31 @@ public class ServicePerfilUsuario implements IServicePerfilUsuario{
         return this.perfilUsuarioDao.findAll();
     }
     
-    /*
     @Override
-    public List<PerfilUsuario> findByName(String name) {
-        if(name == null) {
+    public List<PerfilUsuario> findByNome(String nome) {
+        if(nome == null) {
             throw new BusinessException("Nome null");
-        } else if(name.isEmpty()) {
+        } else if(nome.isEmpty()) {
             throw new BusinessException("Nome vazio");
         } else {
-            return perfilUsuarioDao.findByName(name);
+            return perfilUsuarioDao.findByNome(nome);
         } 
     }
-    */
     
      @Override
      public PerfilUsuario findById(Long id) {
           return perfilUsuarioDao.getReferenceById(id);
+     }
+     
+     // O findById tá com algum erro, esse aqui é provisório para verificar se já existe perfil salvo no banco //
+     private boolean verificarSeExiste(PerfilUsuario perfilUsuario) {
+         List<PerfilUsuario> perfis = perfilUsuarioDao.findByNome(perfilUsuario.getNome());
+         for (PerfilUsuario perfil: perfis) {
+             if ((perfilUsuario.getNome().toLowerCase()).equals(perfil.getNome().toLowerCase())) {
+                return true;
+             }
+         }
+         return false;
      }
     
 }
