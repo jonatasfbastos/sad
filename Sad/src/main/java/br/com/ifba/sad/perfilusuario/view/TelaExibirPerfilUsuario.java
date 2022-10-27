@@ -8,29 +8,36 @@ package br.com.ifba.sad.perfilusuario.view;
 import br.com.ifba.sad.infrastructure.service.IFacade;
 import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Jonas Dias
  */
+@Component
+@SuppressWarnings("unchecked")
 public class TelaExibirPerfilUsuario extends javax.swing.JFrame {
-
-     private List<PerfilUsuario> perfis;
-     
-     @Autowired
-     private IFacade facade;
+    
+    @Autowired
+    private IFacade facade;
+    @Autowired
+    private TelaEdicaoPerfilUsuario telaEdicao;
+    @Autowired
+    private TelaCadastroPerfilUsuario telaCadastro;
+    private List<PerfilUsuario> perfis;
      
      public TelaExibirPerfilUsuario() {
           initComponents();
           super.setLocationRelativeTo(null);
-          this.atualizaTabela();
      }
 
      // Método que realiza a atualização dos dados na tabela.
-     private void atualizaTabela() {
+     @PostConstruct
+     public void atualizaTabela() {
           try {
                this.perfis = this.facade.getAllPerfilUsuario();
           } catch (Exception error) {
@@ -220,9 +227,9 @@ public class TelaExibirPerfilUsuario extends javax.swing.JFrame {
            */
           try {
                PerfilUsuario perfil = this.facade.findByIdPerfilUsuario(id);
-               TelaEdicaoPerfilUsuario telaEdicao = new TelaEdicaoPerfilUsuario(perfil);
+               this.telaEdicao.setPerfilUsuario(perfil);
                this.setVisible(false);
-               telaEdicao.setVisible(true);
+               this.telaEdicao.setVisible(true);
           } catch (Exception error) {
                JOptionPane.showMessageDialog(null, error,
                        "Erro ao tentar editar!", JOptionPane.ERROR_MESSAGE);
@@ -260,10 +267,8 @@ public class TelaExibirPerfilUsuario extends javax.swing.JFrame {
      }//GEN-LAST:event_btnDeletarActionPerformed
 
      private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-          // Instancia a tela de cadastro e torna visível.
-          TelaCadastroPerfilUsuario telaCadastro = new TelaCadastroPerfilUsuario();
           this.setVisible(false);
-          telaCadastro.setVisible(true);
+          this.telaCadastro.setVisible(true);
      }//GEN-LAST:event_btnCadastrarActionPerformed
 
      private void txtBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyPressed

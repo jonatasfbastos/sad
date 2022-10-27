@@ -10,38 +10,39 @@ import br.com.ifba.sad.infrastructure.support.StringUtil;
 import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
 import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Gislaine Mendonça
  */
+@Component
 public class TelaEdicaoPerfilUsuario extends javax.swing.JFrame {
 
-     private PerfilUsuario perfilEdicao;
-     
      @Autowired
      private IFacade facade;
+     @Autowired @Lazy
+     private TelaExibirPerfilUsuario telaExibir;
+     private PerfilUsuario perfilEdicao;
      
      public TelaEdicaoPerfilUsuario() {
           initComponents();
+          super.setLocationRelativeTo(null);
      }
      
-     public TelaEdicaoPerfilUsuario(PerfilUsuario perfil) {
-          initComponents();
+     public void setPerfilUsuario(PerfilUsuario perfil) {
           this.perfilEdicao = perfil;
-          super.setLocationRelativeTo(null);
           txtNome.setText(this.perfilEdicao.getNome());
           txtDescricao.setText(this.perfilEdicao.getDescricao());
      }
      
      private boolean validarCampos() {
          StringUtil validacao = StringUtil.getInstance();
-        
          if (validacao.isEmpty(this.perfilEdicao.getNome()) || 
                  validacao.isEmpty(this.perfilEdicao.getDescricao()) ) {
             return false;
          }
-                 
         return true;
      }
      
@@ -186,19 +187,20 @@ public class TelaEdicaoPerfilUsuario extends javax.swing.JFrame {
         
         try {
             this.facade.updatePerfilUsuario(this.perfilEdicao);
-            TelaExibirPerfilUsuario telaExibir = new TelaExibirPerfilUsuario();
             this.setVisible(false);
-            telaExibir.setVisible(true);
+            this.telaExibir.setVisible(true);
+            this.telaExibir.atualizaTabela();
         } catch (Exception error) {
-            System.out.println(error);
+            JOptionPane.showMessageDialog(null, error, 
+                    "Erro ao editar!", JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        TelaExibirPerfilUsuario telaExibir = new TelaExibirPerfilUsuario();
-         this.setVisible(false);
-         telaExibir.setVisible(true);
+            this.setVisible(false);
+            this.telaExibir.setVisible(true);
+            this.telaExibir.atualizaTabela();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
      /**

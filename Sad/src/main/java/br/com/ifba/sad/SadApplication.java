@@ -1,48 +1,29 @@
 package br.com.ifba.sad;
 
-import br.com.ifba.sad.infrastructure.service.IFacade;
-import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
-import br.com.ifba.sad.usuario.model.Usuario;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
+import br.com.ifba.sad.perfilusuario.view.TelaExibirPerfilUsuario;
+import br.com.ifba.sad.usuario.view.TelaExibirUsuarios;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * 
  * @author Jonas Dias
  */
 @SpringBootApplication
-public class SadApplication implements CommandLineRunner {
-    
-    @Autowired
-    private IFacade facade;
-    
-    public static void main(String[] args) {
-        SpringApplication.run(SadApplication.class, args);
-    }
+public class SadApplication {
 
-    @Override
-    public void run(String... args) throws Exception {
+    public static void main(String[] args) {
         
-        // Aqui o projeto roda tranquilo, mas com as telas não! //
-        // Corrigiram aee KKKKKKKK //
+        ConfigurableApplicationContext context = 
+                new SpringApplicationBuilder(SadApplication.class).headless(false).run(args);
         
-        PerfilUsuario perfil = new PerfilUsuario();
-        perfil.setNome("Aluno");
-        perfil.setDescricao("Aluno IFBA");
+        TelaExibirPerfilUsuario telaPerfilUsuario =  context.getBean(TelaExibirPerfilUsuario.class);
+         telaPerfilUsuario.setVisible(true);
         
-        facade.savePerfilUsuario(perfil);
+        //TelaExibirUsuarios telaExibirUsuarios = context.getBean(TelaExibirUsuarios.class);
+        //telaExibirUsuarios.setVisible(true);
         
-        Usuario usuario = new Usuario();
-        usuario.setLogin("Login_Viu");
-        usuario.setNome("Meu nome");
-        usuario.setSenha("Invisivel");
-        
-        PerfilUsuario busca = facade.findByIdPerfilUsuario(1L);
-        usuario.setPerfilusuario(busca);
-        
-        facade.saveUsuario(usuario);
     }
 
 }
