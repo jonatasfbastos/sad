@@ -111,7 +111,7 @@ public class Facade implements IFacade {
     }
     
     @Override
-     public List<Professor> findByNome(String nome) {
+     public List<Professor> findByNomeProfessor(String nome) {
          return serviceProfessor.findByNome(nome);
      }
 
@@ -147,7 +147,12 @@ public class Facade implements IFacade {
     @Override
     public List<Disciplina> getAllDisciplina() {
         return serviceDisciplina.getAllDisciplina();
-    }     
+    }
+    
+    @Override
+    public List<Disciplina> findByNomeDisciplina(String nome) {
+        return serviceDisciplina.findByNome(nome);
+    }
      
      
 }

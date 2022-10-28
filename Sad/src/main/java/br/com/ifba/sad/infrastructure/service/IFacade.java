@@ -38,12 +38,12 @@ public interface IFacade {
      public abstract void deleteProfessor(Professor professor);
      public List<Professor> getAllProfessor();
      public Professor findById(Long id);
-     public List<Professor> findByNome(String nome);
+     public List<Professor> findByNomeProfessor(String nome);
      
      //=====================Disciplina====================//
      public abstract Disciplina saveDisciplina(Disciplina disciplina);
      public abstract Disciplina updateDisciplina(Disciplina disciplina);
      public abstract void deleteDisciplina(Disciplina disciplina);
      public List<Disciplina> getAllDisciplina();
-     public List<Disciplina> findByNome(String nome);
+     public List<Disciplina> findByNomeDisciplina(String nome);
 }
