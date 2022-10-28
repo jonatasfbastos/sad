@@ -26,9 +26,9 @@ public class Disciplina extends PersistenceEntity implements Serializable{
     private String sigla;
     private int cargaHoraria;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "professor_ID", referencedColumnName = "ID")
-
+    private Professor professor;
     //construtor
     public Disciplina() {
     }
