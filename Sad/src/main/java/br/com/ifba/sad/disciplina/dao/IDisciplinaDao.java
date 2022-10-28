@@ -16,5 +16,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IDisciplinaDao extends JpaRepository<Disciplina, Long>{
     
-    List<Disciplina> findByNome(String nome);    
+    List<Disciplina> findByNome(String nome); 
+    
 }

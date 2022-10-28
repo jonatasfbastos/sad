@@ -24,9 +24,6 @@ public interface IServiceDisciplina {
     // Metodo que retorna todas oas disciplinas da base de dados
     public abstract List<Disciplina> getAllDisciplina();
     
-    // procura a disciplina por login
-    public List<Disciplina> findByLogin(String login);
-    
     // Procura disciplina por nome
     public List<Disciplina> findByNome(String nome);
 }

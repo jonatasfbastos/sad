@@ -4,10 +4,14 @@
  */
 package br.com.ifba.sad.infrastructure.service;
 
+import br.com.ifba.sad.disciplina.model.Disciplina;
+import br.com.ifba.sad.disciplina.service.IServiceDisciplina;
 import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
 import br.com.ifba.sad.perfilusuario.service.IServicePerfilUsuario;
 import br.com.ifba.sad.usuario.model.Usuario;
 import br.com.ifba.sad.usuario.service.IServiceUsuario;
+import br.com.ifba.sad.professor.model.Professor;
+import br.com.ifba.sad.professor.service.IServiceProfessor;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -86,5 +90,64 @@ public class Facade implements IFacade {
      public List<Usuario> findByLoginUsuario(String login) {
          return serviceUsuario.findByLogin(login);
      }
+     
+     //=====================Professor====================//
+     @Autowired
+     private IServiceProfessor serviceProfessor;
+     
+     @Override
+    public Professor saveProfessor(Professor professor) {
+        return serviceProfessor.saveProfessor(professor);
+    }
+
+    @Override
+    public Professor updateProfessor(Professor professor) {
+        return serviceProfessor.updateProfessor(professor);
+    }
+
+    @Override
+    public void deleteProfessor(Professor professor) {
+        serviceProfessor.deleteProfessor(professor);
+    }
+    
+    @Override
+     public List<Professor> findByNome(String nome) {
+         return serviceProfessor.findByNome(nome);
+     }
+
+    @Override
+    public List<Professor> getAllProfessor() {
+        return serviceProfessor.getAllprofessor();
+    }
+
+    @Override
+    public Professor findById(Long id) {
+        return serviceProfessor.findById(id);
+    }
+
+    //=====================Disciplina====================//
+     @Autowired
+     private IServiceDisciplina serviceDisciplina;
+
+    @Override
+    public Disciplina saveDisciplina(Disciplina disciplina) {
+        return serviceDisciplina.saveDisciplina(disciplina);
+    }
+
+    @Override
+    public Disciplina updateDisciplina(Disciplina disciplina) {
+        return serviceDisciplina.updateDisciplina(disciplina);
+    }
+
+    @Override
+    public void deleteDisciplina(Disciplina disciplina) {
+        serviceDisciplina.deleteDisciplina(disciplina);
+    }
+
+    @Override
+    public List<Disciplina> getAllDisciplina() {
+        return serviceDisciplina.getAllDisciplina();
+    }     
+     
      
 }

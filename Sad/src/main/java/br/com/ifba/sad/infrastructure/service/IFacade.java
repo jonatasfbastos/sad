@@ -4,8 +4,10 @@
  */
 package br.com.ifba.sad.infrastructure.service;
 
+import br.com.ifba.sad.disciplina.model.Disciplina;
 import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
 import br.com.ifba.sad.usuario.model.Usuario;
+import br.com.ifba.sad.professor.model.Professor;
 import java.util.List;
 
 /**
@@ -29,4 +31,19 @@ public interface IFacade {
      public List<Usuario> getAllUsuario();
      public List<Usuario> findByNomeUsuario(String nome);
      public List<Usuario> findByLoginUsuario(String login);
+     
+     //=====================Professor====================//
+     public abstract Professor saveProfessor(Professor professor);
+     public abstract Professor updateProfessor(Professor professor);
+     public abstract void deleteProfessor(Professor professor);
+     public List<Professor> getAllProfessor();
+     public Professor findById(Long id);
+     public List<Professor> findByNome(String nome);
+     
+     //=====================Disciplina====================//
+     public abstract Disciplina saveDisciplina(Disciplina disciplina);
+     public abstract Disciplina updateDisciplina(Disciplina disciplina);
+     public abstract void deleteDisciplina(Disciplina disciplina);
+     public List<Disciplina> getAllDisciplina();
+     public List<Disciplina> findByNome(String nome);
 }

@@ -71,17 +71,6 @@ public class ServiceDisciplina implements IServiceDisciplina{
     }
     
     @Override
-    public List<Disciplina> findByLogin(String login) {
-        if(login == null) {
-            throw new BusinessException("login null");
-        } else if(login.isEmpty()) {
-            throw new BusinessException("login vazio");
-        } else {
-            return disciplinaDao.findByLogin(login);
-        }    
-    }
-    
-    @Override
     public List<Disciplina> findByNome(String nome) {
         if(nome == null) {
             throw new BusinessException("nome null");

@@ -20,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "disciplina")
-public class Disciplina {
+public class Disciplina extends PersistenceEntity implements Serializable{
     private String nome;//variaveis
     private String descriçao;
     private String sigla;
