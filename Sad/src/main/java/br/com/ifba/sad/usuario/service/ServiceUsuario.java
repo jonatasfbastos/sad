@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServiceUsuario implements IServiceUsuario {
     
-    //constantes
+   
     //mensagem de erro se o Usuario for null;
     public final static String USUARIO_NULL = "Usuario null";
     

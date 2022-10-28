@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package br.com.ifba.sad.usuario.service;
+
 import br.com.ifba.sad.usuario.model.Usuario;
 import java.util.List;
 /**
@@ -20,7 +21,7 @@ public interface IServiceUsuario {
     // Metodo que retorna todos os usuarios da base de dados
     public abstract List<Usuario> getAllUsuario();
     
-    // procura o usuario por nome
+    // procura o usuario por login
     public List<Usuario> findByLogin(String login);
     // Procura usuário por nome
     public List<Usuario> findByNome(String nome);
