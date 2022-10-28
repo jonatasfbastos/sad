@@ -7,6 +7,7 @@ package br.com.ifba.sad.perfilusuario.view;
 
 import br.com.ifba.sad.infrastructure.service.IFacade;
 import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
+import java.awt.HeadlessException;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.swing.JOptionPane;
@@ -256,13 +257,17 @@ public class TelaExibirPerfilUsuario extends javax.swing.JFrame {
            */
           try {
                PerfilUsuario perfil = this.facade.findByIdPerfilUsuario(id);
-               this.facade.deletePerfilUsuario(perfil);
-               this.atualizaTabela();
-          } catch (Exception error) {
+               
+               // Obtém a confirmação do usuário se será deletado o perfil de usuário do banco de dados.
+               if(JOptionPane.showConfirmDialog(null, "Deseja realmente deletar " +
+                       perfil.getNome() + "?", "Deletar Dados", JOptionPane.DEFAULT_OPTION) == 0) {
+                    this.facade.deletePerfilUsuario(perfil);
+                    this.atualizaTabela();
+               }
+          } catch (HeadlessException error) {
                JOptionPane.showMessageDialog(null, error,
                        "Erro ao tentar deletar!", JOptionPane.ERROR_MESSAGE);
           }
-
      }//GEN-LAST:event_btnDeletarActionPerformed
 
      private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed

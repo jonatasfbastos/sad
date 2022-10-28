@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
  *
  * @author Gislaine Mendonça
  */
-@Component
+@Component 
 public class TelaEdicaoPerfilUsuario extends javax.swing.JFrame {
 
      @Autowired
@@ -186,15 +186,17 @@ public class TelaEdicaoPerfilUsuario extends javax.swing.JFrame {
         }
         
         try {
-            this.facade.updatePerfilUsuario(this.perfilEdicao);
+            if(JOptionPane.showConfirmDialog(null, "Deseja realmente editar " +
+                       this.perfilEdicao.getNome() + "?", "Editar Dados", JOptionPane.DEFAULT_OPTION) == 0) {
+                this.facade.updatePerfilUsuario(this.perfilEdicao);
+                this.telaExibir.atualizaTabela();
+            }
             this.setVisible(false);
             this.telaExibir.setVisible(true);
-            this.telaExibir.atualizaTabela();
         } catch (Exception error) {
             JOptionPane.showMessageDialog(null, error, 
                     "Erro ao editar!", JOptionPane.ERROR_MESSAGE);
         }
-        
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed

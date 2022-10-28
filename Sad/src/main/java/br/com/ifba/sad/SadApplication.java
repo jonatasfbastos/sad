@@ -19,7 +19,7 @@ public class SadApplication {
                 new SpringApplicationBuilder(SadApplication.class).headless(false).run(args);
         
         TelaExibirPerfilUsuario telaPerfilUsuario =  context.getBean(TelaExibirPerfilUsuario.class);
-         telaPerfilUsuario.setVisible(true);
+        telaPerfilUsuario.setVisible(true);
         
         //TelaExibirUsuarios telaExibirUsuarios = context.getBean(TelaExibirUsuarios.class);
         //telaExibirUsuarios.setVisible(true);

@@ -5,7 +5,10 @@
 package br.com.ifba.sad.usuario.view;
 
 import br.com.ifba.sad.infrastructure.service.IFacade;
+import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
 import br.com.ifba.sad.usuario.model.Usuario;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -24,9 +27,6 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
     private TelaExibirUsuarios tela;
     private Usuario userEdit;
     
-    /**
-     * Creates new form CadastrarUsuario
-     */
     public TelaEditarUsuario() {
         initComponents();
         this.setLocationRelativeTo(null);//comando para iniciar a tela no centro do monitor
@@ -37,11 +37,19 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
         // Preenchendo campos para visualização
         lblNome.setText(user.getNome());
         lblMatricula.setText(user.getLogin());
-        lblSenha.setText(user.getSenha());
-        // Desativando combobox de perfil
-        cbxPerfil.setEnabled(false);
+        lblSenha.setText(user.getSenha());        
     }
-
+    
+    public void preencheComboBox() {
+        List<PerfilUsuario> perfis = facade.getAllPerfilUsuario();
+        DefaultComboBoxModel combo = (DefaultComboBoxModel) cbxPerfil.getModel();
+        combo.removeAllElements();
+        
+        for (PerfilUsuario perfil: perfis) {
+            combo.addElement(perfil.getNome());
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,68 +59,58 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        pnlContainer = new javax.swing.JPanel();
+        pnlLinha = new javax.swing.JPanel();
         lblNome = new javax.swing.JTextField();
         lblMatricula = new javax.swing.JTextField();
         lblSenha = new javax.swing.JTextField();
         btnVoltar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblInsiraDados = new javax.swing.JLabel();
         btnAtualizar = new javax.swing.JButton();
         cbxPerfil = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblTipoConta = new javax.swing.JLabel();
+        lblLogoSad = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(220, 224, 230));
+        pnlContainer.setBackground(new java.awt.Color(220, 224, 230));
 
-        jPanel2.setBackground(new java.awt.Color(43, 76, 126));
+        pnlLinha.setBackground(new java.awt.Color(43, 76, 126));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pnlLinhaLayout = new javax.swing.GroupLayout(pnlLinha);
+        pnlLinha.setLayout(pnlLinhaLayout);
+        pnlLinhaLayout.setHorizontalGroup(
+            pnlLinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnlLinhaLayout.setVerticalGroup(
+            pnlLinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 8, Short.MAX_VALUE)
         );
 
         lblNome.setBackground(new java.awt.Color(217, 217, 217));
         lblNome.setText("nome");
-        lblNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lblNomeActionPerformed(evt);
-            }
-        });
 
         lblMatricula.setBackground(new java.awt.Color(217, 217, 217));
         lblMatricula.setText("login");
-        lblMatricula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lblMatriculaActionPerformed(evt);
-            }
-        });
 
         lblSenha.setBackground(new java.awt.Color(217, 217, 217));
         lblSenha.setText("senha");
-        lblSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lblSenhaActionPerformed(evt);
-            }
-        });
 
         btnVoltar.setBackground(new java.awt.Color(217, 217, 217));
         btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnVoltar.setForeground(new java.awt.Color(0, 0, 0));
         btnVoltar.setText("VOLTAR");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("INSIRA OS DADOS PARA ATUALIZAÇÃO");
+        lblInsiraDados.setBackground(new java.awt.Color(0, 0, 0));
+        lblInsiraDados.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblInsiraDados.setForeground(new java.awt.Color(0, 0, 0));
+        lblInsiraDados.setText("INSIRA OS DADOS PARA ATUALIZAÇÃO");
 
         btnAtualizar.setBackground(new java.awt.Color(217, 217, 217));
         btnAtualizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -127,56 +125,51 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
         cbxPerfil.setBackground(new java.awt.Color(217, 217, 217));
         cbxPerfil.setForeground(new java.awt.Color(0, 0, 0));
         cbxPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Discente", "Doscente" }));
-        cbxPerfil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxPerfilActionPerformed(evt);
-            }
-        });
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Tipo de conta:");
+        lblTipoConta.setForeground(new java.awt.Color(0, 0, 0));
+        lblTipoConta.setText("Tipo de conta:");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/imagens/logo_sad.png"))); // NOI18N
+        lblLogoSad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/imagens/logo_sad.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlContainerLayout = new javax.swing.GroupLayout(pnlContainer);
+        pnlContainer.setLayout(pnlContainerLayout);
+        pnlContainerLayout.setHorizontalGroup(
+            pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlContainerLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+            .addComponent(pnlLinha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlContainerLayout.createSequentialGroup()
+                .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlContainerLayout.createSequentialGroup()
                         .addGap(66, 66, 66)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                            .addGroup(pnlContainerLayout.createSequentialGroup()
+                                .addComponent(lblTipoConta)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbxPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pnlContainerLayout.createSequentialGroup()
                         .addGap(88, 88, 88)
-                        .addComponent(jLabel1)))
+                        .addComponent(lblInsiraDados)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlContainerLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblLogoSad, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(121, 121, 121))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        pnlContainerLayout.setVerticalGroup(
+            pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblLogoSad, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addComponent(lblInsiraDados)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -184,13 +177,13 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTipoConta)
                     .addComponent(cbxPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlLinha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12))
@@ -200,64 +193,50 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lblNomeActionPerformed
-
-    private void lblMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblMatriculaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lblMatriculaActionPerformed
-
-    private void lblSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lblSenhaActionPerformed
-
-    private void cbxPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPerfilActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxPerfilActionPerformed
-
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
-        // TODO add your handling code here:
         // Somente continua o processo se o usuário selecionar sim
         if (JOptionPane.showConfirmDialog(rootPane, "Os dados serão modificados."
                 + "\nDeseja continuar?") == 0) {
             
             // Gravando dados no novo objeto
+            String perfil = cbxPerfil.getSelectedItem().toString();
+            PerfilUsuario perfilUsuario = facade.findByNomePerfilUsuario(perfil).get(0);
+            
             userEdit.setNome(lblNome.getText());
             userEdit.setLogin(lblMatricula.getText());
             userEdit.setSenha(lblSenha.getText());
+            userEdit.setPerfilusuario(perfilUsuario);
             
             // Acessando fachada para alterar dados
             this.facade.updateUsuario(userEdit);
             
             // Mensagem de sucesso.
             JOptionPane.showMessageDialog(rootPane, "Dados alterados com sucesso!");
-
         } else {
-            
             // Se o usuário não confirmar o processo, exibe mensagem de cancelamento.
             JOptionPane.showMessageDialog(rootPane, "Edição cancelada." +
                     "\nOs dados não foram alterados.");
-            
         }
-
-        // Oculta a tela atual e exibe a tela principal novamente.
+        
         this.setVisible(false);
-        
-        // Exibindo tela de usuários novamente
-       this.tela.setVisible(true);
-        
+        this.tela.setVisible(true);
+        this.tela.atualizarTabela();
     }//GEN-LAST:event_btnAtualizarActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        this.setVisible(false);
+        this.tela.setVisible(true);
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,13 +284,13 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JComboBox<String> cbxPerfil;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblInsiraDados;
+    private javax.swing.JLabel lblLogoSad;
     private javax.swing.JTextField lblMatricula;
     private javax.swing.JTextField lblNome;
     private javax.swing.JTextField lblSenha;
+    private javax.swing.JLabel lblTipoConta;
+    private javax.swing.JPanel pnlContainer;
+    private javax.swing.JPanel pnlLinha;
     // End of variables declaration//GEN-END:variables
 }

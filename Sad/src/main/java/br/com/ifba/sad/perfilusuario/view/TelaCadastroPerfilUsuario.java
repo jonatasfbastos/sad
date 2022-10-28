@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
  *
  * @author Gislaine Mendonça
  */
-@Component
+@Component 
 public class TelaCadastroPerfilUsuario extends javax.swing.JFrame {
     
     @Autowired

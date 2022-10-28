@@ -26,7 +26,7 @@ public class Usuario extends PersistenceEntity implements Serializable {
     private String nome;
     private String login;
     private String senha;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PerfilUsuario_ID", referencedColumnName = "ID")
     private PerfilUsuario perfilUsuario;
 
