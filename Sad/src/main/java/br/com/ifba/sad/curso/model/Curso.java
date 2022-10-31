@@ -25,7 +25,7 @@ public class Curso extends PersistenceEntity implements Serializable {
     //construtor
     public Curso() {
     }
-    
+
     /**
      * @return the nome
      */
@@ -69,17 +69,20 @@ public class Curso extends PersistenceEntity implements Serializable {
     }
 
     /**
-     * @return the Descricao
+     * @return the descricao
      */
     public String getDescricao() {
-        return Descricao;
+        return descricao;
     }
 
     /**
-     * @param Descricao the Descricao to set
+     * @param descricao the descricao to set
      */
-    public void setDescricao(String Descricao) {
-        this.Descricao = Descricao;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
+    
+
+    
     
 }
