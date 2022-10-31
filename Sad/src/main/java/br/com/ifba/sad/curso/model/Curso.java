@@ -5,8 +5,10 @@
 package br.com.ifba.sad.curso.model;
 
 import br.com.ifba.sad.infrastructure.model.PersistenceEntity;
+import br.com.ifba.sad.modalidade.model.Modalidade;
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -21,6 +23,8 @@ public class Curso extends PersistenceEntity implements Serializable {
     private String codigoCurso;
     private String sigla;
     private String descricao;
+    @JoinColumn(name = "modalidade_ID", referencedColumnName = "ID")
+    private Modalidade modalidade;
     
     //construtor
     public Curso() {
@@ -81,6 +85,7 @@ public class Curso extends PersistenceEntity implements Serializable {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
     
 
     
