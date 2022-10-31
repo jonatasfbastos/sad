@@ -20,7 +20,7 @@ public class Curso extends PersistenceEntity implements Serializable {
     private String nome;
     private String codigoCurso;
     private String sigla;
-    private String Descricao;
+    private String descricao;
     
     //construtor
     public Curso() {
