@@ -4,17 +4,42 @@
  */
 package br.com.ifba.sad.professor.view;
 
+import br.com.ifba.sad.infrastructure.service.IFacade;
+import br.com.ifba.sad.infrastructure.support.StringUtil;
+import br.com.ifba.sad.professor.model.Professor;
+import javax.swing.JOptionPane;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
+
 /**
  *
  * @author Leo
  */
+@Component
 public class TelaCadastroProfessor extends javax.swing.JFrame {
 
+    @Autowired
+    private IFacade facade;
+    @Autowired @Lazy
+    private TelaExibirProfessor telaExibir;
+    
     /**
      * Creates new form TelaCadastrarDisciplinas
      */
     public TelaCadastroProfessor() {
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    
+    private boolean validarCampos(Professor professor) {
+        StringUtil validacao = StringUtil.getInstance();
+        if(validacao.isEmpty(professor.getNome()) ||
+                validacao.isEmpty(Integer.toString(professor.getLogin())) ||
+                validacao.isEmpty(professor.getSenha())) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -54,7 +79,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
             .addGap(0, 10, Short.MAX_VALUE)
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/usuario/imagens/LogoSad.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/imagens/logo_sad.png"))); // NOI18N
 
         txtSenha.setBackground(new java.awt.Color(217, 217, 217));
         txtSenha.setForeground(new java.awt.Color(0, 0, 0));
@@ -87,11 +112,21 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnVoltar.setForeground(new java.awt.Color(0, 0, 0));
         btnVoltar.setText("VOLTAR");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
 
         btnCadastrar.setBackground(new java.awt.Color(217, 217, 217));
         btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastrar.setText("CADASTRAR");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -183,6 +218,43 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
     private void txtSiapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSiapActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSiapActionPerformed
+
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        // TODO add your handling code here:
+        Professor professor = new Professor();
+        
+        String nome = txtNome.getText();
+        int siap = Integer.parseInt(txtSiap.getText());
+        String senha = txtSenha.getText();
+        
+        professor.setNome(nome);
+        professor.setLogin(siap);
+        professor.setSenha(senha);
+        
+        if(this.validarCampos(professor) == false) {
+            JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos e tente novamente!",
+                    "Preencha os campos!", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        try {
+            this.facade.saveProfessor(professor);
+            this.setVisible(false);
+            this.telaExibir.setVisible(true);
+            this.telaExibir.atualizarTabela();
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, error,
+                    "Erro ao cadastrar!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        this.telaExibir = new TelaExibirProfessor();
+        this.telaExibir.setVisible(true);
+        this.telaExibir.atualizarTabela();
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments

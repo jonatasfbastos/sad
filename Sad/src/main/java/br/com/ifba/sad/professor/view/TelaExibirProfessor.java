@@ -24,6 +24,8 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
 
     @Autowired
     private IFacade facade;
+    @Autowired
+    private TelaCadastroProfessor telaCadastro;
 
     private List<Professor> professores;
 
@@ -241,6 +243,9 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
+        this.telaCadastro = new TelaCadastroProfessor();
+        this.telaCadastro.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
