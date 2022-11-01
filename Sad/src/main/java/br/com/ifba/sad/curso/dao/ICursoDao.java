@@ -4,6 +4,7 @@
  */
 package br.com.ifba.sad.curso.dao;
 
+import br.com.ifba.sad.curso.model.Curso;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -12,11 +13,9 @@ import org.springframework.stereotype.Repository;
  *
  * @author kennedy
  */
-/*
-                Retirar o comentário ao criar o model de curso
+
 @Repository
 public interface ICursoDao extends JpaRepository<Curso, Long> {
     public abstract List <Curso> findByName(String name);
     public abstract List <Curso> findByID(long id);
 }
-*/
