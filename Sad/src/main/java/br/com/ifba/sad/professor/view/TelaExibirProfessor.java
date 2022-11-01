@@ -2,21 +2,56 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package br.com.ifba.sad.perfilprofessor.view;
+package br.com.ifba.sad.professor.view;
+
+import br.com.ifba.sad.infrastructure.service.IFacade;
+import br.com.ifba.sad.professor.model.Professor;
+import java.awt.HeadlessException;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Leo
  */
+@Component
 public class TelaExibirProfessor extends javax.swing.JFrame {
-
+    
+    @Autowired
+    private IFacade facade;
+    
+    private List<Professor> professores;
     /**
      * Creates new form TelaExibirProfessor
      */
     public TelaExibirProfessor() {
         initComponents();
+        this.setLocationRelativeTo(null);//comando para iniciar a tela no centro do monitor
     }
+    
+    // Metodo para atualizar a tabela na view
+    @PostConstruct
+    public void atualizarTabela() {
+          try {
+               this.professores = this.facade.getAllProfessor();
+          } catch (Exception error) {
+               JOptionPane.showMessageDialog(null, error,
+                       "Erro ao buscar professores!", JOptionPane.ERROR_MESSAGE);
+               return;
+          }
 
+          DefaultTableModel tabelaDados = (DefaultTableModel) tblTabela.getModel();
+          tabelaDados.setNumRows(0);
+          
+        for (Professor professor : professores) {          
+            tabelaDados.addRow(new Object[] { professor.getId(), professor.getNome(), 
+                professor.getLogin(), professor.getDisciplina().getNome()});
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,7 +106,6 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
 
         btnExcluir.setBackground(new java.awt.Color(217, 217, 217));
         btnExcluir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnExcluir.setForeground(new java.awt.Color(0, 0, 0));
         btnExcluir.setText("DELETAR");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,7 +115,6 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
 
         btnCadastrar.setBackground(new java.awt.Color(217, 217, 217));
         btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastrar.setText("CADASTRAR");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +124,6 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
 
         btnEditar.setBackground(new java.awt.Color(217, 217, 217));
         btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnEditar.setForeground(new java.awt.Color(0, 0, 0));
         btnEditar.setText("EDITAR");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +134,11 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
         txtBuscar.setBackground(new java.awt.Color(217, 217, 217));
         txtBuscar.setForeground(new java.awt.Color(51, 51, 51));
         txtBuscar.setText("Buscar");
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -162,7 +199,36 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        // TODO add your handling code here:
+        // Obtém a linha selecionada da tabela.
+          int linhaSelecionada = tblTabela.getSelectedRow();
+
+          // Se for igual a -1, significa que não há linha selecionada.
+          if (linhaSelecionada == - 1) {
+               JOptionPane.showMessageDialog(null, "Não há linha selecionada, tente novamente.",
+                       "Erro ao selecionar linha!", JOptionPane.ERROR_MESSAGE);
+               return;
+          }
+
+          // Obtém o id na linha selecionada e coluna zero.
+          Long id = (Long) tblTabela.getValueAt(linhaSelecionada, 0);
+
+          /*
+               Tenta realizar a busca pelo id, se não ocorrer erros, deleta o professor e atualiza a tabela.
+               Caso ocorra erro, mostra um JOptionPane.
+           */
+          try {
+               Professor professor = this.facade.findById(id);
+               
+               // Obtém a confirmação do usuário se será deletado o professor do banco de dados.
+               if(JOptionPane.showConfirmDialog(null, "Deseja realmente deletar " +
+                       professor.getNome() + "?", "Deletar Dados", JOptionPane.DEFAULT_OPTION) == 0) {
+                    this.facade.deleteProfessor(professor);
+                    this.atualizarTabela();
+               }
+          } catch (HeadlessException error) {
+               JOptionPane.showMessageDialog(null, error,
+                       "Erro ao tentar deletar!", JOptionPane.ERROR_MESSAGE);
+          }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
@@ -172,6 +238,31 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void txtBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyPressed
+        // Obtém a string busca convertendo para letras minúsculas.
+          String nome = txtBuscar.getText().toLowerCase();
+
+          if (this.professores == null || this.professores.isEmpty()) {
+               try {
+                    this.professores = this.facade.findByNomeProfessor(nome);
+               } catch (Exception error) {
+                    JOptionPane.showMessageDialog(null, error,
+                            "Erro ao buscar usuários!", JOptionPane.ERROR_MESSAGE);
+               }
+          }
+          // Obtém o modelo atual da tabela.
+          DefaultTableModel tabelaDados = (DefaultTableModel) tblTabela.getModel();
+          tabelaDados.setNumRows(0);
+
+          // Adiciona à tabela todos os professores em que o nome contenha a busca informada.
+          for (Professor professor: professores) {
+               if (professor.getNome().toLowerCase().contains(nome)) {
+                    tabelaDados.addRow(new Object[] { professor.getId(), professor.getNome(), 
+                         professor.getLogin(), professor.getDisciplina().getNome()});
+               }
+          }
+    }//GEN-LAST:event_txtBuscarKeyPressed
 
     /**
      * @param args the command line arguments
