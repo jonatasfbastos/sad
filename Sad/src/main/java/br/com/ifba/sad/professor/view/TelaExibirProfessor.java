@@ -72,7 +72,7 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
         btnExcluir.setBackground(new java.awt.Color(217, 217, 217));
         btnExcluir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnExcluir.setForeground(new java.awt.Color(0, 0, 0));
-        btnExcluir.setText("EXCLUIR");
+        btnExcluir.setText("DELETAR");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
