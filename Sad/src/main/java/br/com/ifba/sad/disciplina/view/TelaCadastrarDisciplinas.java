@@ -2,19 +2,45 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package br.com.ifba.sad.disciplinas.view;
+package br.com.ifba.sad.disciplina.view;
+
+import br.com.ifba.sad.disciplina.model.Disciplina;
+import br.com.ifba.sad.infrastructure.service.IFacade;
+import br.com.ifba.sad.infrastructure.support.StringUtil;
+import javax.swing.JOptionPane;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Leo
  */
+@Component
 public class TelaCadastrarDisciplinas extends javax.swing.JFrame {
 
+    @Autowired
+    private IFacade facade;
+    @Autowired @Lazy
+    private TelaExibirDisciplinas telaExibir;
+    
     /**
      * Creates new form TelaCadastrarDisciplinas
      */
     public TelaCadastrarDisciplinas() {
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    
+    private boolean validarCampos(Disciplina disciplina) {
+        StringUtil validacao = StringUtil.getInstance();
+        if(validacao.isEmpty(disciplina.getNome()) ||
+                validacao.isEmpty(disciplina.getDescriçao()) ||
+                validacao.isEmpty(disciplina.getSigla()) ||
+                validacao.isEmpty(Integer.toString(disciplina.getCargaHoraria()))) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -29,12 +55,12 @@ public class TelaCadastrarDisciplinas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        txtSigla = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
+        txtDescricao = new javax.swing.JTextField();
+        txtCargaHoraria = new javax.swing.JTextField();
+        btnVoltar = new javax.swing.JButton();
+        btnCadastrar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -56,59 +82,69 @@ public class TelaCadastrarDisciplinas extends javax.swing.JFrame {
             .addGap(0, 10, Short.MAX_VALUE)
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/usuario/imagens/LogoSad.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/imagens/logo_sad.png"))); // NOI18N
 
-        jTextField1.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setText("Sigla");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtSigla.setBackground(new java.awt.Color(217, 217, 217));
+        txtSigla.setForeground(new java.awt.Color(0, 0, 0));
+        txtSigla.setText("Sigla");
+        txtSigla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtSiglaActionPerformed(evt);
             }
         });
 
-        jTextField2.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField2.setText("Nome");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtNome.setBackground(new java.awt.Color(217, 217, 217));
+        txtNome.setForeground(new java.awt.Color(0, 0, 0));
+        txtNome.setText("Nome");
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtNomeActionPerformed(evt);
             }
         });
 
-        jTextField3.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField3.setText("Descrição");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtDescricao.setBackground(new java.awt.Color(217, 217, 217));
+        txtDescricao.setForeground(new java.awt.Color(0, 0, 0));
+        txtDescricao.setText("Descrição");
+        txtDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtDescricaoActionPerformed(evt);
             }
         });
 
-        jTextField4.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField4.setText("CargaHorária");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txtCargaHoraria.setBackground(new java.awt.Color(217, 217, 217));
+        txtCargaHoraria.setForeground(new java.awt.Color(0, 0, 0));
+        txtCargaHoraria.setText("CargaHorária");
+        txtCargaHoraria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txtCargaHorariaActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(217, 217, 217));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("VOLTAR");
+        btnVoltar.setBackground(new java.awt.Color(217, 217, 217));
+        btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnVoltar.setForeground(new java.awt.Color(0, 0, 0));
+        btnVoltar.setText("VOLTAR");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(217, 217, 217));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("CADASTRAR");
+        btnCadastrar.setBackground(new java.awt.Color(217, 217, 217));
+        btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCadastrar.setText("CADASTRAR");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("INSIRA OS DADOS PARA CADASTRAR A DISCIPLINA");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/usuario/imagens/LogoSad.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/imagens/logo_sad.png"))); // NOI18N
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/imagens/logo_sad.png"))); // NOI18N
 
@@ -128,10 +164,10 @@ public class TelaCadastrarDisciplinas extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(47, 47, 47)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtSigla, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtCargaHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(30, 30, 30)
                                         .addComponent(jLabel2)))
@@ -144,9 +180,9 @@ public class TelaCadastrarDisciplinas extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -163,20 +199,20 @@ public class TelaCadastrarDisciplinas extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSigla, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCargaHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -193,21 +229,60 @@ public class TelaCadastrarDisciplinas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtSiglaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSiglaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtSiglaActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtNomeActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtDescricaoActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void txtCargaHorariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCargaHorariaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_txtCargaHorariaActionPerformed
+
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        // TODO add your handling code here:
+        Disciplina disciplina = new Disciplina();
+        
+        String nome = txtNome.getText();
+        String descricao = txtDescricao.getText();
+        String sigla = txtSigla.getText();
+        int cargaHoraria = Integer.parseInt(txtCargaHoraria.getText());
+        
+        disciplina.setNome(nome);
+        disciplina.setDescriçao(descricao);
+        disciplina.setSigla(sigla);
+        disciplina.setCargaHoraria(cargaHoraria);
+        
+        if(this.validarCampos(disciplina) == false) {
+            JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos e tente novamente!",
+                    "Preencha os campos!", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        try {
+            this.facade.saveDisciplina(disciplina);
+            this.setVisible(false);
+            this.telaExibir.setVisible(true);
+            this.telaExibir.atualizarTabela();
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, error,
+                    "Erro ao cadastrar!", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        this.telaExibir.setVisible(true);
+        this.telaExibir.atualizarTabela();
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,17 +320,17 @@ public class TelaCadastrarDisciplinas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txtCargaHoraria;
+    private javax.swing.JTextField txtDescricao;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtSigla;
     // End of variables declaration//GEN-END:variables
 }
