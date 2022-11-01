@@ -4,6 +4,7 @@
  */
 package br.com.ifba.sad.professor.view;
 
+import br.com.ifba.sad.disciplina.model.Disciplina;
 import br.com.ifba.sad.infrastructure.service.IFacade;
 import br.com.ifba.sad.professor.model.Professor;
 import java.awt.HeadlessException;
@@ -20,11 +21,12 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class TelaExibirProfessor extends javax.swing.JFrame {
-    
+
     @Autowired
     private IFacade facade;
-    
+
     private List<Professor> professores;
+
     /**
      * Creates new form TelaExibirProfessor
      */
@@ -32,26 +34,32 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);//comando para iniciar a tela no centro do monitor
     }
-    
+
     // Metodo para atualizar a tabela na view
     @PostConstruct
     public void atualizarTabela() {
-          try {
-               this.professores = this.facade.getAllProfessor();
-          } catch (Exception error) {
-               JOptionPane.showMessageDialog(null, error,
-                       "Erro ao buscar professores!", JOptionPane.ERROR_MESSAGE);
-               return;
-          }
+        try {
+            this.professores = this.facade.getAllProfessor();
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, error,
+                    "Erro ao buscar professores!", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-          DefaultTableModel tabelaDados = (DefaultTableModel) tblTabela.getModel();
-          tabelaDados.setNumRows(0);
-          
-        for (Professor professor : professores) {          
-            tabelaDados.addRow(new Object[] { professor.getId(), professor.getNome(), 
-                professor.getLogin(), professor.getDisciplina().getNome()});
+        DefaultTableModel tabelaDados = (DefaultTableModel) tblTabela.getModel();
+        tabelaDados.setNumRows(0);
+
+        for (Professor professor : professores) {
+            List<Disciplina> disciplinas = professor.getDisciplina();
+            String nomesDisciplinas = new String();
+            for (Disciplina disciplina : disciplinas) {
+                nomesDisciplinas = nomesDisciplinas + disciplina.getNome() + "\n";
+            }
+            tabelaDados.addRow(new Object[]{professor.getId(), professor.getNome(),
+                professor.getLogin(), nomesDisciplinas});
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -200,35 +208,35 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // Obtém a linha selecionada da tabela.
-          int linhaSelecionada = tblTabela.getSelectedRow();
+        int linhaSelecionada = tblTabela.getSelectedRow();
 
-          // Se for igual a -1, significa que não há linha selecionada.
-          if (linhaSelecionada == - 1) {
-               JOptionPane.showMessageDialog(null, "Não há linha selecionada, tente novamente.",
-                       "Erro ao selecionar linha!", JOptionPane.ERROR_MESSAGE);
-               return;
-          }
+        // Se for igual a -1, significa que não há linha selecionada.
+        if (linhaSelecionada == - 1) {
+            JOptionPane.showMessageDialog(null, "Não há linha selecionada, tente novamente.",
+                    "Erro ao selecionar linha!", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-          // Obtém o id na linha selecionada e coluna zero.
-          Long id = (Long) tblTabela.getValueAt(linhaSelecionada, 0);
+        // Obtém o id na linha selecionada e coluna zero.
+        Long id = (Long) tblTabela.getValueAt(linhaSelecionada, 0);
 
-          /*
+        /*
                Tenta realizar a busca pelo id, se não ocorrer erros, deleta o professor e atualiza a tabela.
                Caso ocorra erro, mostra um JOptionPane.
-           */
-          try {
-               Professor professor = this.facade.findById(id);
-               
-               // Obtém a confirmação do usuário se será deletado o professor do banco de dados.
-               if(JOptionPane.showConfirmDialog(null, "Deseja realmente deletar " +
-                       professor.getNome() + "?", "Deletar Dados", JOptionPane.DEFAULT_OPTION) == 0) {
-                    this.facade.deleteProfessor(professor);
-                    this.atualizarTabela();
-               }
-          } catch (HeadlessException error) {
-               JOptionPane.showMessageDialog(null, error,
-                       "Erro ao tentar deletar!", JOptionPane.ERROR_MESSAGE);
-          }
+         */
+        try {
+            Professor professor = this.facade.findById(id);
+
+            // Obtém a confirmação do usuário se será deletado o professor do banco de dados.
+            if (JOptionPane.showConfirmDialog(null, "Deseja realmente deletar "
+                    + professor.getNome() + "?", "Deletar Dados", JOptionPane.DEFAULT_OPTION) == 0) {
+                this.facade.deleteProfessor(professor);
+                this.atualizarTabela();
+            }
+        } catch (HeadlessException error) {
+            JOptionPane.showMessageDialog(null, error,
+                    "Erro ao tentar deletar!", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
@@ -241,27 +249,32 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
 
     private void txtBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyPressed
         // Obtém a string busca convertendo para letras minúsculas.
-          String nome = txtBuscar.getText().toLowerCase();
+        String nome = txtBuscar.getText().toLowerCase();
 
-          if (this.professores == null || this.professores.isEmpty()) {
-               try {
-                    this.professores = this.facade.findByNomeProfessor(nome);
-               } catch (Exception error) {
-                    JOptionPane.showMessageDialog(null, error,
-                            "Erro ao buscar usuários!", JOptionPane.ERROR_MESSAGE);
-               }
-          }
-          // Obtém o modelo atual da tabela.
-          DefaultTableModel tabelaDados = (DefaultTableModel) tblTabela.getModel();
-          tabelaDados.setNumRows(0);
+        if (this.professores == null || this.professores.isEmpty()) {
+            try {
+                this.professores = this.facade.findByNomeProfessor(nome);
+            } catch (Exception error) {
+                JOptionPane.showMessageDialog(null, error,
+                        "Erro ao buscar usuários!", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        // Obtém o modelo atual da tabela.
+        DefaultTableModel tabelaDados = (DefaultTableModel) tblTabela.getModel();
+        tabelaDados.setNumRows(0);
 
-          // Adiciona à tabela todos os professores em que o nome contenha a busca informada.
-          for (Professor professor: professores) {
-               if (professor.getNome().toLowerCase().contains(nome)) {
-                    tabelaDados.addRow(new Object[] { professor.getId(), professor.getNome(), 
-                         professor.getLogin(), professor.getDisciplina().getNome()});
-               }
-          }
+        // Adiciona à tabela todos os professores em que o nome contenha a busca informada.
+        for (Professor professor : professores) {
+            List<Disciplina> disciplinas = professor.getDisciplina();
+            String nomesDisciplinas = new String();
+            for (Disciplina disciplina : disciplinas) {
+                nomesDisciplinas = nomesDisciplinas + disciplina.getNome() + "\n";
+            }
+            if (professor.getNome().toLowerCase().contains(nome)) {
+                tabelaDados.addRow(new Object[]{professor.getId(), professor.getNome(),
+                    professor.getLogin(), nomesDisciplinas});
+            }
+        }
     }//GEN-LAST:event_txtBuscarKeyPressed
 
     /**
