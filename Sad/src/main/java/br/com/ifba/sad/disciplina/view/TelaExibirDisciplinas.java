@@ -4,7 +4,12 @@
  */
 package br.com.ifba.sad.disciplina.view;
 
+import br.com.ifba.sad.disciplina.model.Disciplina;
 import br.com.ifba.sad.infrastructure.service.IFacade;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +25,8 @@ public class TelaExibirDisciplinas extends javax.swing.JFrame {
     @Autowired
     private TelaCadastrarDisciplinas telaCadastro;
     
+    private List<Disciplina> disciplinas;
+    
     /**
      * Creates new form TelaExibirDisciplinas
      */
@@ -28,6 +35,25 @@ public class TelaExibirDisciplinas extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    // Metodo para atualizar a tabela na view
+    @PostConstruct
+    public void atualizarTabela() {
+        try {
+            this.disciplinas = this.facade.getAllDisciplina();
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, error,
+                    "Erro ao buscar disciplinas!", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        DefaultTableModel tabelaDados = (DefaultTableModel) tblTabela.getModel();
+        tabelaDados.setNumRows(0);
+            
+        for (Disciplina disciplina : disciplinas) {
+           tabelaDados.addRow(new Object[]{disciplina.getId(), disciplina.getNome(),
+              disciplina.getDescriçao(), disciplina.getSigla(),disciplina.getCargaHoraria()});
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,7 +90,6 @@ public class TelaExibirDisciplinas extends javax.swing.JFrame {
 
         btnExcluir.setBackground(new java.awt.Color(217, 217, 217));
         btnExcluir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnExcluir.setForeground(new java.awt.Color(0, 0, 0));
         btnExcluir.setText("DELETAR");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +99,6 @@ public class TelaExibirDisciplinas extends javax.swing.JFrame {
 
         btnCadastrar.setBackground(new java.awt.Color(217, 217, 217));
         btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastrar.setText("CADASTRAR");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,9 +121,13 @@ public class TelaExibirDisciplinas extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblTabela);
 
         lblBuscar.setBackground(new java.awt.Color(217, 217, 217));
-        lblBuscar.setForeground(new java.awt.Color(0, 0, 0));
         lblBuscar.setText("Buscar");
         lblBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lblBuscarKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -111,7 +139,7 @@ public class TelaExibirDisciplinas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,7 +178,36 @@ public class TelaExibirDisciplinas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        // TODO add your handling code here:
+        // Obtendo linha selecionada
+        long linha = tblTabela.getSelectedRow();
+
+        if (linha == -1) {
+            // Exibe mensagem de erro
+            JOptionPane.showMessageDialog(rootPane, "Por favor, selecione uma linha da tabela.");
+
+            // Só dá continuidade à remoção se o usuário confirmar.
+        } else if (JOptionPane.showConfirmDialog(rootPane, "Os dados serão modificados."
+                + "\nDeseja continuar?") == 0) {
+
+            String login = (String) tblTabela.getModel().getValueAt((int) linha, 2);
+            
+            // Acessando fachada para excluir dados
+            List<Disciplina> disciplinaRemover = this.facade.findByNomeDisciplina(login);
+            
+            // Removendo disciplina
+            this.facade.deleteDisciplina(disciplinaRemover.get(0));
+            
+            // Mensagem de sucesso.
+            JOptionPane.showMessageDialog(rootPane, "Dados removidos com sucesso!");
+            
+            this.atualizarTabela();
+        } else {
+            
+            // Se o usuário não confirmar o processo, exibe mensagem de cancelamento
+            JOptionPane.showMessageDialog(rootPane, "Exclusão cancelada." +
+                    "\nOs dados não foram alterados.");
+            
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
@@ -159,6 +216,31 @@ public class TelaExibirDisciplinas extends javax.swing.JFrame {
         this.telaCadastro.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void lblBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblBuscarKeyPressed
+        // Obtém a string busca convertendo para letras minúsculas.
+        String nome = lblBuscar.getText().toLowerCase();
+
+        if (this.disciplinas == null || this.disciplinas.isEmpty()) {
+            try {
+                this.disciplinas = this.facade.findByNomeDisciplina(nome);
+            } catch (Exception error) {
+                JOptionPane.showMessageDialog(null, error,
+                        "Erro ao buscar disciplinas!", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        // Obtém o modelo atual da tabela.
+        DefaultTableModel tabelaDados = (DefaultTableModel) tblTabela.getModel();
+        tabelaDados.setNumRows(0);
+
+        // Adiciona à tabela todos as disciplinas em que o nome contenha a busca informada.
+        for (Disciplina disciplina : disciplinas) {
+            if (disciplina.getNome().toLowerCase().contains(nome)) {
+                tabelaDados.addRow(new Object[]{disciplina.getId(), disciplina.getNome(),
+                    disciplina.getDescriçao(), disciplina.getSigla(), disciplina.getCargaHoraria()});
+            }
+        }
+    }//GEN-LAST:event_lblBuscarKeyPressed
 
     /**
      * @param args the command line arguments
