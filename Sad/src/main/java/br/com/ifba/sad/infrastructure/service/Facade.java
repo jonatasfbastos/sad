@@ -12,6 +12,10 @@ import br.com.ifba.sad.usuario.model.Usuario;
 import br.com.ifba.sad.usuario.service.IServiceUsuario;
 import br.com.ifba.sad.professor.model.Professor;
 import br.com.ifba.sad.professor.service.IServiceProfessor;
+import br.com.ifba.sad.curso.model.Curso;
+import br.com.ifba.sad.curso.service.IServiceCurso;
+import br.com.ifba.sad.modalidade.model.Modalidade;
+import br.com.ifba.sad.modalidade.service.IServiceModalidade;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -153,6 +157,72 @@ public class Facade implements IFacade {
     public List<Disciplina> findByNomeDisciplina(String nome) {
         return serviceDisciplina.findByNome(nome);
     }
-     
-     
+
+    //======================Curso=================//
+    @Autowired
+    private IServiceCurso serviceCurso;
+    
+    @Override
+    public Curso saveCurso(Curso curso) {
+        return serviceCurso.saveCurso(curso);
+    }
+
+    @Override
+    public Curso updateCurso(Curso curso) {
+        return serviceCurso.updateCurso(curso);
+    }
+
+    @Override
+    public void deleteCurso(Curso curso) {
+        serviceCurso.deleteCurso(curso);
+    }
+
+    @Override
+    public List<Curso> getAllCurso() {
+        return serviceCurso.getAllCurso();
+    }
+    
+    @Override
+    public Curso findByIdCurso(Long id) {
+        return serviceCurso.findById(id);
+    }
+
+    @Override
+    public List<Curso> findByNomeCurso(String nome) {
+        return serviceCurso.findByNome(nome);
+    }
+
+    //==================Modalidade===================//
+    @Autowired
+    private IServiceModalidade serviceModalidade;
+    
+    @Override
+    public Modalidade saveModalidade(Modalidade modalidade) {
+        return serviceModalidade.saveModalidade(modalidade);
+    }
+
+    @Override
+    public Modalidade updateModalidade(Modalidade modalidade) {
+        return serviceModalidade.updateModalidade(modalidade);
+    }
+
+    @Override
+    public void deleteModalidade(Modalidade modalidade) {
+        serviceModalidade.deleteModalidade(modalidade);
+    }
+
+    @Override
+    public List<Modalidade> getAllModalidade() {
+        return serviceModalidade.getAllModalidade();
+    }
+
+    @Override
+    public List<Modalidade> findByNomeModalidade(String nome) {
+        return serviceModalidade.findByNome(nome);
+    }
+
+    @Override
+    public Modalidade findByIdModalidade(Long id) {
+        return serviceModalidade.findById(id);
+    }
 }

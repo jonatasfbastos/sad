@@ -8,6 +8,8 @@ import br.com.ifba.sad.disciplina.model.Disciplina;
 import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
 import br.com.ifba.sad.usuario.model.Usuario;
 import br.com.ifba.sad.professor.model.Professor;
+import br.com.ifba.sad.curso.model.Curso;
+import br.com.ifba.sad.modalidade.model.Modalidade;
 import java.util.List;
 
 /**
@@ -46,4 +48,20 @@ public interface IFacade {
      public abstract void deleteDisciplina(Disciplina disciplina);
      public List<Disciplina> getAllDisciplina();
      public List<Disciplina> findByNomeDisciplina(String nome);
+     
+     //======================Curso=====================//
+     public abstract Curso saveCurso(Curso curso);
+     public abstract Curso updateCurso(Curso curso);
+     public abstract void deleteCurso(Curso curso);
+     public List<Curso> getAllCurso();
+     public Curso findByIdCurso(Long id);
+     public List<Curso> findByNomeCurso(String nome);
+     
+     //===================Modalidade==================//
+     public abstract Modalidade saveModalidade(Modalidade modalidade);
+     public abstract Modalidade updateModalidade(Modalidade modalidade);
+     public abstract void deleteModalidade(Modalidade modalidade);
+     public List<Modalidade> getAllModalidade();
+     public Modalidade findByIdModalidade(Long id);
+     public List<Modalidade> findByNomeModalidade(String nome);
 }
