@@ -4,12 +4,18 @@
  */
 package br.com.ifba.sad;
 
+import br.com.ifba.sad.usuario.view.TelaCadastroUsuario;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+
 /**
  *
  * @author gislaine
  */
 public class TelaLogin extends javax.swing.JFrame {
     
+    @Autowired @Lazy
+    private TelaCadastroUsuario telaCadastro;
     /**
      * Creates new form TelaLogin
      */
@@ -28,17 +34,20 @@ public class TelaLogin extends javax.swing.JFrame {
 
         pnlContainer = new javax.swing.JPanel();
         pnlLinha = new javax.swing.JPanel();
-        txtMatricula = new javax.swing.JTextField();
+        txtLogin = new javax.swing.JTextField();
         txtSenha = new javax.swing.JTextField();
         btnVoltar = new javax.swing.JButton();
         lblMsgLogin = new javax.swing.JLabel();
-        btnEsquecerSenha = new javax.swing.JButton();
         lblLogoSad = new javax.swing.JLabel();
         btnEntrar = new javax.swing.JButton();
+        lblMsgEsquecerSenha = new javax.swing.JLabel();
+        btnCriarConta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
 
         pnlContainer.setBackground(new java.awt.Color(220, 224, 230));
+        pnlContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(43, 76, 126), 3));
 
         pnlLinha.setBackground(new java.awt.Color(43, 76, 126));
 
@@ -53,8 +62,8 @@ public class TelaLogin extends javax.swing.JFrame {
             .addGap(0, 8, Short.MAX_VALUE)
         );
 
-        txtMatricula.setBackground(new java.awt.Color(217, 217, 217));
-        txtMatricula.setText("login");
+        txtLogin.setBackground(new java.awt.Color(217, 217, 217));
+        txtLogin.setText("login");
 
         txtSenha.setBackground(new java.awt.Color(217, 217, 217));
         txtSenha.setText("senha");
@@ -67,18 +76,21 @@ public class TelaLogin extends javax.swing.JFrame {
         lblMsgLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblMsgLogin.setText("FAZER LOGIN");
 
-        btnEsquecerSenha.setBackground(new java.awt.Color(217, 217, 217));
-        btnEsquecerSenha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnEsquecerSenha.setText("ESQUECEU A SENHA");
-
         lblLogoSad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/imagens/logo_sad.png"))); // NOI18N
 
         btnEntrar.setBackground(new java.awt.Color(217, 217, 217));
         btnEntrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnEntrar.setText("ENTRAR");
-        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+
+        lblMsgEsquecerSenha.setBackground(new java.awt.Color(0, 0, 0));
+        lblMsgEsquecerSenha.setText("esqueceu a senha?");
+
+        btnCriarConta.setBackground(new java.awt.Color(217, 217, 217));
+        btnCriarConta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCriarConta.setText("CRIAR CONTA");
+        btnCriarConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEntrarActionPerformed(evt);
+                btnCriarContaActionPerformed(evt);
             }
         });
 
@@ -89,26 +101,29 @@ public class TelaLogin extends javax.swing.JFrame {
             .addGroup(pnlContainerLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnEsquecerSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                .addGap(34, 34, 34))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(btnCriarConta, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
             .addComponent(pnlLinha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlContainerLayout.createSequentialGroup()
                 .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlContainerLayout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlContainerLayout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addComponent(lblLogoSad, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlContainerLayout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlContainerLayout.createSequentialGroup()
                         .addGap(152, 152, 152)
-                        .addComponent(lblMsgLogin)))
+                        .addComponent(lblMsgLogin))
+                    .addGroup(pnlContainerLayout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlContainerLayout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(lblMsgEsquecerSenha)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlContainerLayout.setVerticalGroup(
@@ -118,18 +133,20 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblMsgLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
-                .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMsgEsquecerSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
                 .addComponent(pnlLinha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEsquecerSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .addComponent(btnCriarConta, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -143,12 +160,17 @@ public class TelaLogin extends javax.swing.JFrame {
             .addComponent(pnlContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        getAccessibleContext().setAccessibleDescription("");
+
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+    private void btnCriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarContaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEntrarActionPerformed
+        this.setVisible(false);
+        this.telaCadastro.setVisible(true);
+    }//GEN-LAST:event_btnCriarContaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,14 +208,15 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCriarConta;
     private javax.swing.JButton btnEntrar;
-    private javax.swing.JButton btnEsquecerSenha;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel lblLogoSad;
+    private javax.swing.JLabel lblMsgEsquecerSenha;
     private javax.swing.JLabel lblMsgLogin;
     private javax.swing.JPanel pnlContainer;
     private javax.swing.JPanel pnlLinha;
-    public javax.swing.JTextField txtMatricula;
+    public javax.swing.JTextField txtLogin;
     public javax.swing.JTextField txtSenha;
     // End of variables declaration//GEN-END:variables
 }
