@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  *
- * @author Felipe
+ * @author Jonas Dias
  */
 public interface IServiceTurma {
     
