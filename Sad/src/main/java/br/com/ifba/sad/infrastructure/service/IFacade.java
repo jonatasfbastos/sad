@@ -10,6 +10,7 @@ import br.com.ifba.sad.usuario.model.Usuario;
 import br.com.ifba.sad.professor.model.Professor;
 import br.com.ifba.sad.curso.model.Curso;
 import br.com.ifba.sad.modalidade.model.Modalidade;
+import br.com.ifba.sad.turma.model.Turma;
 import java.util.List;
 
 /**
@@ -64,4 +65,13 @@ public interface IFacade {
      public List<Modalidade> getAllModalidade();
      public Modalidade findByIdModalidade(Long id);
      public List<Modalidade> findByNomeModalidade(String nome);
+     
+     //===================Turma==================//
+     public abstract Turma saveTurma(Turma turma);
+     public abstract Turma updateTurma(Turma turma);
+     public abstract void deleteTurma(Turma turma);
+     public List<Turma> getAllTurma();
+     public Turma findByIdTurma(Long id);
+     public List<Turma> findByNomeTurma(String nome);
+     
 }

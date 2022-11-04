@@ -16,6 +16,8 @@ import br.com.ifba.sad.curso.model.Curso;
 import br.com.ifba.sad.curso.service.IServiceCurso;
 import br.com.ifba.sad.modalidade.model.Modalidade;
 import br.com.ifba.sad.modalidade.service.IServiceModalidade;
+import br.com.ifba.sad.turma.model.Turma;
+import br.com.ifba.sad.turma.service.IServiceTurma;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -224,5 +226,39 @@ public class Facade implements IFacade {
     @Override
     public Modalidade findByIdModalidade(Long id) {
         return serviceModalidade.findById(id);
+    }
+    
+     //===================Turma==================//
+    @Autowired
+    private IServiceTurma serviceTurma;
+    
+    @Override
+    public Turma saveTurma(Turma turma) {
+        return serviceTurma.saveTurma(turma);
+    }
+
+    @Override
+    public Turma updateTurma(Turma turma) {
+        return serviceTurma.updateTurma(turma);
+    }
+
+    @Override
+    public void deleteTurma(Turma turma) {
+        serviceTurma.deleteTurma(turma);
+    }
+
+    @Override
+    public List<Turma> getAllTurma() {
+        return serviceTurma.getAllTurma();
+    }
+
+    @Override
+    public Turma findByIdTurma(Long id) {
+        return serviceTurma.findById(id);
+    }
+
+    @Override
+    public List<Turma> findByNomeTurma(String nome) {
+        return serviceTurma.findByNome(nome);
     }
 }
