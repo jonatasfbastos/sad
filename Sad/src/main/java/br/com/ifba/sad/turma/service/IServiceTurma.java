@@ -4,6 +4,7 @@
  */
 package br.com.ifba.sad.turma.service;
 
+import br.com.ifba.sad.turma.model.Turma;
 import java.util.List;
 
 /**
@@ -12,8 +13,6 @@ import java.util.List;
  */
 public interface IServiceTurma {
     
-    /*
-    Remover quando estiver com o model 
      // Salva Turma
     public abstract Turma saveTurma(Turma turma);
     // Atualiza Turma
@@ -26,5 +25,5 @@ public interface IServiceTurma {
     public Turma findById(Long id);
     // Método que retorna a lista com as turmas com o nome informado
     public List<Turma> findByNome(String nome);
-    */
+
 }

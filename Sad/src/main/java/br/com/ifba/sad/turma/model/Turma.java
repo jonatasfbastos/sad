@@ -7,7 +7,6 @@ package br.com.ifba.sad.turma.model;
 import br.com.ifba.sad.infrastructure.model.PersistenceEntity;
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -21,7 +20,7 @@ public class Turma extends PersistenceEntity implements Serializable {
     private String nome;
     private String codigoTurma;
     private String sigla;
-    private String ativa;
+    private boolean ativa;
 
     public String getNome() {
         return nome;
@@ -47,11 +46,11 @@ public class Turma extends PersistenceEntity implements Serializable {
         this.sigla = sigla;
     }
 
-    public String getAtiva() {
+    public boolean getAtiva() {
         return ativa;
     }
 
-    public void setAtiva(String ativa) {
+    public void setAtiva(boolean ativa) {
         this.ativa = ativa;
     }
     

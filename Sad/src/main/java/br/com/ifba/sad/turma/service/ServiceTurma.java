@@ -5,6 +5,8 @@
 package br.com.ifba.sad.turma.service;
 
 import br.com.ifba.sad.infrastructure.exception.BusinessException;
+import br.com.ifba.sad.turma.dao.ITurmaDao;
+import br.com.ifba.sad.turma.model.Turma;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +18,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServiceTurma implements IServiceTurma {
     
-    /*
-    Remover quando estiver com o model 
     //================= CONSTANTES =============================================
     
     // Mensagem de erro se o EtapaCurso for null.
@@ -99,5 +99,5 @@ public class ServiceTurma implements IServiceTurma {
          }
          return false;
      }
-    */
+     
 }

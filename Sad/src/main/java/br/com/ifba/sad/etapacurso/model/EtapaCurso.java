@@ -24,8 +24,8 @@ import javax.persistence.Table;
 public class EtapaCurso extends PersistenceEntity implements Serializable {
     
     private String nome;
-    private int perodo;
-    private boolean conclunte;
+    private int periodo;
+    private boolean concluinte;
     private int cargaHoraria;
     @ManyToMany(/*mappedBy = "curso",*/ fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Curso> curso;
@@ -39,19 +39,19 @@ public class EtapaCurso extends PersistenceEntity implements Serializable {
     }
 
     public int getPerodo() {
-        return perodo;
+        return periodo;
     }
 
     public void setPerodo(int perodo) {
-        this.perodo = perodo;
+        this.periodo = perodo;
     }
 
     public boolean isConclunte() {
-        return conclunte;
+        return concluinte;
     }
 
     public void setConclunte(boolean conclunte) {
-        this.conclunte = conclunte;
+        this.concluinte = conclunte;
     }
 
     public int getCargaHoraria() {
