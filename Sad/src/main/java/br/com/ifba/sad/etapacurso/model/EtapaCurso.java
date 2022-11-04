@@ -8,20 +8,26 @@ import br.com.ifba.sad.curso.model.Curso;
 import br.com.ifba.sad.infrastructure.model.PersistenceEntity;
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author MATHEUS LIMA
  * 
- */@Entity
-@Table(name = "etapacurso")
- 
-public class EtapaCursoextends PersistenceEntity implements Serializable {
-     private String nome;
+ */
+@Entity
+@Table(name = "etapa_curso")
+public class EtapaCurso extends PersistenceEntity implements Serializable {
+    
+    private String nome;
     private int perodo;
     private boolean conclunte;
     private int cargaHoraria;
-    @OneToMany(mappedBy = "curso", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(/*mappedBy = "curso",*/ fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Curso> curso;
 
     public String getNome() {
@@ -55,6 +61,5 @@ public class EtapaCursoextends PersistenceEntity implements Serializable {
     public void setCargaHoraria(int cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
     }
-    
     
 }

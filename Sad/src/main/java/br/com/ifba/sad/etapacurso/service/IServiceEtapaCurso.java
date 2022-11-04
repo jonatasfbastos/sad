@@ -4,6 +4,7 @@
  */
 package br.com.ifba.sad.etapacurso.service;
 
+import br.com.ifba.sad.etapacurso.model.EtapaCurso;
 import java.util.List;
 
 /**
@@ -11,9 +12,6 @@ import java.util.List;
  * @author Jonas Dias
  */
 public interface IServiceEtapaCurso {
-    
-    /*
-    Remover quando estiver com o model 
     
      // Salva EtapaCurso
     public abstract EtapaCurso saveEtapaCurso(EtapaCurso etapaCurso);
@@ -27,6 +25,5 @@ public interface IServiceEtapaCurso {
     public EtapaCurso findById(Long id);
     // Método que retorna a lista com as EtapaCurso com o nome informado
     public List<EtapaCurso> findByNome(String nome);
-    */
     
 }
