@@ -38,20 +38,20 @@ public class EtapaCurso extends PersistenceEntity implements Serializable {
         this.nome = nome;
     }
 
-    public int getPerodo() {
+    public int getPeriodo() {
         return periodo;
     }
 
-    public void setPerodo(int perodo) {
-        this.periodo = perodo;
+    public void setPeriodo(int periodo) {
+        this.periodo = periodo;
     }
 
-    public boolean isConclunte() {
+    public boolean isConcluinte() {
         return concluinte;
     }
 
-    public void setConclunte(boolean conclunte) {
-        this.concluinte = conclunte;
+    public void setConcluinte(boolean concluinte) {
+        this.concluinte = concluinte;
     }
 
     public int getCargaHoraria() {
@@ -60,6 +60,14 @@ public class EtapaCurso extends PersistenceEntity implements Serializable {
 
     public void setCargaHoraria(int cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
+    }
+
+    public List<Curso> getCurso() {
+        return curso;
+    }
+
+    public void setCurso(List<Curso> curso) {
+        this.curso = curso;
     }
     
 }

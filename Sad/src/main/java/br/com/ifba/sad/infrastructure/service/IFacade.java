@@ -9,6 +9,7 @@ import br.com.ifba.sad.perfilusuario.model.PerfilUsuario;
 import br.com.ifba.sad.usuario.model.Usuario;
 import br.com.ifba.sad.professor.model.Professor;
 import br.com.ifba.sad.curso.model.Curso;
+import br.com.ifba.sad.etapacurso.model.EtapaCurso;
 import br.com.ifba.sad.modalidade.model.Modalidade;
 import br.com.ifba.sad.turma.model.Turma;
 import java.util.List;
@@ -73,5 +74,13 @@ public interface IFacade {
      public List<Turma> getAllTurma();
      public Turma findByIdTurma(Long id);
      public List<Turma> findByNomeTurma(String nome);
+     
+      //===================EtapaCurso==================//
+     public abstract EtapaCurso saveEtapaCurso(EtapaCurso etapa);
+     public abstract EtapaCurso updateEtapaCurso(EtapaCurso etapa);
+     public abstract void deleteEtapaCurso(EtapaCurso etapa);
+     public List<EtapaCurso> getAllEtapaCurso();
+     public EtapaCurso findByIdEtapaCurso(Long id);
+     public List<EtapaCurso> findByNomeEtapaCurso(String nome);
      
 }

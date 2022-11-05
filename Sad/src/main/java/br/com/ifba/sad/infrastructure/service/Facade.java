@@ -14,6 +14,8 @@ import br.com.ifba.sad.professor.model.Professor;
 import br.com.ifba.sad.professor.service.IServiceProfessor;
 import br.com.ifba.sad.curso.model.Curso;
 import br.com.ifba.sad.curso.service.IServiceCurso;
+import br.com.ifba.sad.etapacurso.model.EtapaCurso;
+import br.com.ifba.sad.etapacurso.service.IServiceEtapaCurso;
 import br.com.ifba.sad.modalidade.model.Modalidade;
 import br.com.ifba.sad.modalidade.service.IServiceModalidade;
 import br.com.ifba.sad.turma.model.Turma;
@@ -261,4 +263,39 @@ public class Facade implements IFacade {
     public List<Turma> findByNomeTurma(String nome) {
         return serviceTurma.findByNome(nome);
     }
+    
+    //===================EtapaCurso==================//
+    @Autowired
+    private IServiceEtapaCurso serviceEtapaCurso;
+    
+    @Override
+    public EtapaCurso saveEtapaCurso(EtapaCurso etapa) {
+        return serviceEtapaCurso.saveEtapaCurso(etapa);
+    }
+
+    @Override
+    public EtapaCurso updateEtapaCurso(EtapaCurso etapa) {
+         return serviceEtapaCurso.updateEtapaCurso(etapa);
+    }
+
+    @Override
+    public void deleteEtapaCurso(EtapaCurso etapa) {
+         serviceEtapaCurso.deleteEtapaCurso(etapa);
+    }
+
+    @Override
+    public List<EtapaCurso> getAllEtapaCurso() {
+         return serviceEtapaCurso.getAllEtapaCurso();
+    }
+
+    @Override
+    public EtapaCurso findByIdEtapaCurso(Long id) {
+         return serviceEtapaCurso.findById(id);
+    }
+
+    @Override
+    public List<EtapaCurso> findByNomeEtapaCurso(String nome) {
+         return serviceEtapaCurso.findByNome(nome);
+    }
+    
 }
