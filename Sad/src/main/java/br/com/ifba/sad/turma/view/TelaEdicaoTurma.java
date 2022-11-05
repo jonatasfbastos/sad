@@ -35,8 +35,8 @@ public class TelaEdicaoTurma extends javax.swing.JFrame {
      public void setTurma(Turma turma) {
           this.turma = turma;
           
-          txtNome.setText(this.turma.getNome());
-          txtCodigo.setText(this.turma.getCodigoTurma());
+          txtNome.setText(turma.getNome());
+          txtCodigo.setText(turma.getCodigoTurma());
           txtSigla.setText(turma.getSigla());
           tglTurmaAtiva.getModel().setSelected(turma.getAtiva());
      }

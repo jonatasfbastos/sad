@@ -42,7 +42,7 @@ public class TelaExibirTurma extends javax.swing.JFrame {
                this.turmas = this.facade.getAllTurma();
           } catch (Exception error) {
                JOptionPane.showMessageDialog(null, error,
-                       "Erro ao buscar perfils!", JOptionPane.ERROR_MESSAGE);
+                       "Erro ao buscar turmas!", JOptionPane.ERROR_MESSAGE);
                return;
           }
 
@@ -220,7 +220,7 @@ public class TelaExibirTurma extends javax.swing.JFrame {
           Long id = (Long) tblDados.getValueAt(linhaSelecionada, 0);
 
           /*
-               Tenta realizar a busca pelo id, se não ocorrer erros, instancia a tela de ediçõa e oculta a atual.
+               Tenta realizar a busca pelo id, se não ocorrer erros, instancia a tela de edição e oculta a atual.
                Caso ocorra erro, mostra um JOptionPane.
            */
           try {
@@ -278,7 +278,7 @@ public class TelaExibirTurma extends javax.swing.JFrame {
           String busca = txtBuscar.getText().toLowerCase();
 
           /* 
-               Se a lista de perfis for nula ou vazia, faz a busca novamente.
+               Se a lista de turmas for nula ou vazia, faz a busca novamente.
                Se ocorrer erros, mostra o JOptionPane.
           */
           if (this.turmas == null || this.turmas.isEmpty()) {
@@ -286,7 +286,7 @@ public class TelaExibirTurma extends javax.swing.JFrame {
                     this.turmas = this.facade.findByNomeTurma(busca);
                } catch (Exception error) {
                     JOptionPane.showMessageDialog(null, error,
-                            "Erro ao buscar perfils!", JOptionPane.ERROR_MESSAGE);
+                            "Erro ao buscar turmas!", JOptionPane.ERROR_MESSAGE);
                }
           }
 
@@ -294,7 +294,7 @@ public class TelaExibirTurma extends javax.swing.JFrame {
           DefaultTableModel tabelaDados = (DefaultTableModel) tblDados.getModel();
           tabelaDados.setNumRows(0);
 
-          // Adiciona à tabela todos os perfis em que o nome contenha a busca informada.
+          // Adiciona à tabela todos as turmas em que o nome contenha a busca informada.
           for (Turma turma: turmas) {
                if (turma.getNome().toLowerCase().contains(busca)) {
                     tabelaDados.addRow(new Object[]{turma.getId(),turma.getNome(),

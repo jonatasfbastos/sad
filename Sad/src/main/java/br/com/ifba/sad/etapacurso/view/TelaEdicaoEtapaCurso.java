@@ -31,7 +31,7 @@ public class TelaEdicaoEtapaCurso extends javax.swing.JFrame {
           super.setLocationRelativeTo(null);
      }
      
-     // Define a turma que será editada e mostra os dados nos campos da tela.
+     // Define a etapa que será editada e mostra os dados nos campos da tela.
      public void setEtapa(EtapaCurso etapaCurso) {
           this.etapa = etapaCurso;
           

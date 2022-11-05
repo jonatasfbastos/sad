@@ -220,7 +220,7 @@ public class TelaExibirEtapaCurso extends javax.swing.JFrame {
           Long id = (Long) tblDados.getValueAt(linhaSelecionada, 0);
 
           /*
-               Tenta realizar a busca pelo id, se não ocorrer erros, instancia a tela de ediçõa e oculta a atual.
+               Tenta realizar a busca pelo id, se não ocorrer erros, instancia a tela de edição e oculta a atual.
                Caso ocorra erro, mostra um JOptionPane.
            */
           try {
