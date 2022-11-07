@@ -16,5 +16,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IModalidadeDao extends JpaRepository<Modalidade, Long> {
     public abstract List <Modalidade> findByNome(String nome);
-    public abstract List <Modalidade> findByID(long id);
 }

@@ -17,5 +17,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ICursoDao extends JpaRepository<Curso, Long> {
     public abstract List <Curso> findByNome(String nome);
-    public abstract List <Curso> findByID(long id);
 }

@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  *
  * @author Leo
  */
-@Component
+//@Component
 public class TelaEdicaoProfessor extends javax.swing.JFrame {
     
     @Autowired
@@ -37,7 +37,7 @@ public class TelaEdicaoProfessor extends javax.swing.JFrame {
     private boolean validarCampos(Professor professor) {
         StringUtil validacao = StringUtil.getInstance();
         if(validacao.isEmpty(professor.getNome()) ||
-                validacao.isEmpty(Integer.toString(professor.getLogin())) ||
+                validacao.isEmpty(professor.getLogin()) ||
                 validacao.isEmpty(professor.getSenha())) {
             return false;
         }
@@ -183,7 +183,7 @@ public class TelaEdicaoProfessor extends javax.swing.JFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
         String nome = txtNome.getText();
-        int siap = Integer.parseInt(txtSiap.getText());
+        String siap = txtSiap.getText();
         String senha = txtSenha.getText();
         
         this.professor.setNome(nome);

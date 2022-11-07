@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  *
  * @author Leo
  */
-@Component
+//@Component
 public class TelaCadastroProfessor extends javax.swing.JFrame {
 
     @Autowired
@@ -35,7 +35,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
     private boolean validarCampos(Professor professor) {
         StringUtil validacao = StringUtil.getInstance();
         if(validacao.isEmpty(professor.getNome()) ||
-                validacao.isEmpty(Integer.toString(professor.getLogin())) ||
+                validacao.isEmpty(professor.getLogin()) ||
                 validacao.isEmpty(professor.getSenha())) {
             return false;
         }
@@ -171,7 +171,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         Professor professor = new Professor();
         
         String nome = txtNome.getText();
-        int siap = Integer.parseInt(txtSiap.getText());
+        String siap = txtSiap.getText();
         String senha = txtSenha.getText();
         
         professor.setNome(nome);

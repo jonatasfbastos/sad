@@ -9,11 +9,13 @@ import br.com.ifba.sad.modalidade.dao.IModalidadeDao;
 import br.com.ifba.sad.modalidade.model.Modalidade;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Kaio
  */
+@Service
 public class ServiceModalidade implements IServiceModalidade{
     
     //-_-_-_-_-_-_-_-_-_- CONSTANTES -_-_-_-_-_-_-_-_-_-

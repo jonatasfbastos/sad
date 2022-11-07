@@ -8,7 +8,11 @@ import br.com.ifba.sad.infrastructure.model.PersistenceEntity;
 import br.com.ifba.sad.modalidade.model.Modalidade;
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -23,7 +27,9 @@ public class Curso extends PersistenceEntity implements Serializable {
     private String codigoCurso;
     private String sigla;
     private String descricao;
-    @JoinColumn(name = "modalidade_ID", referencedColumnName = "ID")
+    
+    
+    @ManyToOne(fetch = FetchType.EAGER)    
     private Modalidade modalidade;
     
     //construtor

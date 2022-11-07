@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
  *
  * @author Leo
  */
-@Component
+//@Component
 public class TelaExibirDisciplinas extends javax.swing.JFrame {
 
     @Autowired

@@ -16,6 +16,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IProfessorDao extends JpaRepository<Professor, Long>{
     
-    List<Professor> findByLogin(String login);
     List<Professor> findByNome(String nome);
 }

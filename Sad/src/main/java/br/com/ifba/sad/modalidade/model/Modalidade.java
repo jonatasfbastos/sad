@@ -22,8 +22,8 @@ import javax.persistence.Table;
 @Table(name = "modalidade")
 public class Modalidade extends PersistenceEntity implements Serializable {
     // variaveis
-    @OneToMany(mappedBy = "curso", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Curso> curso;
+    @OneToMany(mappedBy = "modalidade", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Curso> cursos;
     private String nome;
     private String descricao;
 
@@ -32,17 +32,17 @@ public class Modalidade extends PersistenceEntity implements Serializable {
     } 
     
     /**
-     * @return the curso
+     * @return the cursos
      */
-    public List<Curso> getCurso() {
-        return curso;
+    public List<Curso> getCursos() {
+        return cursos;
     }
 
     /**
-     * @param curso the curso to set
+     * @param cursos the cursos to set
      */
-    public void setCurso(List<Curso> curso) {
-        this.curso = curso;
+    public void setCursos(List<Curso> cursos) {
+        this.cursos = cursos;
     }
 
     /**
