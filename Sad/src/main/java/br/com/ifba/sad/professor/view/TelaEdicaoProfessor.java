@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  *
  * @author Leo
  */
-//@Component
+@Component
 public class TelaEdicaoProfessor extends javax.swing.JFrame {
     
     @Autowired

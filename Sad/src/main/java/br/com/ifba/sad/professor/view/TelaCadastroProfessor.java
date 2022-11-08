@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  *
  * @author Leo
  */
-//@Component
+@Component
 public class TelaCadastroProfessor extends javax.swing.JFrame {
 
     @Autowired
@@ -83,7 +83,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 400, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/usuario/imagens/LogoSad.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/imagens/logo_sad.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(658, 31, -1, 65));
 
         txtSenha.setBackground(new java.awt.Color(217, 217, 217));
@@ -168,6 +168,8 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
+        
+        // Instanciando novo objeto professor para cadastro
         Professor professor = new Professor();
         
         String nome = txtNome.getText();

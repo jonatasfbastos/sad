@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  *
  * @author Leo
  */
-//@Component
+@Component
 public class TelaCadastrarDisciplinas extends javax.swing.JFrame {
 
     @Autowired
@@ -86,7 +86,7 @@ public class TelaCadastrarDisciplinas extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 948, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/usuario/imagens/LogoSad.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/imagens/logo_sad.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(951, 3, -1, 65));
 
         txtSigla.setBackground(new java.awt.Color(217, 217, 217));
@@ -149,7 +149,7 @@ public class TelaCadastrarDisciplinas extends javax.swing.JFrame {
         jLabel2.setText("INSIRA OS DADOS PARA CADASTRAR A DISCIPLINA");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/usuario/imagens/LogoSad.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/imagens/logo_sad.png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 122, 142, 56));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/imagens/logo_sad.png"))); // NOI18N
@@ -187,6 +187,8 @@ public class TelaCadastrarDisciplinas extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
+        
+        // Instanciando novo objeto disciplina para cadastro
         Disciplina disciplina = new Disciplina();
         
         String nome = txtNome.getText();
