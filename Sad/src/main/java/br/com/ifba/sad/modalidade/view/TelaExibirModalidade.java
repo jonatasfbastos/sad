@@ -4,7 +4,7 @@
  */
 package br.com.ifba.sad.modalidade.view;
 
-import br.com.ifba.sad.infrastructure.service.IFacade;
+import br.com.ifba.infrastructure.service.IFacade;
 import br.com.ifba.sad.modalidade.model.Modalidade;
 import java.awt.HeadlessException;
 import java.util.List;

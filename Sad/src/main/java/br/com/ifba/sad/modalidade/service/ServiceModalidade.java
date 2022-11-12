@@ -4,7 +4,7 @@
  */
 package br.com.ifba.sad.modalidade.service;
 
-import br.com.ifba.sad.infrastructure.exception.BusinessException;
+import br.com.ifba.infrastructure.exception.BusinessException;
 import br.com.ifba.sad.modalidade.dao.IModalidadeDao;
 import br.com.ifba.sad.modalidade.model.Modalidade;
 import java.util.List;

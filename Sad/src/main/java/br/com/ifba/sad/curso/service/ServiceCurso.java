@@ -6,7 +6,7 @@ package br.com.ifba.sad.curso.service;
 
 import br.com.ifba.sad.curso.dao.ICursoDao;
 import br.com.ifba.sad.curso.model.Curso;
-import br.com.ifba.sad.infrastructure.exception.BusinessException;
+import br.com.ifba.infrastructure.exception.BusinessException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

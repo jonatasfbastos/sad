@@ -5,7 +5,7 @@
 package br.com.ifba.sad.etapacurso.model;
 
 import br.com.ifba.sad.curso.model.Curso;
-import br.com.ifba.sad.infrastructure.model.PersistenceEntity;
+import br.com.ifba.infrastructure.model.PersistenceEntity;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;

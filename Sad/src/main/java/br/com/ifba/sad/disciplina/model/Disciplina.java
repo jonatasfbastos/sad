@@ -4,8 +4,8 @@
  */
 package br.com.ifba.sad.disciplina.model;
 
-import br.com.ifba.sad.infrastructure.model.PersistenceEntity;
-import br.com.ifba.sad.professor.model.Professor;
+import br.com.ifba.infrastructure.model.PersistenceEntity;
+import br.com.ifba.professor.model.Professor;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;

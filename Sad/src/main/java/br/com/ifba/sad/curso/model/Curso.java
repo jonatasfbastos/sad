@@ -4,7 +4,7 @@
  */
 package br.com.ifba.sad.curso.model;
 
-import br.com.ifba.sad.infrastructure.model.PersistenceEntity;
+import br.com.ifba.infrastructure.model.PersistenceEntity;
 import br.com.ifba.sad.modalidade.model.Modalidade;
 import java.io.Serializable;
 import javax.persistence.Entity;

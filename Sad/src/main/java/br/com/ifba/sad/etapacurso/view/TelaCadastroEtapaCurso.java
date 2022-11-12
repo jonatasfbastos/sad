@@ -6,8 +6,8 @@
 package br.com.ifba.sad.etapacurso.view;
 
 import br.com.ifba.sad.etapacurso.model.EtapaCurso;
-import br.com.ifba.sad.infrastructure.service.IFacade;
-import br.com.ifba.sad.infrastructure.support.StringUtil;
+import br.com.ifba.infrastructure.service.IFacade;
+import br.com.ifba.infrastructure.support.StringUtil;
 import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -187,9 +187,17 @@ public class TelaCadastroEtapaCurso extends javax.swing.JFrame {
         
         // Obtém os novos dados.
         String nome = txtNome.getText();
-        int cargaHoraria = Integer.parseInt(txtCargaHoraria.getText());
-        int periodo = Integer.parseInt(txtPeriodo.getText());
         boolean concluinte = tlgConcluinte.getModel().isSelected();
+        int cargaHoraria, periodo;
+        
+        try {
+            cargaHoraria = Integer.parseInt(txtCargaHoraria.getText());
+            periodo = Integer.parseInt(txtPeriodo.getText());
+        } catch (NumberFormatException error) {
+            JOptionPane.showMessageDialog(null, error, 
+                    "Carga horária e período aceitam apenas números inteiros!", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         
         // Define os novos dados.
         etapa.setNome(nome);

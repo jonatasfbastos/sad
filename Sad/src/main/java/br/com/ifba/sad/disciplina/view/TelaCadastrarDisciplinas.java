@@ -5,8 +5,8 @@
 package br.com.ifba.sad.disciplina.view;
 
 import br.com.ifba.sad.disciplina.model.Disciplina;
-import br.com.ifba.sad.infrastructure.service.IFacade;
-import br.com.ifba.sad.infrastructure.support.StringUtil;
+import br.com.ifba.infrastructure.service.IFacade;
+import br.com.ifba.infrastructure.support.StringUtil;
 import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;

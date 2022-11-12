@@ -5,7 +5,7 @@
 package br.com.ifba.sad.disciplina.view;
 
 import br.com.ifba.sad.disciplina.model.Disciplina;
-import br.com.ifba.sad.infrastructure.service.IFacade;
+import br.com.ifba.infrastructure.service.IFacade;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.swing.JOptionPane;
