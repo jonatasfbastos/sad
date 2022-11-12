@@ -5,8 +5,6 @@
 package br.com.ifba.login.view;
 
 import br.com.ifba.usuario.view.TelaCadastroUsuario;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 
 /**
  *
@@ -14,7 +12,6 @@ import org.springframework.context.annotation.Lazy;
  */
 public class TelaLogin extends javax.swing.JFrame {
     
-    @Autowired @Lazy
     private TelaCadastroUsuario telaCadastro;
     /**
      * Creates new form TelaLogin
@@ -76,7 +73,7 @@ public class TelaLogin extends javax.swing.JFrame {
         lblMsgLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblMsgLogin.setText("FAZER LOGIN");
 
-        lblLogoSad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/imagens/logo_sad.png"))); // NOI18N
+        lblLogoSad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/imagens/logo_sad.png"))); // NOI18N
 
         btnEntrar.setBackground(new java.awt.Color(217, 217, 217));
         btnEntrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

@@ -27,7 +27,6 @@ import lombok.ToString;
  */
 @Entity
 @Table(name = "curso")
-@MappedSuperclass
 @Getter
 @Setter
 @AllArgsConstructor

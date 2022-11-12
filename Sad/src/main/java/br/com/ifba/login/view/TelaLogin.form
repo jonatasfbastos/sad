@@ -186,7 +186,7 @@
         <Component class="javax.swing.JLabel" name="lblLogoSad">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/br/com/ifba/imagens/logo_sad.png"/>
+              <Image iconType="3" name="/br/com/ifba/sad/imagens/logo_sad.png"/>
             </Property>
           </Properties>
         </Component>

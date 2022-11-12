@@ -1,4 +1,4 @@
-package br.com.ifba.sad;
+package br.com.ifba;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;

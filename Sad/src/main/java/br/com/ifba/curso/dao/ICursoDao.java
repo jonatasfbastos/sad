@@ -13,7 +13,6 @@ import org.springframework.stereotype.Repository;
  *
  * @author kennedy
  */
-
 @Repository
 public interface ICursoDao extends JpaRepository<Curso, Long> {
     public abstract List <Curso> findByNome(String nome);
