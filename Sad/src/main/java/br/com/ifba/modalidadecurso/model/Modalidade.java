@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.ifba.professor.model;
+package br.com.ifba.modalidadecurso.model;
 
+import br.com.ifba.curso.model.Curso;
 import br.com.ifba.infrastructure.model.PersistenceEntity;
-import br.com.ifba.disciplina.model.Disciplina;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -21,21 +21,20 @@ import lombok.ToString;
 
 /**
  *
- * @author Pedro Henrique
+ * @author lucas
  */
 @Entity
-@Table(name = "professor")
+@Table(name = "modalidade")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Professor  extends PersistenceEntity implements Serializable{
-    //Variáveis
+public class Modalidade extends PersistenceEntity implements Serializable {
+    // Variáveis
+    @OneToMany(mappedBy = "modalidade", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Curso> cursos;
     private String nome;
-    private String login;
-    private String senha ;
-    @OneToMany(mappedBy = "professor", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Disciplina> disciplina;
+    private String descricao;
 
 }

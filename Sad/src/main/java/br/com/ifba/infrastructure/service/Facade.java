@@ -4,20 +4,20 @@
  */
 package br.com.ifba.infrastructure.service;
 
-import br.com.ifba.sad.disciplina.model.Disciplina;
-import br.com.ifba.sad.disciplina.service.IServiceDisciplina;
+import br.com.ifba.disciplina.model.Disciplina;
+import br.com.ifba.disciplina.service.IServiceDisciplina;
 import br.com.ifba.perfilusuario.model.PerfilUsuario;
 import br.com.ifba.perfilusuario.service.IServicePerfilUsuario;
 import br.com.ifba.usuario.model.Usuario;
 import br.com.ifba.usuario.service.IServiceUsuario;
 import br.com.ifba.professor.model.Professor;
 import br.com.ifba.professor.service.IServiceProfessor;
-import br.com.ifba.sad.curso.model.Curso;
-import br.com.ifba.sad.curso.service.IServiceCurso;
-import br.com.ifba.sad.etapacurso.model.EtapaCurso;
-import br.com.ifba.sad.etapacurso.service.IServiceEtapaCurso;
-import br.com.ifba.sad.modalidade.model.Modalidade;
-import br.com.ifba.sad.modalidade.service.IServiceModalidade;
+import br.com.ifba.curso.model.Curso;
+import br.com.ifba.curso.service.IServiceCurso;
+import br.com.ifba.etapacurso.model.EtapaCurso;
+import br.com.ifba.etapacurso.service.IServiceEtapaCurso;
+import br.com.ifba.modalidadecurso.model.Modalidade;
+import br.com.ifba.modalidadecurso.service.IServiceModalidade;
 import br.com.ifba.turma.model.Turma;
 import br.com.ifba.turma.service.IServiceTurma;
 import java.util.List;

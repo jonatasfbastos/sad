@@ -2,16 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.ifba.professor.model;
+package br.com.ifba.etapacurso.model;
 
+import br.com.ifba.curso.model.Curso;
 import br.com.ifba.infrastructure.model.PersistenceEntity;
-import br.com.ifba.disciplina.model.Disciplina;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,21 +21,23 @@ import lombok.ToString;
 
 /**
  *
- * @author Pedro Henrique
+ * @author MATHEUS LIMA
+ * 
  */
 @Entity
-@Table(name = "professor")
+@Table(name = "etapa_curso")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Professor  extends PersistenceEntity implements Serializable{
+public class EtapaCurso extends PersistenceEntity implements Serializable {
     //Variáveis
     private String nome;
-    private String login;
-    private String senha ;
-    @OneToMany(mappedBy = "professor", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Disciplina> disciplina;
+    private int periodo;
+    private boolean concluinte;
+    private int cargaHoraria;
+    @ManyToMany(/*mappedBy = "curso",*/ fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Curso> curso;
 
 }

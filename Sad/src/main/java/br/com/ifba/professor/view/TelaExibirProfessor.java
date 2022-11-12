@@ -4,7 +4,7 @@
  */
 package br.com.ifba.professor.view;
 
-import br.com.ifba.sad.disciplina.model.Disciplina;
+import br.com.ifba.disciplina.model.Disciplina;
 import br.com.ifba.infrastructure.service.IFacade;
 import br.com.ifba.professor.model.Professor;
 import java.awt.HeadlessException;

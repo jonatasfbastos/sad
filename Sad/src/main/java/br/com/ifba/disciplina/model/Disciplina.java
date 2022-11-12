@@ -2,16 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.ifba.professor.model;
+package br.com.ifba.disciplina.model;
 
 import br.com.ifba.infrastructure.model.PersistenceEntity;
-import br.com.ifba.disciplina.model.Disciplina;
+import br.com.ifba.professor.model.Professor;
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,18 +24,21 @@ import lombok.ToString;
  * @author Pedro Henrique
  */
 @Entity
-@Table(name = "professor")
+@Table(name = "disciplina")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Professor  extends PersistenceEntity implements Serializable{
+public class Disciplina extends PersistenceEntity implements Serializable{
     //Variáveis
     private String nome;
-    private String login;
-    private String senha ;
-    @OneToMany(mappedBy = "professor", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Disciplina> disciplina;
-
+    private String descriçao;
+    private String sigla;
+    private int cargaHoraria;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "professor_ID", referencedColumnName = "ID")
+    private Professor professor;
+    
+    
 }
