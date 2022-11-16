@@ -13,11 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 /**
  *
@@ -26,11 +22,7 @@ import lombok.ToString;
  */
 @Entity
 @Table(name = "etapa_curso")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
+@Data
 public class EtapaCurso extends PersistenceEntity implements Serializable {
     //Variáveis
     private String nome;

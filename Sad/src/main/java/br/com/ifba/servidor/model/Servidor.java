@@ -4,18 +4,15 @@
  */
 package br.com.ifba.servidor.model;
 import br.com.ifba.pessoa.model.Pessoa;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 /**
  *
  * @author Pedro Henrique
  */
 
-@Getter
-@Setter
+@Data
 public abstract class Servidor extends Pessoa{
     private String siape;
-    
-    
+        
 }

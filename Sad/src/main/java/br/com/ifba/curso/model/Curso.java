@@ -9,17 +9,9 @@ import br.com.ifba.modalidadecurso.model.Modalidade;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 /**
  *
@@ -27,11 +19,7 @@ import lombok.ToString;
  */
 @Entity
 @Table(name = "curso")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
+@Data
 public class Curso extends PersistenceEntity implements Serializable {
     // Variaveis
     private String nome;

@@ -8,11 +8,7 @@ import br.com.ifba.infrastructure.model.PersistenceEntity;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 /**
  *
@@ -20,11 +16,7 @@ import lombok.ToString;
  */
 @Entity
 @Table(name = "turma")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
+@Data
 public class Turma extends PersistenceEntity implements Serializable {
     
     private String nome;

@@ -7,17 +7,12 @@ package br.com.ifba.disciplina.model;
 import br.com.ifba.infrastructure.model.PersistenceEntity;
 import br.com.ifba.professor.model.Professor;
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 /**
  *
@@ -25,11 +20,7 @@ import lombok.ToString;
  */
 @Entity
 @Table(name = "disciplina")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
+@Data
 public class Disciplina extends PersistenceEntity implements Serializable{
     //Variáveis
     private String nome;
