@@ -65,7 +65,6 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblMatricula" min="-2" pref="269" max="-2" attributes="0"/>
                               <Component id="lblSenha" min="-2" pref="269" max="-2" attributes="0"/>
-                              <Component id="lblNome" min="-2" pref="269" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblTipoConta" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -94,13 +93,11 @@
                   <Component id="lblLogoSad" min="-2" pref="73" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="lblInsiraDados" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="8" max="32767" attributes="0"/>
-                  <Component id="lblNome" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="lblMatricula" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lblSenha" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace pref="36" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblTipoConta" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cbxPerfil" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
@@ -138,14 +135,6 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Component class="javax.swing.JTextField" name="lblNome">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="d9" green="d9" red="d9" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="nome"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="lblMatricula">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

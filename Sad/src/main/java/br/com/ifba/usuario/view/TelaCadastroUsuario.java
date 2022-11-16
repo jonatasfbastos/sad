@@ -54,7 +54,6 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
 
         pnlContainer = new javax.swing.JPanel();
         pnlLinha = new javax.swing.JPanel();
-        txtNome = new javax.swing.JTextField();
         txtMatricula = new javax.swing.JTextField();
         txtSenha = new javax.swing.JTextField();
         btnVoltar = new javax.swing.JButton();
@@ -81,9 +80,6 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
             pnlLinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 8, Short.MAX_VALUE)
         );
-
-        txtNome.setBackground(new java.awt.Color(217, 217, 217));
-        txtNome.setText("nome");
 
         txtMatricula.setBackground(new java.awt.Color(217, 217, 217));
         txtMatricula.setText("login");
@@ -136,7 +132,6 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                 .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlContainerLayout.createSequentialGroup()
                         .addComponent(lblTipoConta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -159,13 +154,11 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                 .addComponent(lblLogoSad, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblInsiraDados, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(32, 32, 32)
                 .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(38, 38, 38)
                 .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTipoConta)
                     .addComponent(cbxPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -194,7 +187,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
 
     private boolean validaCampos(Usuario usuario) {
        StringUtil validacao = StringUtil.getInstance();
-         if (validacao.isEmpty(usuario.getNome()) || validacao.isEmpty(usuario.getLogin()) ||
+         if (validacao.isEmpty(usuario.getLogin()) ||
                  validacao.isEmpty(usuario.getSenha())) {
              return false;
          }
@@ -204,14 +197,14 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         Usuario usuario = new Usuario();
         
-        String nome = txtNome.getText();
+        // String nome = txtNome.getText();
         String login = txtMatricula.getText();
         String senha = txtSenha.getText();
         String perfil = cbxPerfil.getSelectedItem().toString();
         
         PerfilUsuario perfilUsuario = facade.findByNomePerfilUsuario(perfil).get(0);
         
-        usuario.setNome(nome);
+        // usuario.setNome(nome);
         usuario.setLogin(login);
         usuario.setSenha(senha);
         usuario.setPerfilUsuario(perfilUsuario);
@@ -287,7 +280,6 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel pnlContainer;
     private javax.swing.JPanel pnlLinha;
     public javax.swing.JTextField txtMatricula;
-    public javax.swing.JTextField txtNome;
     public javax.swing.JTextField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

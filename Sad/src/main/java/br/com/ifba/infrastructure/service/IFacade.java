@@ -33,7 +33,7 @@ public interface IFacade {
      public abstract Usuario updateUsuario(Usuario usuario);
      public abstract void deleteUsuario(Usuario usuario);
      public List<Usuario> getAllUsuario();
-     public List<Usuario> findByNomeUsuario(String nome);
+     //public List<Usuario> findByNomeUsuario(String nome);
      public List<Usuario> findByLoginUsuario(String login);
      
      //=====================Professor====================//

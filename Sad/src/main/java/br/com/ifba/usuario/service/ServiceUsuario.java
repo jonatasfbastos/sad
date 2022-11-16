@@ -28,7 +28,7 @@ public class ServiceUsuario implements IServiceUsuario {
     // Mensagem de erro caso o nome esteja vazio.
     private final static String NOME_VAZIO = "Nome está vazio";
     // Mensagem de erro caso o nome seja null.
-    private final static String NOME_NULL = "Nome null";
+    // private final static String NOME_NULL = "Nome null";
     // Mensagem de erro caso o login esteja vazio.
     private final static String LOGIN_VAZIO = "Login está vazio";
     // Mensagem de erro caso o login seja null.
@@ -44,8 +44,7 @@ public class ServiceUsuario implements IServiceUsuario {
         if(usuario == null) {
             throw new BusinessException(USUARIO_NULL);
         } 
-        if(UsuarioDao.existsByNome(usuario.getNome()) || 
-                UsuarioDao.existsByLogin(usuario.getLogin()) == true) {
+        if(UsuarioDao.existsByLogin(usuario.getLogin()) == true) {
             throw new BusinessException(USUARIO_EXISTE);
         }
         return UsuarioDao.save(usuario);
@@ -89,6 +88,7 @@ public class ServiceUsuario implements IServiceUsuario {
         return UsuarioDao.findByLogin(login);
     }
     
+    /*
     @Override
     public List<Usuario> findByNome(String nome) {
         if(nome == null) {
@@ -99,5 +99,6 @@ public class ServiceUsuario implements IServiceUsuario {
         }
         return UsuarioDao.findByNome(nome);
     }
+    */
     
 }

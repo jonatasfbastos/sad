@@ -35,7 +35,7 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
     public void setUsuario(Usuario user) {
         this.userEdit = user;
         // Preenchendo campos para visualização
-        lblNome.setText(user.getNome());
+        // lblNome.setText(user.getNome());
         lblMatricula.setText(user.getLogin());
         lblSenha.setText(user.getSenha());        
     }
@@ -61,7 +61,6 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
 
         pnlContainer = new javax.swing.JPanel();
         pnlLinha = new javax.swing.JPanel();
-        lblNome = new javax.swing.JTextField();
         lblMatricula = new javax.swing.JTextField();
         lblSenha = new javax.swing.JTextField();
         btnVoltar = new javax.swing.JButton();
@@ -88,9 +87,6 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
             pnlLinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 8, Short.MAX_VALUE)
         );
-
-        lblNome.setBackground(new java.awt.Color(217, 217, 217));
-        lblNome.setText("nome");
 
         lblMatricula.setBackground(new java.awt.Color(217, 217, 217));
         lblMatricula.setText("login");
@@ -145,7 +141,6 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
                         .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnlContainerLayout.createSequentialGroup()
                                 .addComponent(lblTipoConta)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -166,13 +161,11 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
                 .addComponent(lblLogoSad, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblInsiraDados)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(30, 30, 30)
                 .addComponent(lblMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTipoConta)
                     .addComponent(cbxPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -208,7 +201,7 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
             String perfil = cbxPerfil.getSelectedItem().toString();
             PerfilUsuario perfilUsuario = facade.findByNomePerfilUsuario(perfil).get(0);
             
-            userEdit.setNome(lblNome.getText());
+            // userEdit.setNome(lblNome.getText());
             userEdit.setLogin(lblMatricula.getText());
             userEdit.setSenha(lblSenha.getText());
             userEdit.setPerfilUsuario(perfilUsuario);
@@ -283,7 +276,6 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel lblInsiraDados;
     private javax.swing.JLabel lblLogoSad;
     private javax.swing.JTextField lblMatricula;
-    private javax.swing.JTextField lblNome;
     private javax.swing.JTextField lblSenha;
     private javax.swing.JLabel lblTipoConta;
     private javax.swing.JPanel pnlContainer;

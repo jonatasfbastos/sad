@@ -23,6 +23,6 @@ public interface IServiceUsuario {
     // Busca o usuário por login.
     public List<Usuario> findByLogin(String login);
     // Busca usuário por nome.
-    public List<Usuario> findByNome(String nome);
+    // public List<Usuario> findByNome(String nome);
     
 }

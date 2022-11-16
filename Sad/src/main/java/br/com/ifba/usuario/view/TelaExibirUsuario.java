@@ -49,8 +49,8 @@ public class TelaExibirUsuario extends javax.swing.JFrame {
           tabelaDados.setNumRows(0);
           
         for (Usuario usuario : usuarios) {          
-            tabelaDados.addRow(new Object[] { usuario.getId(), usuario.getNome(), 
-                usuario.getLogin(), usuario.getPerfilUsuario().getNome()});
+            tabelaDados.addRow(new Object[] { usuario.getId(), usuario.getLogin(),
+                usuario.getPerfilUsuario().getNome()});
         }
     }
     
@@ -83,7 +83,7 @@ public class TelaExibirUsuario extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nome", "Login", "Perfil do usuário"
+                "ID", "Login", "Perfil do usuário"
             }
         ));
         jScrollPane1.setViewportView(tblDados);
@@ -120,7 +120,7 @@ public class TelaExibirUsuario extends javax.swing.JFrame {
         });
 
         lblProcurar.setBackground(new java.awt.Color(217, 217, 217));
-        lblProcurar.setText("Procurar usuário");
+        lblProcurar.setText("Procurar usuário por login");
         lblProcurar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 lblProcurarKeyPressed(evt);
@@ -208,7 +208,7 @@ public class TelaExibirUsuario extends javax.swing.JFrame {
         } else if (JOptionPane.showConfirmDialog(rootPane, "Os dados serão modificados."
                 + "\nDeseja continuar?") == 0) {
 
-            String login = (String) tblDados.getModel().getValueAt((int) linha, 2);
+            String login = (String) tblDados.getModel().getValueAt((int) linha, 1);
             
             // Acessando fachada para excluir dados
             List<Usuario> usuarioRemover = this.facade.findByLoginUsuario(login);
@@ -239,7 +239,7 @@ public class TelaExibirUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Por favor, selecione uma linha da tabela.");
 
         } else {
-            String login = (String) tblDados.getModel().getValueAt((int) linha, 2);
+            String login = (String) tblDados.getModel().getValueAt((int) linha, 1);
             
             // Acessando fachada para editar dados
             List<Usuario> usuarioEditar = this.facade.findByLoginUsuario(login);
@@ -250,7 +250,7 @@ public class TelaExibirUsuario extends javax.swing.JFrame {
             // Ocultando tela atual
             this.setVisible(false);
             
-            //Abrindo tela de edição
+            // Abrindo tela de edição
             this.telaEditar.setVisible(true);
             this.setVisible(false);
             this.telaEditar.setUsuario(usrEdit);
@@ -261,11 +261,11 @@ public class TelaExibirUsuario extends javax.swing.JFrame {
 
     private void lblProcurarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblProcurarKeyPressed
           // Obtém a string busca convertendo para letras minúsculas.
-          String nome = lblProcurar.getText().toLowerCase();
+          String login = lblProcurar.getText().toLowerCase();
 
           if (this.usuarios == null || this.usuarios.isEmpty()) {
                try {
-                    this.usuarios = this.facade.findByNomeUsuario(nome);
+                    this.usuarios = this.facade.findByLoginUsuario(login);
                } catch (Exception error) {
                     JOptionPane.showMessageDialog(null, error,
                             "Erro ao buscar usuários!", JOptionPane.ERROR_MESSAGE);
@@ -277,9 +277,9 @@ public class TelaExibirUsuario extends javax.swing.JFrame {
 
           // Adiciona à tabela todos os usuários em que o nome contenha a busca informada.
           for (Usuario usuario: usuarios) {
-               if (usuario.getNome().toLowerCase().contains(nome)) {
-                    tabelaDados.addRow(new Object[] { usuario.getId(), usuario.getNome(), 
-                         usuario.getLogin(), usuario.getPerfilUsuario().getNome()});
+               if (usuario.getLogin().toLowerCase().contains(login)) {
+                    tabelaDados.addRow(new Object[] { usuario.getId(), usuario.getLogin(),
+                        usuario.getPerfilUsuario().getNome()});
                }
           }
     }//GEN-LAST:event_lblProcurarKeyPressed

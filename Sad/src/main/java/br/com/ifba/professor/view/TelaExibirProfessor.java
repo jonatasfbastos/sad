@@ -60,7 +60,7 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
                 nomesDisciplinas = nomesDisciplinas + disciplina.getNome() + "\n";
             }
             tabelaDados.addRow(new Object[]{professor.getId(), professor.getNome(),
-                professor.getLogin(), nomesDisciplinas});
+                professor.getUsuario().getLogin(), nomesDisciplinas});
         }
     }
     
@@ -296,7 +296,7 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
             }
             if (professor.getNome().toLowerCase().contains(nome)) {
                 tabelaDados.addRow(new Object[]{professor.getId(), professor.getNome(),
-                    professor.getLogin(), nomesDisciplinas});
+                    professor.getUsuario().getLogin(), nomesDisciplinas});
             }
         }
     }//GEN-LAST:event_txtBuscarKeyPressed

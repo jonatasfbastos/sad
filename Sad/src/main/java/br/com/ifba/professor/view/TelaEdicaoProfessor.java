@@ -37,8 +37,8 @@ public class TelaEdicaoProfessor extends javax.swing.JFrame {
     private boolean validarCampos(Professor professor) {
         StringUtil validacao = StringUtil.getInstance();
         if(validacao.isEmpty(professor.getNome()) ||
-                validacao.isEmpty(professor.getLogin()) ||
-                validacao.isEmpty(professor.getSenha())) {
+                validacao.isEmpty(professor.getUsuario().getLogin()) ||
+                validacao.isEmpty(professor.getUsuario().getSenha())) {
             return false;
         }
         return true;
@@ -191,8 +191,8 @@ public class TelaEdicaoProfessor extends javax.swing.JFrame {
         String senha = txtSenha.getText();
         
         this.professor.setNome(nome);
-        this.professor.setLogin(siap);
-        this.professor.setSenha(senha);
+        this.professor.getUsuario().setLogin(siap);
+        this.professor.getUsuario().setSenha(senha);
         
         if(this.validarCampos(this.professor) == false) {
             JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos e tente novamente!",

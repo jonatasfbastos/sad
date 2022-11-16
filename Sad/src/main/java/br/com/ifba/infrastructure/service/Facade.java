@@ -89,10 +89,12 @@ public class Facade implements IFacade {
         return serviceUsuario.getAllUsuario();
     }
     
+    /*
     @Override
     public List<Usuario> findByNomeUsuario(String nome) {
         return serviceUsuario.findByNome(nome);
     }
+    */
     
     @Override
      public List<Usuario> findByLoginUsuario(String login) {
