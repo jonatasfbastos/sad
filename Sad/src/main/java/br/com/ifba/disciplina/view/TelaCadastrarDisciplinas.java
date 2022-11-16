@@ -36,7 +36,7 @@ public class TelaCadastrarDisciplinas extends javax.swing.JFrame {
         StringUtil validacao = StringUtil.getInstance();
         if(validacao.isEmpty(disciplina.getNome()) ||
                 validacao.isEmpty(disciplina.getDescriçao()) ||
-                validacao.isEmpty(disciplina.getSigla()) ||
+                validacao.isEmpty(disciplina.getCodigo()) ||
                 validacao.isEmpty(Integer.toString(disciplina.getCargaHoraria()))) {
             return false;
         }
@@ -54,7 +54,7 @@ public class TelaCadastrarDisciplinas extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        txtSigla = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
         txtDescricao = new javax.swing.JTextField();
         txtCargaHoraria = new javax.swing.JTextField();
@@ -84,14 +84,14 @@ public class TelaCadastrarDisciplinas extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 948, -1));
 
-        txtSigla.setBackground(new java.awt.Color(217, 217, 217));
-        txtSigla.setText("Sigla");
-        txtSigla.addActionListener(new java.awt.event.ActionListener() {
+        txtCodigo.setBackground(new java.awt.Color(217, 217, 217));
+        txtCodigo.setText("Código");
+        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSiglaActionPerformed(evt);
+                txtCodigoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtSigla, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 252, 39));
+        jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 252, 39));
 
         txtNome.setBackground(new java.awt.Color(217, 217, 217));
         txtNome.setText("Nome");
@@ -155,15 +155,15 @@ public class TelaCadastrarDisciplinas extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtSiglaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSiglaActionPerformed
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSiglaActionPerformed
+    }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
@@ -185,12 +185,12 @@ public class TelaCadastrarDisciplinas extends javax.swing.JFrame {
         
         String nome = txtNome.getText();
         String descricao = txtDescricao.getText();
-        String sigla = txtSigla.getText();
+        String codigo = txtCodigo.getText();
         int cargaHoraria = Integer.parseInt(txtCargaHoraria.getText());
         
         disciplina.setNome(nome);
         disciplina.setDescriçao(descricao);
-        disciplina.setSigla(sigla);
+        disciplina.setCodigo(codigo);
         disciplina.setCargaHoraria(cargaHoraria);
         
         if(this.validarCampos(disciplina) == false) {
@@ -261,8 +261,8 @@ public class TelaCadastrarDisciplinas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtCargaHoraria;
+    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtSigla;
     // End of variables declaration//GEN-END:variables
 }

@@ -34,7 +34,7 @@ public class Disciplina extends PersistenceEntity implements Serializable{
     //Variáveis
     private String nome;
     private String descriçao;
-    private String sigla;
+    private String codigo;
     private int cargaHoraria;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "professor_ID", referencedColumnName = "ID")

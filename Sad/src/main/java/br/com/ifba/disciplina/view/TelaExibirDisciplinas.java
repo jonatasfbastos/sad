@@ -51,7 +51,7 @@ public class TelaExibirDisciplinas extends javax.swing.JFrame {
             
         for (Disciplina disciplina : disciplinas) {
            tabelaDados.addRow(new Object[]{disciplina.getId(), disciplina.getNome(),
-              disciplina.getDescriçao(), disciplina.getSigla(),disciplina.getCargaHoraria()});
+              disciplina.getDescriçao(), disciplina.getCodigo(),disciplina.getCargaHoraria()});
         }
     }
     /**
@@ -116,7 +116,7 @@ public class TelaExibirDisciplinas extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "NOME", "DESCRIÇÃO", "SIGLA", "CARGAHORÁRIA"
+                "NOME", "DESCRIÇÃO", "CÓDIGO", "CARGAHORÁRIA"
             }
         ));
         jScrollPane1.setViewportView(tblTabela);
@@ -185,10 +185,10 @@ public class TelaExibirDisciplinas extends javax.swing.JFrame {
         } else if (JOptionPane.showConfirmDialog(rootPane, "Os dados serão modificados."
                 + "\nDeseja continuar?") == 0) {
 
-            String login = (String) tblTabela.getModel().getValueAt((int) linha, 2);
+            String codigo = (String) tblTabela.getModel().getValueAt((int) linha, 2);
             
             // Acessando fachada para excluir dados
-            List<Disciplina> disciplinaRemover = this.facade.findByNomeDisciplina(login);
+            List<Disciplina> disciplinaRemover = this.facade.findByNomeDisciplina(codigo);
             
             // Removendo disciplina
             this.facade.deleteDisciplina(disciplinaRemover.get(0));
@@ -233,7 +233,7 @@ public class TelaExibirDisciplinas extends javax.swing.JFrame {
         for (Disciplina disciplina : disciplinas) {
             if (disciplina.getNome().toLowerCase().contains(nome)) {
                 tabelaDados.addRow(new Object[]{disciplina.getId(), disciplina.getNome(),
-                    disciplina.getDescriçao(), disciplina.getSigla(), disciplina.getCargaHoraria()});
+                    disciplina.getDescriçao(), disciplina.getCodigo(), disciplina.getCargaHoraria()});
             }
         }
     }//GEN-LAST:event_lblBuscarKeyPressed

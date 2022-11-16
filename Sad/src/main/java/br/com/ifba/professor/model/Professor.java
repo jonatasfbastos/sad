@@ -4,8 +4,8 @@
  */
 package br.com.ifba.professor.model;
 
-import br.com.ifba.infrastructure.model.PersistenceEntity;
 import br.com.ifba.disciplina.model.Disciplina;
+import br.com.ifba.servidor.model.Servidor;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -30,11 +30,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Professor  extends PersistenceEntity implements Serializable{
-    //Variáveis
-    private String nome;
-    private String login;
-    private String senha ;
+public class Professor extends Servidor implements Serializable{
+    
     @OneToMany(mappedBy = "professor", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Disciplina> disciplina;
 
