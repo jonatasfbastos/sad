@@ -36,6 +36,10 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         StringUtil validacao = StringUtil.getInstance();
         if(validacao.isEmpty(professor.getNome()) ||
                 validacao.isEmpty(professor.getUsuario().getLogin()) ||
+                validacao.isEmpty(professor.getSiape()) ||
+                validacao.isEmpty(professor.getTelefone()) ||
+                validacao.isEmpty(professor.getEmail()) ||
+                validacao.isEmpty(professor.getCpf()) ||
                 validacao.isEmpty(professor.getUsuario().getSenha())) {
             return false;
         }
@@ -54,12 +58,16 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         txtSenha = new javax.swing.JTextField();
-        txtNome = new javax.swing.JTextField();
-        txtSiap = new javax.swing.JTextField();
+        txtLogin = new javax.swing.JTextField();
+        txtCpf = new javax.swing.JTextField();
         btnVoltar = new javax.swing.JButton();
         btnCadastrar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
+        txtSiape = new javax.swing.JTextField();
+        txtTelefone = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,19 +88,19 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
             .addGap(0, 10, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 400, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 400, -1));
 
         txtSenha.setBackground(new java.awt.Color(217, 217, 217));
         txtSenha.setText("Senha");
-        jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 252, 40));
+        jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 252, 40));
 
-        txtNome.setBackground(new java.awt.Color(217, 217, 217));
-        txtNome.setText("Nome");
-        jPanel1.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 252, 40));
+        txtLogin.setBackground(new java.awt.Color(217, 217, 217));
+        txtLogin.setText("Login");
+        jPanel1.add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 252, 40));
 
-        txtSiap.setBackground(new java.awt.Color(217, 217, 217));
-        txtSiap.setText("Siap");
-        jPanel1.add(txtSiap, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 252, 40));
+        txtCpf.setBackground(new java.awt.Color(217, 217, 217));
+        txtCpf.setText("CPF");
+        jPanel1.add(txtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 252, 40));
 
         btnVoltar.setBackground(new java.awt.Color(217, 217, 217));
         btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -102,7 +110,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
                 btnVoltarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 125, 50));
+        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 125, 50));
 
         btnCadastrar.setBackground(new java.awt.Color(217, 217, 217));
         btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -112,7 +120,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
                 btnCadastrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 125, 50));
+        jPanel1.add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 540, 125, 50));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("INSIRA OS DADOS PARA CADASTRAR O PROFESSOR");
@@ -120,6 +128,22 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/sad/imagens/logo_sad.png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 16, 160, 80));
+
+        txtNome.setBackground(new java.awt.Color(217, 217, 217));
+        txtNome.setText("Nome");
+        jPanel1.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 252, 40));
+
+        txtSiape.setBackground(new java.awt.Color(217, 217, 217));
+        txtSiape.setText("Siape");
+        jPanel1.add(txtSiape, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 252, 40));
+
+        txtTelefone.setBackground(new java.awt.Color(217, 217, 217));
+        txtTelefone.setText("Telefone");
+        jPanel1.add(txtTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 252, 40));
+
+        txtEmail.setBackground(new java.awt.Color(217, 217, 217));
+        txtEmail.setText("E-mail");
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 252, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,7 +153,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
         );
 
         pack();
@@ -140,12 +164,22 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         // Instanciando novo objeto professor para cadastro
         Professor professor = new Professor();
         
+        // Variáveis para armazenar novos dados
         String nome = txtNome.getText();
-        String siap = txtSiap.getText();
+        String login = txtLogin.getText();
+        String siape = txtSiape.getText();
+        String telefone = txtTelefone.getText();
+        String email = txtEmail.getText();
+        String cpf = txtCpf.getText();
         String senha = txtSenha.getText();
         
+        // Preenchendo objeto professor com os novos dados
         professor.setNome(nome);
-        professor.getUsuario().setLogin(siap);
+        professor.getUsuario().setLogin(login);
+        professor.setSiape(siape);
+        professor.setTelefone(telefone);
+        professor.setEmail(email);
+        professor.setCpf(cpf);
         professor.getUsuario().setSenha(senha);
         
         if(this.validarCampos(professor) == false) {
@@ -216,8 +250,12 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField txtCpf;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtLogin;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtSenha;
-    private javax.swing.JTextField txtSiap;
+    private javax.swing.JTextField txtSiape;
+    private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 }
