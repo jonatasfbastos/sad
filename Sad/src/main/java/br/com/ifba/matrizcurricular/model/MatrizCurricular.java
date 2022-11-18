@@ -7,6 +7,8 @@ package br.com.ifba.matrizcurricular.model;
 import br.com.ifba.disciplina.model.Disciplina;
 import br.com.ifba.infrastructure.model.PersistenceEntity;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -26,7 +28,7 @@ public class MatrizCurricular extends PersistenceEntity implements Serializable{
     private String nome;
     private String descricao;
     
-    @OneToMany(mappedBy = "MatrizCurricular", fetch = FetchType.EAGER)
-    private Disciplina disciplina;
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Disciplina> disciplinas;
     
 }

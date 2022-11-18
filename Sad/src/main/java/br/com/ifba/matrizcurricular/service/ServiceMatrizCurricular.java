@@ -9,11 +9,13 @@ import br.com.ifba.matrizcurricular.dao.IMatrizCurricularDao;
 import br.com.ifba.matrizcurricular.model.MatrizCurricular;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author João P. Arquim
  */
+@Service
 public class ServiceMatrizCurricular implements IServiceMatrizCurricular{
     
     //================= CONSTANTES =============================================
