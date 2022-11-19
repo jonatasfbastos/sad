@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.ifba.disponibilizaravaliacao.model;
+package br.com.ifba.avaliacao.model;
 
 import br.com.ifba.disciplina.model.Disciplina;
 import br.com.ifba.infrastructure.model.PersistenceEntity;
@@ -19,18 +19,18 @@ import lombok.Data;
  * @author Felipe
  */
 @Entity
-@Table(name = "disponibilizar_avaliacao")
+@Table(name = "avaliacao")
 @Data
-public class DisponibilizarAvaliacao extends PersistenceEntity implements Serializable{
+public class Avaliacao extends PersistenceEntity implements Serializable{
     
-    private String periodo;
+    private String descricao;
     private String dataFim;
     private String datainicio;
     
-   //  @OneToOne(/*mappedBy = "DisponibilizarAvaliacao",*/ fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})   
+   //  @OneToOne(/*mappedBy = "Avaliacao",*/ fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})   
    // private Formulario formulario;
     
    
-    @OneToOne(/*mappedBy = "DisponibilizarAvaliacao"*/ fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToOne(/*mappedBy = "Avaliacao"*/ fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Disciplina disciplina;
 }

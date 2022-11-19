@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.ifba.disponibilizaravaliacao.dao;
+package br.com.ifba.avaliacao.dao;
 
-import br.com.ifba.disponibilizaravaliacao.model.DisponibilizarAvaliacao;
+import br.com.ifba.avaliacao.model.Avaliacao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
  *
  * @author Felipe
  */
-public interface IDisponibilizarAvaliacaoDao extends JpaRepository<DisponibilizarAvaliacao, Long> {
+public interface IAvaliacaoDao extends JpaRepository<Avaliacao, Long> {
     
 }
