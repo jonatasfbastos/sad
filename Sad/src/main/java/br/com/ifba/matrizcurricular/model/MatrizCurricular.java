@@ -4,7 +4,7 @@
  */
 package br.com.ifba.matrizcurricular.model;
 
-import br.com.ifba.disciplina.model.Disciplina;
+import br.com.ifba.etapacurso.model.EtapaCurso;
 import br.com.ifba.infrastructure.model.PersistenceEntity;
 import java.io.Serializable;
 import java.util.List;
@@ -29,6 +29,6 @@ public class MatrizCurricular extends PersistenceEntity implements Serializable{
     private String descricao;
     
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Disciplina> disciplinas;
+    private List<EtapaCurso> etapacurso;
     
 }
