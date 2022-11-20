@@ -85,9 +85,9 @@ public class ServiceFormulario implements IServiceFormulario{
     @Override
     public List<Formulario> findByTitulo(String titulo) {
         if(titulo == null) {
-            throw new BusinessException("Nome null");
+            throw new BusinessException("Titulo null");
         } else if(titulo.isEmpty()) {
-            throw new BusinessException("Nome vazio");
+            throw new BusinessException("Titulo vazio");
         } else {
             return formularioDao.findByTitulo(titulo);
         }
