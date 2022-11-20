@@ -11,6 +11,7 @@ import br.com.ifba.usuario.model.Usuario;
 import br.com.ifba.professor.model.Professor;
 import br.com.ifba.curso.model.Curso;
 import br.com.ifba.etapacurso.model.EtapaCurso;
+import br.com.ifba.formulario.model.Formulario;
 import br.com.ifba.modalidadecurso.model.Modalidade;
 import br.com.ifba.turma.model.Turma;
 import java.util.List;
@@ -92,4 +93,12 @@ public interface IFacade {
     public List<Aluno> findByNomeAluno(String nome);
     public Aluno findByIdAluno(Long id);
 
+    //===================Formulario==================//
+    public Formulario saveFormulario(Formulario formulario);
+    public Formulario updateFormulario(Formulario formulario);
+    public void deleteFormulario(Formulario formulario);
+    public List<Formulario> findByTituloFormulario(String titulo);
+    public List<Formulario> getAllFormulario();
+    public Formulario findByIdFormulario(Long id);
+    
 }

@@ -6,6 +6,7 @@
 package br.com.ifba.avaliacao.model;
 
 import br.com.ifba.disciplina.model.Disciplina;
+import br.com.ifba.formulario.model.Formulario;
 import br.com.ifba.infrastructure.model.PersistenceEntity;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
@@ -27,8 +28,8 @@ public class Avaliacao extends PersistenceEntity implements Serializable{
     private String dataFim;
     private String datainicio;
     
-   //  @OneToOne(/*mappedBy = "Avaliacao",*/ fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})   
-   // private Formulario formulario;
+    @OneToOne(/*mappedBy = "Avaliacao",*/ fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})   
+    private Formulario formulario;
     
    
     @OneToOne(/*mappedBy = "Avaliacao"*/ fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
