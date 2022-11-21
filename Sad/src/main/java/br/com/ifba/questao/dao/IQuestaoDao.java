@@ -5,7 +5,7 @@
 package br.com.ifba.questao.dao;
 
 import java.util.List;
-//import br.com.ifba.questao.model.Questao;
+import br.com.ifba.questao.model.Questao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +16,5 @@ import org.springframework.stereotype.Repository;
 public interface IQuestaoDao extends JpaRepository<Questao, Long>{
     
     public abstract List<Questao> findByEnunciado(String enunciado);
+    public boolean existsByEnunciado(String nome);
 }
