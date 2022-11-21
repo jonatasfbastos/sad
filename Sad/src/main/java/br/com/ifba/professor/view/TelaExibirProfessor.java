@@ -53,9 +53,11 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
         DefaultTableModel tabelaDados = (DefaultTableModel) tblTabela.getModel();
         tabelaDados.setNumRows(0);
         
+        // Adiciona à tabela todos os professores
         for (Professor professor : professores) {
             List<Disciplina> disciplinas = professor.getDisciplina();
             String nomesDisciplinas = new String();
+            // Juntando os nomes de disciplinas do mesmo professor em uma string
             for (Disciplina disciplina : disciplinas) {
                 nomesDisciplinas = nomesDisciplinas + disciplina.getNome() + "\n";
             }
@@ -67,6 +69,7 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
                 professor.getTelefone(),
                 professor.getEmail(),
                 professor.getCpf(),
+                professor.getNascimento(),
                 nomesDisciplinas
             });
         }
@@ -101,13 +104,13 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
         tblTabela.setBackground(new java.awt.Color(217, 217, 217));
         tblTabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "NOME", "LOGIN", "SIAPE", "TELEFONE", "E-MAIL", "CPF", "DISCIPLINAS"
+                "ID", "NOME", "LOGIN", "SIAPE", "TELEFONE", "E-MAIL", "CPF", "DATA NASC", "DISCIPLINAS"
             }
         ));
         jScrollPane1.setViewportView(tblTabela);
@@ -164,18 +167,18 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(110, 110, 110)
                 .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(107, 107, 107)
                 .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(103, 103, 103))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 383, Short.MAX_VALUE)))
+                        .addGap(0, 486, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -288,15 +291,16 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
                         "Erro ao buscar usuários!", JOptionPane.ERROR_MESSAGE);
             }
         }
+        
         // Obtém o modelo atual da tabela.
         DefaultTableModel tabelaDados = (DefaultTableModel) tblTabela.getModel();
         tabelaDados.setNumRows(0);
 
         // Adiciona à tabela todos os professores em que o nome contenha a busca informada.
-        
         for (Professor professor : professores) {
             List<Disciplina> disciplinas = professor.getDisciplina();
             String nomesDisciplinas = new String();
+            // Juntando as disciplinas do mesmo professor em uma string
             for (Disciplina disciplina : disciplinas) {
                 nomesDisciplinas = nomesDisciplinas + disciplina.getNome() + "\n";
             }
@@ -309,6 +313,7 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
                     professor.getTelefone(),
                     professor.getEmail(),
                     professor.getCpf(),
+                    professor.getNascimento(),
                     nomesDisciplinas
                 });
             }

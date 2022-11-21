@@ -53,9 +53,18 @@ public class TelaExibirAluno extends javax.swing.JFrame {
         DefaultTableModel tabelaDados = (DefaultTableModel) tblTabela.getModel();
         tabelaDados.setNumRows(0);
         
+        // Adiciona à tabela todos os alunos
         for (Aluno aluno : alunos) {
             tabelaDados.addRow(new Object[]{
-                
+                aluno.getId(),
+                aluno.getNome(),
+                aluno.getUsuario().getLogin(),
+                aluno.getMatricula(),
+                aluno.getTelefone(),
+                aluno.getEmail(),
+                aluno.getCpf(),
+                aluno.getNascimento(),
+                aluno.getTurma().getNome()
             });
         }
     }
@@ -89,13 +98,13 @@ public class TelaExibirAluno extends javax.swing.JFrame {
         tblTabela.setBackground(new java.awt.Color(217, 217, 217));
         tblTabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "NOME", "LOGIN", "MATRÍCULA", "TELEFONE", "E-MAIL", "CPF", "TURMA"
+                "ID", "NOME", "LOGIN", "MATRÍCULA", "TELEFONE", "E-MAIL", "CPF", "DATA NASC", "TURMA"
             }
         ));
         jScrollPane1.setViewportView(tblTabela);
@@ -152,18 +161,18 @@ public class TelaExibirAluno extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(110, 110, 110)
                 .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addGap(100, 100, 100)
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(104, 104, 104))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 383, Short.MAX_VALUE)))
+                        .addGap(0, 486, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -289,6 +298,8 @@ public class TelaExibirAluno extends javax.swing.JFrame {
                     aluno.getTelefone(),
                     aluno.getEmail(),
                     aluno.getCpf(),
+                    aluno.getNascimento(),
+                    aluno.getTurma().getNome()
                 });
             }
         }

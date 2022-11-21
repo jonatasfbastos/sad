@@ -7,6 +7,7 @@ package br.com.ifba.professor.view;
 import br.com.ifba.infrastructure.service.IFacade;
 import br.com.ifba.infrastructure.support.StringUtil;
 import br.com.ifba.professor.model.Professor;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -32,6 +33,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
+    // Verifica se algum dado está vazio
     private boolean validarCampos(Professor professor) {
         StringUtil validacao = StringUtil.getInstance();
         if(validacao.isEmpty(professor.getNome()) ||
@@ -40,6 +42,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
                 validacao.isEmpty(professor.getTelefone()) ||
                 validacao.isEmpty(professor.getEmail()) ||
                 validacao.isEmpty(professor.getCpf()) ||
+                validacao.isEmpty(professor.getNascimento().toString()) ||
                 validacao.isEmpty(professor.getUsuario().getSenha())) {
             return false;
         }
@@ -68,6 +71,8 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         txtSiape = new javax.swing.JTextField();
         txtTelefone = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
+        lblDataNascimento = new javax.swing.JLabel();
+        spnDataNascimento = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,11 +93,11 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
             .addGap(0, 10, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 400, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 400, -1));
 
         txtSenha.setBackground(new java.awt.Color(217, 217, 217));
         txtSenha.setText("Senha");
-        jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 252, 40));
+        jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, 252, 40));
 
         txtLogin.setBackground(new java.awt.Color(217, 217, 217));
         txtLogin.setText("Login");
@@ -110,7 +115,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
                 btnVoltarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 125, 50));
+        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 680, 125, 50));
 
         btnCadastrar.setBackground(new java.awt.Color(217, 217, 217));
         btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -120,7 +125,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
                 btnCadastrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 540, 125, 50));
+        jPanel1.add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 680, 125, 50));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("INSIRA OS DADOS PARA CADASTRAR O PROFESSOR");
@@ -145,6 +150,12 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         txtEmail.setText("E-mail");
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 252, 40));
 
+        lblDataNascimento.setText("Data de nascimento:");
+        jPanel1.add(lblDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, -1, -1));
+
+        spnDataNascimento.setModel(new javax.swing.SpinnerDateModel());
+        jPanel1.add(spnDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 472, 250, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -153,7 +164,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
         );
 
         pack();
@@ -171,6 +182,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         String telefone = txtTelefone.getText();
         String email = txtEmail.getText();
         String cpf = txtCpf.getText();
+        Date nascimento = (Date) spnDataNascimento.getValue();
         String senha = txtSenha.getText();
         
         // Preenchendo objeto professor com os novos dados
@@ -180,6 +192,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         professor.setTelefone(telefone);
         professor.setEmail(email);
         professor.setCpf(cpf);
+        professor.setNascimento(nascimento);
         professor.getUsuario().setSenha(senha);
         
         if(this.validarCampos(professor) == false) {
@@ -250,6 +263,8 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblDataNascimento;
+    private javax.swing.JSpinner spnDataNascimento;
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtLogin;

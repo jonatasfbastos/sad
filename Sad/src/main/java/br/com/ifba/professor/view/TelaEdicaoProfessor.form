@@ -65,8 +65,6 @@
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="txtSenha" min="-2" pref="252" max="-2" attributes="0"/>
-                      <Component id="txtCpf" min="-2" pref="252" max="-2" attributes="0"/>
                       <Component id="txtEmail" min="-2" pref="252" max="-2" attributes="0"/>
                       <Component id="txtTelefone" min="-2" pref="252" max="-2" attributes="0"/>
                       <Component id="txtSiape" min="-2" pref="252" max="-2" attributes="0"/>
@@ -80,6 +78,12 @@
                               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                               <Component id="txtNome" min="-2" pref="252" max="-2" attributes="0"/>
                           </Group>
+                      </Group>
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                          <Component id="lblDataNascimento" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCpf" min="-2" pref="252" max="-2" attributes="0"/>
+                          <Component id="spnDataNascimento" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
+                          <Component id="txtSenha" alignment="0" min="-2" pref="252" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -106,8 +110,12 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="txtCpf" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="lblDataNascimento" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="spnDataNascimento" min="-2" pref="30" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="txtSenha" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                  <EmptySpace pref="89" max="32767" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -240,6 +248,18 @@
               <Color blue="d9" green="d9" red="d9" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Senha"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblDataNascimento">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Data de nascimento:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnDataNascimento">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="now" stepSize="5" type="date"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>
