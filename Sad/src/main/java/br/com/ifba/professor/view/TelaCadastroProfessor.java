@@ -7,6 +7,8 @@ package br.com.ifba.professor.view;
 import br.com.ifba.infrastructure.service.IFacade;
 import br.com.ifba.infrastructure.support.StringUtil;
 import br.com.ifba.professor.model.Professor;
+import br.com.ifba.disciplina.model.Disciplina;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +34,8 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    
+    //lista global
+    ArrayList<String> listaDisciplina = new ArrayList<String>();
     // Verifica se algum dado está vazio
     private boolean validarCampos(Professor professor) {
         StringUtil validacao = StringUtil.getInstance();
@@ -60,7 +63,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        txtSenha = new javax.swing.JTextField();
+        txtDisciplina = new javax.swing.JTextField();
         txtLogin = new javax.swing.JTextField();
         txtCpf = new javax.swing.JTextField();
         btnVoltar = new javax.swing.JButton();
@@ -73,6 +76,8 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         txtEmail = new javax.swing.JTextField();
         lblDataNascimento = new javax.swing.JLabel();
         spnDataNascimento = new javax.swing.JSpinner();
+        btnAdiconarDisciplina = new javax.swing.JButton();
+        txtSenha1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,18 +91,18 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 400, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 670, 400, -1));
 
-        txtSenha.setBackground(new java.awt.Color(217, 217, 217));
-        txtSenha.setText("Senha");
-        jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, 252, 40));
+        txtDisciplina.setBackground(new java.awt.Color(217, 217, 217));
+        txtDisciplina.setText("Disciplina");
+        jPanel1.add(txtDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 580, 252, 40));
 
         txtLogin.setBackground(new java.awt.Color(217, 217, 217));
         txtLogin.setText("Login");
@@ -115,7 +120,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
                 btnVoltarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 680, 125, 50));
+        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 710, 125, 50));
 
         btnCadastrar.setBackground(new java.awt.Color(217, 217, 217));
         btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -125,7 +130,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
                 btnCadastrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 680, 125, 50));
+        jPanel1.add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 710, 125, 50));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("INSIRA OS DADOS PARA CADASTRAR O PROFESSOR");
@@ -156,6 +161,18 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         spnDataNascimento.setModel(new javax.swing.SpinnerDateModel());
         jPanel1.add(spnDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 472, 250, 30));
 
+        btnAdiconarDisciplina.setText("Adicionar disciplina");
+        btnAdiconarDisciplina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdiconarDisciplinaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAdiconarDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 640, -1, -1));
+
+        txtSenha1.setBackground(new java.awt.Color(217, 217, 217));
+        txtSenha1.setText("Senha");
+        jPanel1.add(txtSenha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, 252, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,7 +181,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE)
         );
 
         pack();
@@ -183,7 +200,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String cpf = txtCpf.getText();
         Date nascimento = (Date) spnDataNascimento.getValue();
-        String senha = txtSenha.getText();
+        String senha = txtDisciplina.getText();
         
         // Preenchendo objeto professor com os novos dados
         professor.setNome(nome);
@@ -194,6 +211,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         professor.setCpf(cpf);
         professor.setNascimento(nascimento);
         professor.getUsuario().setSenha(senha);
+        professor.getDisciplina(listaDisciplina);
         
         if(this.validarCampos(professor) == false) {
             JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos e tente novamente!",
@@ -217,6 +235,17 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         this.telaExibir.setVisible(true);
         this.telaExibir.atualizarTabela();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnAdiconarDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdiconarDisciplinaActionPerformed
+        // TODO add your handling code here:
+        //criando a lista
+       // ArrayList<String> listaDisciplina = new ArrayList<String>();
+        //armazenando o dado da variavel
+        String disciplina = txtDisciplina.getText();
+        listaDisciplina.add(disciplina);
+ 
+        
+    }//GEN-LAST:event_btnAdiconarDisciplinaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,6 +286,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdiconarDisciplina;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel2;
@@ -266,10 +296,11 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
     private javax.swing.JLabel lblDataNascimento;
     private javax.swing.JSpinner spnDataNascimento;
     private javax.swing.JTextField txtCpf;
+    private javax.swing.JTextField txtDisciplina;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtSenha;
+    private javax.swing.JTextField txtSenha1;
     private javax.swing.JTextField txtSiape;
     private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
