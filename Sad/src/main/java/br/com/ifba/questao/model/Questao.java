@@ -5,9 +5,10 @@
 package br.com.ifba.questao.model;
 
 import br.com.ifba.infrastructure.model.PersistenceEntity;
+import br.com.ifba.resposta.model.Resposta;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Data;
 
@@ -22,6 +23,8 @@ import lombok.Data;
 public class Questao extends PersistenceEntity {
     private String enunciado;
     private boolean required;
-    @ManyToMany(fetch = FetchType.EAGER)  
+    
+    //Uma questão possui uma respota associada
+    @OneToOne(fetch = FetchType.EAGER)  
     private Resposta resposta;
 }
