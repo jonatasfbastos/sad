@@ -18,7 +18,7 @@ import lombok.Data;
  */
 
 @Entity
-@Table(name = "Questao")
+@Table(name = "questao")
 @Data
 public class Questao extends PersistenceEntity {
     private String enunciado;
