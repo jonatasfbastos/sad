@@ -23,5 +23,6 @@ public class Turma extends PersistenceEntity implements Serializable {
     private String codigoTurma;
     private String sigla;
     private boolean ativa;
+    
 
 }
