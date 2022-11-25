@@ -17,5 +17,6 @@ import org.springframework.stereotype.Repository;
 public interface IEtapaCursoDao extends JpaRepository<EtapaCurso, Long> {
     
     public abstract List<EtapaCurso> findByNome(String nome);
+    public boolean existsByNome(String nome);
     
 }

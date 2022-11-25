@@ -24,6 +24,6 @@ public class EscolhaUnica extends MultiplaEscolha{
     //Muita EscolhaUnica possui uma opcao como resposta
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "opcao_ID", referencedColumnName = "ID")
-    private Opcao opcao;
+    private Opcao opcaoSelecionada;
     
 }

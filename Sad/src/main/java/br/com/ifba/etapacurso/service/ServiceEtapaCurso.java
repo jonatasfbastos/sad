@@ -41,7 +41,7 @@ public class ServiceEtapaCurso implements IServiceEtapaCurso {
        if(etapaCurso == null){
             throw new BusinessException(ETAPA_CURSO_NULL);
         }
-       if(this.verificarSeExiste(etapaCurso) == true) {
+       if(etapaCursoDao.existsByNome(etapaCurso.getNome()) == true) {
             throw new BusinessException(ETAPA_CURSO_EXISTE);
         }
        return this.etapaCursoDao.save(etapaCurso);
@@ -52,7 +52,7 @@ public class ServiceEtapaCurso implements IServiceEtapaCurso {
         if(etapaCurso == null){
             throw new BusinessException(ETAPA_CURSO_NULL);
         } 
-        if(this.verificarSeExiste(etapaCurso) == false) {
+        if(etapaCursoDao.existsById(etapaCurso.getId()) == false) {
             throw new BusinessException(ETAPA_CURSO_NAO_EXISTE);
         }
         return this.etapaCursoDao.save(etapaCurso);        
@@ -63,7 +63,7 @@ public class ServiceEtapaCurso implements IServiceEtapaCurso {
         if(etapaCurso == null){
             throw new BusinessException(ETAPA_CURSO_NULL);
         } 
-        if(this.verificarSeExiste(etapaCurso) == false) {
+        if(etapaCursoDao.existsById(etapaCurso.getId()) == false) {
             throw new BusinessException(ETAPA_CURSO_NAO_EXISTE);
         }
         this.etapaCursoDao.delete(etapaCurso);
@@ -89,15 +89,5 @@ public class ServiceEtapaCurso implements IServiceEtapaCurso {
      public EtapaCurso findById(Long id) {
           return this.etapaCursoDao.getReferenceById(id);
      }
-     
-     private boolean verificarSeExiste(EtapaCurso etapaCurso) {
-         List<EtapaCurso> etapas = this.etapaCursoDao.findByNome(etapaCurso.getNome());
-         for (EtapaCurso etapa: etapas) {
-             if ((etapaCurso.getNome().toLowerCase()).equals(etapa.getNome().toLowerCase())) {
-                return true;
-             }
-         }
-         return false;
-     }
-     
+         
 }

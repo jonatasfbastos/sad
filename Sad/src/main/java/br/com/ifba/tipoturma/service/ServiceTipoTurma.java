@@ -1,8 +1,8 @@
 package br.com.ifba.tipoturma.service;
 
 import br.com.ifba.infrastructure.exception.BusinessException;
-import br.com.ifba.Tipoturma.dao.ITipoTurmaDao;
-import br.com.ifba.Tipoturma.model.TipoTurma;
+import br.com.ifba.tipoturma.model.TipoTurma;
+import br.com.ifba.tipoturma.dao.ITipoTurmaDao;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
