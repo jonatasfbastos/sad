@@ -20,19 +20,19 @@ public class ServiceUsuario implements IServiceUsuario {
     //================= CONSTANTES =============================================
     
     // Mensagem de erro se o Usuario for null.
-    private final static String USUARIO_NULL = "Usuário null";
+    private final static String USUARIO_NULL = "Dados do Usuario nao preenchidos";
     // Mensagem de erro se o Usuario já existir.
-    private final static String USUARIO_EXISTE = "Usuário já existe";
+    private final static String USUARIO_EXISTE = "Usuario ja existente no Banco de dados";
     // Mensagem de erro se a Usuario não existir no banco.
-    private final static String USUARIO_NAO_EXISTE = "O usuário não existe na base de dados";
+    private final static String USUARIO_NAO_EXISTE = "Usuario nao existente no Banco de dados";
     // Mensagem de erro caso o nome esteja vazio.
-    private final static String NOME_VAZIO = "Nome está vazio";
+    // private final static String NOME_VAZIO = "O Campo Nome esta vazio";
     // Mensagem de erro caso o nome seja null.
-    // private final static String NOME_NULL = "Nome null";
+    // private final static String NOME_NULL = "Dados do nome nao preenchidos";
     // Mensagem de erro caso o login esteja vazio.
-    private final static String LOGIN_VAZIO = "Login está vazio";
+    private final static String LOGIN_VAZIO = "O Campo Login esta vazio";
     // Mensagem de erro caso o login seja null.
-    private final static String LOGIN_NULL = "Login null";
+    private final static String LOGIN_NULL = "Dados do Login nao preenchidos";
     
     //================= OBJETO =================================================
     @Autowired

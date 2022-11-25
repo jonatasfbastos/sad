@@ -20,17 +20,17 @@ public class ServiceProfessor implements IServiceProfessor{
     //================= CONSTANTES =============================================
     
    // Mensagem de erro se o Professor for null.
-    public final static String PROFESSOR_NULL = "Professor null";
+    public final static String PROFESSOR_NULL = "Dados do Professor nao preenchidos";
     // Mensagem de erro se o Professor já existir.
-    public final static String PROFESSOR_EXISTE = "O professor já existe";
+    public final static String PROFESSOR_EXISTE = "Professor ja existente no Banco de dados";
     // Mensagem de erro se o Professor não existir no banco.
-    public final static String PROFESSOR_NAO_EXISTE = "O professor não existe na base de dados";
+    public final static String PROFESSOR_NAO_EXISTE = "Professor nao existente no Banco de dados";
     // Mensagem de erro se o Professor for inválido.
-    public final static String PROFESSOR_INVALIDO = "Professor inválido";
+    public final static String PROFESSOR_INVALIDO = "As informaçoes do Professor nao sao validas";
      // Mensagem de erro caso o nome esteja vazio.
-    private final static String NOME_VAZIO = "Nome está vazio";
+    private final static String NOME_VAZIO = "O Campo Nome esta vazio";
     // Mensagem de erro caso o nome seja null.
-    private final static String NOME_NULL = "Nome null";
+    private final static String NOME_NULL = "Dados do nome nao preenchidos";
     
      //================= OBJETO =================================================
     @Autowired

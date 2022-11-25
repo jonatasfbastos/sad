@@ -21,17 +21,17 @@ public class ServicePerfilUsuario implements IServicePerfilUsuario {
      //================= CONSTANTES =============================================
     
     // Mensagem de erro se o PerfilDeUsuario for null.
-    public final static String PERFIL_USUARIO_NULL = "Perfil usuário null";
+    public final static String PERFIL_USUARIO_NULL = "Dados do Perfil Usuario nao preenchidos";
     // Mensagem de erro se o PerfilDeUsuario já existir.
-    public final static String PERFIL_USUARIO_EXISTE = "O perfil usuário já existe";
+    public final static String PERFIL_USUARIO_EXISTE = "Perfil Usuario ja existente no Banco de dados";
     // Mensagem de erro se o PerfilDeUsuario não existir no banco.
-    public final static String PERFIL_USUARIO_NAO_EXISTE = "O perfil usuário não existe na base de dados";
+    public final static String PERFIL_USUARIO_NAO_EXISTE = "Perfil Usuario nao existente no Banco de dados";
     // Mensagem de erro se o PerfilDeUsuario for inválido.
-    public final static String PERFIL_USUARIO_INVALIDO = "Perfil usuário inválido";
+    public final static String PERFIL_USUARIO_INVALIDO = "As informaçoes do Perfil usuário nao sao validas";
      // Mensagem de erro caso o nome esteja vazio.
-    private final static String NOME_VAZIO = "Nome está vazio";
+    private final static String NOME_VAZIO = "O Campo Nome esta vazio";
     // Mensagem de erro caso o nome seja null.
-    private final static String NOME_NULL = "Nome null";
+    private final static String NOME_NULL = "Dados do nome nao preenchidos";
     
      //================= OBJETO =================================================
     @Autowired

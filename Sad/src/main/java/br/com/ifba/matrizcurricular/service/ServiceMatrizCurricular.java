@@ -21,22 +21,22 @@ public class ServiceMatrizCurricular implements IServiceMatrizCurricular{
     //================= CONSTANTES =============================================
     
     // Mensagem de erro se a Matriz Curricular for null.
-    public final static String MATRIZ_CURRICULAR_NULL = "A Matriz curricular está null";
+    public final static String MATRIZ_CURRICULAR_NULL = "Dados da Matriz Curricular nao preenchidos";
     
     // Mensagem de erro se a Matriz Curricular já existe.
-    public final static String MATRIZ_CURRICULAR_EXISTE = "A Matriz curricular já existe";
+    public final static String MATRIZ_CURRICULAR_EXISTE = "Matriz Curricular ja existente no Banco de dados";
     
     // Mensagem de erro se a Matriz Curricular não existir no banco.
-    public final static String MATRIZ_CURRICULAR_NAO_EXISTE = "A Matriz curricular não existe na base de dados";
+    public final static String MATRIZ_CURRICULAR_NAO_EXISTE = "Matriz Curricular nao existente no Banco de dados";
     
     // Mensagem de erro se a Matriz Curricular for inválida.
-    public final static String MATRIZ_CURRICULAR_INVALIDO = "Matriz Curricular inválida";
+    public final static String MATRIZ_CURRICULAR_INVALIDO = "As informaçoes da Matriz Curricular nao sao validas";
     
      // Mensagem de erro caso o nome esteja vazio.
-    private final static String NOME_VAZIO = "Nome está vazio";
+    private final static String NOME_VAZIO = "O Campo Nome esta vazio";
     
     // Mensagem de erro caso o nome seja null.
-    private final static String NOME_NULL = "Nome null";
+    private final static String NOME_NULL = "Dados do nome nao preenchidos";
     
      //================= OBJETO =================================================
     @Autowired

@@ -18,16 +18,16 @@ import org.springframework.stereotype.Service;
 public class ServiceDisciplina implements IServiceDisciplina{
     
     //mensagem de erro se o Usuario for null;
-    public final static String USUARIO_NULL = "Usuario null";
+    public final static String USUARIO_NULL = "Dados do Usuario não preenchidos";
     
     //mensagem de erro se o Usuario já existir;
-    public final static String USUARIO_EXISTE = "O Usuario já existe,";
+    public final static String USUARIO_EXISTE = "Usuario ja existente no Banco de dados";
     
     //mensagem de erro se o Usuario não existir no banco;
-    public final static String USUARIO_NAO_EXISTE = "O Usuario não existe na base de dados";
+    public final static String USUARIO_NAO_EXISTE = "Usuario nao existente no Banco de dados";
     
     //mensagem de erro se o Usuario for inválido;
-    public final static String USUARIO_INVALIDO = "Usuario inválido";
+    public final static String USUARIO_INVALIDO = "As informaçoes do Usuario nao sao validas";
     
     @Autowired
      private IDisciplinaDao disciplinaDao;

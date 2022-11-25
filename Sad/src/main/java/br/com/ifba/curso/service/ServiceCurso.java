@@ -21,16 +21,16 @@ public class ServiceCurso implements IServiceCurso {
     //-_-_-_-_-_-_-_-_-_- CONSTANTES -_-_-_-_-_-_-_-_-_-
     
     //mensagem de erro caso o Curso seja nulo;
-    public final static String CURSO_NULL = "Curso null";
+    public final static String CURSO_NULL = "Dados do Curso nao preenchidos";
     
     //mensagem de erro caso o Curso já exista no banco de dados;
-    public final static String CURSO_EXISTE = "O Curso já existe,";
+    public final static String CURSO_EXISTE = "Curso ja existente no Banco de dados";
     
     //mensagem de erro caso o Curso não exista no banco de dados;
-    public final static String CURSO_NAO_EXISTE = "O Curso não existe na base de dados";
+    public final static String CURSO_NAO_EXISTE = "Curso nao existente no Banco de dados";
     
     //mensagem de erro caso o Curso seja inválido;
-    public final static String CURSO_INVALIDO = "Curso inválido";
+    public final static String CURSO_INVALIDO = "As informaçoes do Curso nao sao validas";
     
     //-_-_-_-_-_-_-_-_-_- OBJETO -_-_-_-_-_-_-_-_-_-
     
@@ -85,9 +85,9 @@ public class ServiceCurso implements IServiceCurso {
     @Override
     public List<Curso> findByNome(String nome) {
         if(nome == null) {
-            throw new BusinessException("Nome null");
+            throw new BusinessException("Dados do nome nao preenchidos");
         } else if(nome.isEmpty()) {
-            throw new BusinessException("Nome vazio");
+            throw new BusinessException("O Campo Nome esta vazio");
         } else {
             return cursoDao.findByNome(nome);
         }

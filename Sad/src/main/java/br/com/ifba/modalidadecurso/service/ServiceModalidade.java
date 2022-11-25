@@ -21,16 +21,16 @@ public class ServiceModalidade implements IServiceModalidade{
     //-_-_-_-_-_-_-_-_-_- CONSTANTES -_-_-_-_-_-_-_-_-_-
     
     //mensagem de erro caso a Modalidade seja nula;
-    public final static String MODALIDADE_NULL = "Modalidade null";
+    public final static String MODALIDADE_NULL = "Dados da Modalidade nao preenchidos";
     
     //mensagem de erro caso a Modalidade já exista no banco de dados;
-    public final static String MODALIDADE_EXISTE = "A Modalidade já existe,";
+    public final static String MODALIDADE_EXISTE = "Modalidade ja existente no Banco de dados";
     
     //mensagem de erro caso a Modalidade não exista no banco de dados;
-    public final static String MODALIDADE_NAO_EXISTE = "A Modalidade não existe na base de dados";
+    public final static String MODALIDADE_NAO_EXISTE = "Modalidade nao existente no Banco de dados";
     
     //mensagem de erro caso a Modalidade seja inválida;
-    public final static String MODALIDADE_INVALIDO = "Modalidade inválida";
+    public final static String MODALIDADE_INVALIDO = "As informaçoes da Modalidade nao sao validas";
     
     //-_-_-_-_-_-_-_-_-_- OBJETO -_-_-_-_-_-_-_-_-_-
     
@@ -85,9 +85,9 @@ public class ServiceModalidade implements IServiceModalidade{
     @Override
     public List<Modalidade> findByNome(String nome) {
         if(nome == null) {
-            throw new BusinessException("Nome null");
+            throw new BusinessException("Dados do nome nao preenchidos");
         } else if(nome.isEmpty()) {
-            throw new BusinessException("Nome vazio");
+            throw new BusinessException("O Campo Nome esta vazio");
         } else {
             return modalidadeDao.findByNome(nome);
         }

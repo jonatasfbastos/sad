@@ -21,15 +21,15 @@ public class ServiceEtapaCurso implements IServiceEtapaCurso {
      //================= CONSTANTES =============================================
     
     // Mensagem de erro se o EtapaCurso for null
-    private final static String ETAPA_CURSO_NULL = "Etapa curso null";
+    private final static String ETAPA_CURSO_NULL = "Dados de Etapa Curso nao preenchidos";
     // Mensagem de erro se o EtapaCurso já existir
-    private final static String ETAPA_CURSO_EXISTE = "Etapa curso já existe";
+    private final static String ETAPA_CURSO_EXISTE = "Etapa Curso ja existente no Banco de dados";
     // Mensagem de erro se a EtapaCurso não existir no banco
-    private final static String ETAPA_CURSO_NAO_EXISTE = "A etapa curso não existe na base de dados";
+    private final static String ETAPA_CURSO_NAO_EXISTE = "Etapa Curso nao existente no Banco de dados";
     // Mensagem de erro caso o nome esteja vazio
-    private final static String NOME_VAZIO = "Nome está vazio";
+    private final static String NOME_VAZIO = "O Campo Nome esta vazio";
     // Mensagem de erro caso o nome seja null
-    private final static String NOME_NULL = "Nome null";
+    private final static String NOME_NULL = "Dados do nome nao preenchidos";
     
      //================= OBJETO =================================================
     @Autowired

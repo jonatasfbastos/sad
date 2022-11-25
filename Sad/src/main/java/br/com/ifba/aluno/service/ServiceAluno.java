@@ -20,17 +20,17 @@ public class ServiceAluno implements IServiceAluno {
     //================= CONSTANTES =============================================
     
    // Mensagem de erro se o Aluno for null.
-    public final static String ALUNO_NULL = "Aluno null";
+    public final static String ALUNO_NULL = "Dados do Aluno nao preenchidos";
     // Mensagem de erro se o Aluno já existir.
-    public final static String ALUNO_EXISTE = "O Aluno já existe";
+    public final static String ALUNO_EXISTE = "Aluno ja existente no Banco de dados";
     // Mensagem de erro se o Aluno não existir no banco.
-    public final static String ALUNO_NAO_EXISTE = "O Aluno não existe na base de dados";
+    public final static String ALUNO_NAO_EXISTE = "Aluno nao existente no Banco de dados";
     // Mensagem de erro se o Aluno for inválido.
-    public final static String ALUNO_INVALIDO = "Aluno inválido";
+    public final static String ALUNO_INVALIDO = "As informaçoes do Aluno nao sao validas";
      // Mensagem de erro caso o nome esteja vazio.
-    private final static String NOME_VAZIO = "Nome está vazio";
+    private final static String NOME_VAZIO = "O Campo Nome esta vazio";
     // Mensagem de erro caso o nome seja null.
-    private final static String NOME_NULL = "Nome null";
+    private final static String NOME_NULL = "Dados do nome nao preenchidos";
     
      //================= OBJETO =================================================
     @Autowired

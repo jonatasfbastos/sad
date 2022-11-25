@@ -20,16 +20,16 @@ public class ServiceAvaliacao implements IServiceAvaliacao{
     //================= CONSTANTES =============================================
     
     // Mensagem de erro se Avaliacao for null.
-    public final static String AVALIACAO_NULL = "O Avaliacao está null";
+    public final static String AVALIACAO_NULL = "Dados da Avaliacao nao preenchidos";
     
     // Mensagem de erro se  Avaliacao já existe.
-    public final static String AVALIACAO_EXISTE = " Avaliacao já existe";
+    public final static String AVALIACAO_EXISTE = "Avaliacao ja existente no Banco de dados";
     
     // Mensagem de erro se Avaliacao não existir no banco.
-    public final static String AVALIACAO_NAO_EXISTE = "Avaliacao não existe na base de dados";
+    public final static String AVALIACAO_NAO_EXISTE = "Avaliaçao nao existente no Banco de dados";
     
     // Mensagem de erro se Avaliacao for inválida.
-    public final static String AVALIACAO_INVALIDO = "Avaliacao inválida";
+    public final static String AVALIACAO_INVALIDO = "As informaçoes da Avaliacao nao sao validas";
     
     
      //================= OBJETO =================================================

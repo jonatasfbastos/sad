@@ -21,16 +21,16 @@ public class ServiceFormulario implements IServiceFormulario{
     //-_-_-_-_-_-_-_-_-_- CONSTANTES -_-_-_-_-_-_-_-_-_-
     
     //mensagem de erro caso o Formulario seja nulo;
-    public final static String FORMULARIO_NULL = "Formulario null";
+    public final static String FORMULARIO_NULL = "Dados do Formulario nao preenchidos";
     
     //mensagem de erro caso o Formulario já exista no banco de dados;
-    public final static String FORMULARIO_EXISTE = "O Formulario já existe,";
+    public final static String FORMULARIO_EXISTE = "Formulario ja existente no Banco de dados";
     
     //mensagem de erro caso o Formulario não exista no banco de dados;
-    public final static String FORMULARIO_NAO_EXISTE = "O Formulario não existe na base de dados";
+    public final static String FORMULARIO_NAO_EXISTE = "Formulario nao existente no Banco de dados";
     
     //mensagem de erro caso o Formulario seja inválido;
-    public final static String FORMULARIO_INVALIDO = "Formulario inválido";
+    public final static String FORMULARIO_INVALIDO = "As informaçoes do Formulario nao sao validas";
     
     //-_-_-_-_-_-_-_-_-_- OBJETO -_-_-_-_-_-_-_-_-_-
     
@@ -85,9 +85,9 @@ public class ServiceFormulario implements IServiceFormulario{
     @Override
     public List<Formulario> findByTitulo(String titulo) {
         if(titulo == null) {
-            throw new BusinessException("Titulo null");
+            throw new BusinessException("Dados do titulo nao preenchidos");
         } else if(titulo.isEmpty()) {
-            throw new BusinessException("Titulo vazio");
+            throw new BusinessException("O Campo titulo esta vazio");
         } else {
             return formularioDao.findByTitulo(titulo);
         }

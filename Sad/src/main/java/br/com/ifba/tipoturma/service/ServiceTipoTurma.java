@@ -17,15 +17,15 @@ public class ServiceTipoTurma implements IServiceTipoTurma {
     //================= CONSTANTES =============================================
     
     // Mensagem de erro se o TipoTurma for null.
-    private final static String TIPOTURMA_NULL = "Tipo de turma null";
+    private final static String TIPOTURMA_NULL = "Dados do Tipo da Turma nao preenchidos";
     // Mensagem de erro se o TipoTurma já existir.
-    private final static String TIPOTURMA_EXISTE = "Tipo de turma já existe";
+    private final static String TIPOTURMA_EXISTE = "Tipo da Turma ja existente no Banco de dados";
     // Mensagem de erro se a TipoTurma não existir no banco.
-    private final static String TIPOTURMA_NAO_EXISTE = "o Tipo de turma não existe na base de dados";
+    private final static String TIPOTURMA_NAO_EXISTE = "Tipo da Turma nao existente no Banco de dados";
     // Mensagem de erro caso o nome esteja vazio.
-    private final static String NOME_VAZIO = "Nome está vazio";
+    private final static String NOME_VAZIO = "O Campo Nome esta vazio";
     // Mensagem de erro caso o nome seja null.
-    private final static String NOME_NULL = "Nome null";
+    private final static String NOME_NULL = "Dados do nome nao preenchidos";
     
      //================= OBJETO =================================================
     @Autowired

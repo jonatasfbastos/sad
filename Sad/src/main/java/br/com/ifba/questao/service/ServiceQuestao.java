@@ -19,18 +19,18 @@ public class ServiceQuestao implements IServiceQuestao{
     //-_-_-_-_-_-_-_-_-_- CONSTANTES -_-_-_-_-_-_-_-_-_-
     
     //mensagem de erro caso a Questao seja nula;
-    public final static String QUESTAO_NULL = "Questao null";
+    public final static String QUESTAO_NULL = "Dados da Questao nao preenchidos";
     
     //mensagem de erro caso a Questao já exista no banco de dados;
-    public final static String QUESTAO_EXISTE = "A Questao já existe,";
+    public final static String QUESTAO_EXISTE = "Questao ja existente no Banco de dados";
     
     //mensagem de erro caso a Questao não exista no banco de dados;
-    public final static String QUESTAO_NAO_EXISTE = "A Questao não existe na base de dados";
+    public final static String QUESTAO_NAO_EXISTE = "Questao nao existente no Banco de dados";
     
     //mensagem de erro caso a Questao seja inválida;
-    public final static String QUESTAO_INVALIDO = "Questao inválida";
+    public final static String QUESTAO_INVALIDO = "As informaçoes da Questao nao sao validas";
     // mensagem de erro caso a Questao seja vazia;
-    private final static String QUESTAO_VAZIO = "Questao está vazio";
+    private final static String QUESTAO_VAZIO = "O Enunciado esta vazio";
     
     //-_-_-_-_-_-_-_-_-_- OBJETO -_-_-_-_-_-_-_-_-_-
     
