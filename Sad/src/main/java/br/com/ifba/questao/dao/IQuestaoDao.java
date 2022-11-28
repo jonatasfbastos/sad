@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author clebinho
  */
+@Repository
 public interface IQuestaoDao extends JpaRepository<Questao, Long>{
     
     public abstract List<Questao> findByEnunciado(String enunciado);

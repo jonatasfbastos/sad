@@ -14,6 +14,7 @@ import br.com.ifba.etapacurso.model.EtapaCurso;
 import br.com.ifba.formulario.model.Formulario;
 import br.com.ifba.modalidadecurso.model.Modalidade;
 import br.com.ifba.turma.model.Turma;
+import br.com.ifba.questao.model.Questao;
 import java.util.List;
 
 /**
@@ -101,4 +102,11 @@ public interface IFacade {
     public List<Formulario> getAllFormulario();
     public Formulario findByIdFormulario(Long id);
     
+    //===================Questao==================//
+    public Questao saveQuestao(Questao questao);
+    public Questao updateQuestao(Questao questao);
+    public void deleteQuestao(Questao questao);
+    public List<Questao> findByEnunciadoQuestao(String enunciado);
+    public List<Questao> getAllQuestao();
+    public Questao findByIdQuestao(Long id);
 }

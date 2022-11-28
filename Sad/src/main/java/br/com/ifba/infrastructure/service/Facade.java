@@ -20,6 +20,8 @@ import br.com.ifba.etapacurso.model.EtapaCurso;
 import br.com.ifba.etapacurso.service.IServiceEtapaCurso;
 import br.com.ifba.formulario.model.Formulario;
 import br.com.ifba.formulario.service.IServiceFormulario;
+import br.com.ifba.questao.model.Questao;
+import br.com.ifba.questao.service.IServiceQuestao;
 import br.com.ifba.modalidadecurso.model.Modalidade;
 import br.com.ifba.modalidadecurso.service.IServiceModalidade;
 import br.com.ifba.turma.model.Turma;
@@ -371,4 +373,37 @@ public class Facade implements IFacade {
         return serviceFormulario.findById(id);
     }
     
+    //=====================Questao===================//
+    @Autowired
+    private IServiceQuestao serviceQuestao;
+    
+    @Override
+    public Questao saveQuestao (Questao questao) {
+        return serviceQuestao.saveQuestao(questao);
+    }
+
+    @Override
+    public Questao updateQuestao (Questao questao) {
+        return serviceQuestao.updateQuestao(questao);
+    }
+
+    @Override
+    public void deleteQuestao (Questao questao) {
+        serviceQuestao.deleteQuestao(questao);
+    }
+
+    @Override
+    public List<Questao> findByEnunciadoQuestao (String enunciado) {
+        return serviceQuestao.findByEnunciado(enunciado);
+    }
+
+    @Override
+    public List<Questao> getAllQuestao() {
+        return serviceQuestao.getAllQuestao();
+    }
+
+    @Override
+    public Questao findByIdQuestao(Long id) {
+        return serviceQuestao.findById(id);
+    }
 }

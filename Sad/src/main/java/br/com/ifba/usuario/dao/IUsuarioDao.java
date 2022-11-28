@@ -17,8 +17,8 @@ import org.springframework.stereotype.Repository;
 public interface IUsuarioDao extends JpaRepository<Usuario, Long> {
     
     List<Usuario> findByLogin(String login);
-    List<Usuario> findByNome(String nome);
-    public boolean existsByNome(String nome);
+    //List<Usuario> findByNome(String nome);
+    //public boolean existsByNome(String nome);
     public boolean existsByLogin(String login);
     
 }
