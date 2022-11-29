@@ -12,7 +12,7 @@ import lombok.Data;
  */
 
 @Data
-public abstract class Tereceirizado extends Pessoa{
+public abstract class Terceirizado extends Pessoa{
 
         
 }
