@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author leonam
+ * @author leona
  */
 public interface IServiceTerceirizado {
     

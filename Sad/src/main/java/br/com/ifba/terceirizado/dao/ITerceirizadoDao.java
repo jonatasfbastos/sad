@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author leonam
+ * @author leona
  */
 @Repository
 public interface ITerceirizadoDao extends JpaRepository<Terceirizado, Long> {

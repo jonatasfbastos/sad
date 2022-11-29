@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author leonam
+ * @author leona
  */
 @Service
 public class ServiceTerceirizado implements IServiceTerceirizado{
