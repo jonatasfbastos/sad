@@ -8,6 +8,8 @@ import br.com.ifba.infrastructure.exception.BusinessException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import br.com.ifba.tecnicoadministrativo.model.TecnicoAdministrativo;
+import br.com.ifba.tecnicoadministrativo.dao.ITecnicoAdministrativoDao;
 
 /**
  *
@@ -36,9 +38,7 @@ public class ServiceTecnicoAdministrativo implements IServiceTecnicoAdministrati
     // Mensagem de erro caso o nome seja null.
     private final static String NOME_NULL = "Dados do nome nao preenchidos";
     
-    /*
-                            >>>> REMOVER DEPOIS OS COMENTÁRIOS <<<
-    
+   
      //================= OBJETO =================================================
     @Autowired
     private ITecnicoAdministrativoDao tecnicoAdministrativoDao;
@@ -68,7 +68,7 @@ public class ServiceTecnicoAdministrativo implements IServiceTecnicoAdministrati
 
     @Override
     public void deleteTecnicoAdministrativo(TecnicoAdministrativo tecnicoAdministrativo) {
-        if(tecincoAdministrativo == null) {
+        if(tecnicoAdministrativo == null) {
             throw new BusinessException(TECNICO_ADM_NULL);
         }
         if(tecnicoAdministrativoDao.existsById(tecnicoAdministrativo.getId()) == false) {
@@ -97,6 +97,5 @@ public class ServiceTecnicoAdministrativo implements IServiceTecnicoAdministrati
      public TecnicoAdministrativo findById(Long id) {
           return tecnicoAdministrativoDao.getReferenceById(id);
      }
-    */
     
 }
