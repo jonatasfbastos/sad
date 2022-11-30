@@ -4,6 +4,7 @@
  */
 package br.com.ifba.matrizcurricular.model;
 
+import br.com.ifba.curso.model.Curso;
 import br.com.ifba.etapacurso.model.EtapaCurso;
 import br.com.ifba.infrastructure.model.PersistenceEntity;
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Data;
@@ -30,5 +32,8 @@ public class MatrizCurricular extends PersistenceEntity implements Serializable{
     
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<EtapaCurso> etapacurso;
+    
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private Curso curso;
     
 }
