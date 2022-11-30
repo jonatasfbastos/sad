@@ -15,19 +15,10 @@ import lombok.Data;
  * @author Ellen Cristina
  */
 @Entity
-@Table(name = "respostatextual")
+@Table(name = "resposta_textual")
 @Data
-public class RespostaTextual extends Resposta implements Serializable{
-    //Atributos
+public class RespostaTextual extends Resposta implements Serializable {
+    
     private String texto;
 
-    public String getTexto() {
-        return texto;
-    }
-
-    public void setTexto(String texto) {
-        this.texto = texto;
-    }
-    
-    
 }

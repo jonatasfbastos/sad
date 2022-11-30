@@ -6,6 +6,7 @@ package br.com.ifba.questao.model;
 
 import br.com.ifba.infrastructure.model.PersistenceEntity;
 import br.com.ifba.resposta.model.Resposta;
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
@@ -16,15 +17,15 @@ import lombok.Data;
  *
  * @author Lucas
  */
-
 @Entity
 @Table(name = "questao")
 @Data
-public class Questao extends PersistenceEntity {
+public class Questao extends PersistenceEntity implements Serializable {
+    
     private String enunciado;
     private boolean required;
-    
-    //Uma questão possui uma respota associada
+    // Uma questão possui uma resposta associada
     @OneToOne(fetch = FetchType.EAGER)  
     private Resposta resposta;
+    
 }

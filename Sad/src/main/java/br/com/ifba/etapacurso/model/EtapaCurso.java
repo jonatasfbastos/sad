@@ -17,14 +17,14 @@ import lombok.Data;
 
 /**
  *
- * @author MATHEUS LIMA
+ * @author Gislaine Nunes
  * 
  */
 @Entity
 @Table(name = "etapa_curso")
 @Data
 public class EtapaCurso extends PersistenceEntity implements Serializable {
-    //Variáveis
+    
     private String nome;
     private int periodo;
     private boolean concluinte;

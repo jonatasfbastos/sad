@@ -69,7 +69,7 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
                 professor.getTelefone(),
                 professor.getEmail(),
                 professor.getCpf(),
-                professor.getNascimento(),
+                professor.getDataNascimento(),
                 nomesDisciplinas
             });
         }
@@ -313,7 +313,7 @@ public class TelaExibirProfessor extends javax.swing.JFrame {
                     professor.getTelefone(),
                     professor.getEmail(),
                     professor.getCpf(),
-                    professor.getNascimento(),
+                    professor.getDataNascimento(),
                     nomesDisciplinas
                 });
             }

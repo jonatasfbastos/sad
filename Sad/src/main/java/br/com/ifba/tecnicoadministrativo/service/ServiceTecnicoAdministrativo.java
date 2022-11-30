@@ -36,6 +36,9 @@ public class ServiceTecnicoAdministrativo implements IServiceTecnicoAdministrati
     // Mensagem de erro caso o nome seja null.
     private final static String NOME_NULL = "Dados do nome nao preenchidos";
     
+    /*
+                            >>>> REMOVER DEPOIS OS COMENTÁRIOS <<<
+    
      //================= OBJETO =================================================
     @Autowired
     private ITecnicoAdministrativoDao tecnicoAdministrativoDao;
@@ -94,5 +97,6 @@ public class ServiceTecnicoAdministrativo implements IServiceTecnicoAdministrati
      public TecnicoAdministrativo findById(Long id) {
           return tecnicoAdministrativoDao.getReferenceById(id);
      }
+    */
     
 }

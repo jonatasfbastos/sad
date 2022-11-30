@@ -3,6 +3,7 @@ package br.com.ifba;
 import br.com.ifba.curso.view.TelaExibirCurso;
 import br.com.ifba.disciplina.view.TelaExibirDisciplinas;
 import br.com.ifba.etapacurso.view.TelaExibirEtapaCurso;
+import br.com.ifba.infrastructure.service.IFacade;
 import br.com.ifba.modalidadecurso.view.TelaExibirModalidade;
 import br.com.ifba.perfilusuario.view.TelaExibirPerfilUsuario;
 import br.com.ifba.professor.view.TelaExibirProfessor;
@@ -13,6 +14,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TelaDeTestes extends javax.swing.JFrame {
+    
+    // Usar para realizar testes dos que não tem tela.
+    @Autowired
+    IFacade facade;
     
     @Autowired
     private TelaExibirPerfilUsuario telaPerfilUsuario;
@@ -254,7 +259,7 @@ public class TelaDeTestes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTelaDisciplinaActionPerformed
 
     private void btn01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn01ActionPerformed
-       
+    
     }//GEN-LAST:event_btn01ActionPerformed
 
     public static void main(String args[]) {

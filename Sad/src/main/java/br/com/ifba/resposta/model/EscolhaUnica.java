@@ -8,7 +8,7 @@ package br.com.ifba.resposta.model;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Data;
 
@@ -17,13 +17,13 @@ import lombok.Data;
  * @author Ellen Cristina
  */
 @Entity
-@Table(name = "escolhaunica")
+@Table(name = "escolha_unica")
 @Data
-public class EscolhaUnica extends MultiplaEscolha{
+public class EscolhaUnica extends MultiplaEscolha {
     
-    //Muita EscolhaUnica possui uma opcao como resposta
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "opcao_ID", referencedColumnName = "ID")
+    // EscolhaUnica possui uma opcao como resposta
+    @OneToOne(mappedBy = "escolha", fetch = FetchType.EAGER)
+    @JoinColumn(name = "opcao_id", referencedColumnName = "ID")
     private Opcao opcaoSelecionada;
     
 }

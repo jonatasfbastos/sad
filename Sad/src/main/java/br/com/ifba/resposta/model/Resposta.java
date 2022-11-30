@@ -7,6 +7,7 @@ package br.com.ifba.resposta.model;
 
 import br.com.ifba.infrastructure.model.PersistenceEntity;
 import br.com.ifba.questao.model.Questao;
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -21,11 +22,11 @@ import lombok.Data;
 @Entity
 @Table(name = "resposta")
 @Data
-public abstract class Resposta extends PersistenceEntity{
+public abstract class Resposta extends PersistenceEntity implements Serializable {
     
     //Cada resposta possui uma questão associada
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "questao_ID", referencedColumnName = "ID")
+    @JoinColumn(name = "questao_id", referencedColumnName = "ID")
     private Questao questao;
     
 }

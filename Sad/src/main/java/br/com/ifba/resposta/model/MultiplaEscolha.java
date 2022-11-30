@@ -10,7 +10,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Data;
 
@@ -19,11 +19,12 @@ import lombok.Data;
  * @author Ellen Cristina
  */
 @Entity
-@Table(name = "multiplaescolha")
+@Table(name = "multipla_escolha")
 @Data
-public class MultiplaEscolha extends Resposta implements Serializable{
+public class MultiplaEscolha extends Resposta implements Serializable {
     
-     //MultiplaEscolha possui uma lista de opções
-    @ManyToMany(mappedBy = "multiplaescolha", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Opcao> opcao;
+     // MultiplaEscolha possui uma lista de opções
+    @OneToMany(mappedBy = "multiplaEscolha", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Opcao> opcoes;
+    
 }

@@ -44,7 +44,7 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
                 validacao.isEmpty(aluno.getTelefone()) ||
                 validacao.isEmpty(aluno.getEmail()) ||
                 validacao.isEmpty(aluno.getCpf()) ||
-                validacao.isEmpty(aluno.getNascimento().toString()) ||
+                validacao.isEmpty(aluno.getDataNascimento().toString()) ||
                 validacao.isEmpty(Long.toString(aluno.getTurma().getId())) ||
                 validacao.isEmpty(aluno.getUsuario().getSenha())) {
             return false;
@@ -261,7 +261,7 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
         this.aluno.setTelefone(telefone);
         this.aluno.setEmail(email);
         this.aluno.setCpf(cpf);
-        this.aluno.setNascimento(nascimento);
+        this.aluno.setDataNascimento(nascimento);
         this.aluno.setTurma(turmaEncontrada);
         this.aluno.getUsuario().setSenha(senha);
         

@@ -6,10 +6,9 @@
 package br.com.ifba.resposta.model;
 
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import lombok.Data;
 
@@ -20,9 +19,10 @@ import lombok.Data;
 @Entity
 @Table(name = "checkbox")
 @Data
-public class CheckBox extends MultiplaEscolha{
+public class CheckBox extends MultiplaEscolha {
     
     //CheckBox possui uma lista de opções para resposta
-    @OneToMany(mappedBy = "checkbox", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Opcao> opcao;
+    @ManyToMany(mappedBy = "checkBoxes", fetch = FetchType.LAZY)
+    private List<Opcao> opcoesSelecionada;
+    
 }

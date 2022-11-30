@@ -12,11 +12,14 @@ import java.util.List;
  */
 public interface IServiceTecnicoAdministrativo {
     
+    /*
+        >>>> REMOVER DEPOIS OS COMENTÁRIOS <<<
+    
     public TecnicoAdministrativo saveTecnicoAdministrativo(TecnicoAdministrativo tecnicoAdministrativo);
     public TecnicoAdministrativo updateTecincoAdministrativo(TecnicoAdministrativo tecnicoAdministrativo);
     public void deleteTecnicoAdministrativo(TecnicoAdministrativo tecnicoAdministrativo);
     public List<TecnicoAdministrativo> getAllTecnicoAdministrativo();
     public List<TecnicoAdministrativo> findByNome(String nome);
     public TecnicoAdmnistrativo findById(Long id);
-    
+    */
 }

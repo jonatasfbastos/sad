@@ -63,7 +63,7 @@ public class TelaExibirAluno extends javax.swing.JFrame {
                 aluno.getTelefone(),
                 aluno.getEmail(),
                 aluno.getCpf(),
-                aluno.getNascimento(),
+                aluno.getDataNascimento(),
                 aluno.getTurma().getNome()
             });
         }
@@ -298,7 +298,7 @@ public class TelaExibirAluno extends javax.swing.JFrame {
                     aluno.getTelefone(),
                     aluno.getEmail(),
                     aluno.getCpf(),
-                    aluno.getNascimento(),
+                    aluno.getDataNascimento(),
                     aluno.getTurma().getNome()
                 });
             }

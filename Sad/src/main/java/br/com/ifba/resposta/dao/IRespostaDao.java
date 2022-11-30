@@ -5,6 +5,8 @@
  */
 package br.com.ifba.resposta.dao;
 
+import br.com.ifba.resposta.model.Resposta;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author Ellen Cristina
  */
 @Repository
-public interface IRespostaDao {
+public interface IRespostaDao extends JpaRepository<Resposta, Long> {
     
 }

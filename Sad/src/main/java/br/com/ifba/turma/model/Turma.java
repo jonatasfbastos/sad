@@ -28,7 +28,7 @@ public class Turma extends PersistenceEntity implements Serializable {
     private String sigla;
     private boolean ativa;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "turma_ID", referencedColumnName = "ID")
+    @JoinColumn(name = "turma_id", referencedColumnName = "ID")
     private TipoTurma tipoTurma;
 
 }

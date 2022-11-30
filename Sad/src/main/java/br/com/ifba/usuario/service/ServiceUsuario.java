@@ -87,18 +87,5 @@ public class ServiceUsuario implements IServiceUsuario {
         }
         return UsuarioDao.findByLogin(login);
     }
-    
-    /*
-    @Override
-    public List<Usuario> findByNome(String nome) {
-        if(nome == null) {
-            throw new BusinessException(NOME_NULL);
-        } 
-        if(nome.isEmpty()) {
-            throw new BusinessException(NOME_VAZIO);
-        }
-        return UsuarioDao.findByNome(nome);
-    }
-    */
-    
+        
 }

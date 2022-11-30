@@ -24,6 +24,8 @@ import br.com.ifba.questao.model.Questao;
 import br.com.ifba.questao.service.IServiceQuestao;
 import br.com.ifba.modalidadecurso.model.Modalidade;
 import br.com.ifba.modalidadecurso.service.IServiceModalidade;
+import br.com.ifba.tipoturma.model.TipoTurma;
+import br.com.ifba.tipoturma.service.IServiceTipoTurma;
 import br.com.ifba.turma.model.Turma;
 import br.com.ifba.turma.service.IServiceTurma;
 import java.util.List;
@@ -406,4 +408,39 @@ public class Facade implements IFacade {
     public Questao findByIdQuestao(Long id) {
         return serviceQuestao.findById(id);
     }
+    
+    //===================TipoTurma==================//
+    @Autowired
+    IServiceTipoTurma serviceTipoTurma;
+    
+    @Override
+    public TipoTurma saveTipoTurma(TipoTurma tipoTurma) {
+        return serviceTipoTurma.saveTipoTurma(tipoTurma);
+    }
+    
+    @Override
+    public TipoTurma updateTipoTurma(TipoTurma tipoTurma) {
+         return serviceTipoTurma.updateTipoTurma(tipoTurma);
+    }
+    
+    @Override
+    public void deleteTipoTurma(TipoTurma tipoTurma) {
+         serviceTipoTurma.deleteTipoTurma(tipoTurma);
+    }
+    
+    @Override
+    public List<TipoTurma> findByNome(String nome) {
+        return  serviceTipoTurma.findByNome(nome);
+    }
+    
+    @Override
+    public List<TipoTurma> getAllTipoTurma() {
+        return  serviceTipoTurma.getAllTipoTurma();
+    }
+    
+    @Override
+    public TipoTurma findByIdTipoTurma(Long id){ 
+        return  serviceTipoTurma.findById(id);
+    }
+    
 }

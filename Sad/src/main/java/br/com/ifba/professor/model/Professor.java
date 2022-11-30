@@ -7,7 +7,6 @@ package br.com.ifba.professor.model;
 import br.com.ifba.disciplina.model.Disciplina;
 import br.com.ifba.servidor.model.Servidor;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -23,13 +22,9 @@ import lombok.Data;
 @Entity
 @Table(name = "professor")
 @Data
-public class Professor extends Servidor implements Serializable{
+public class Professor extends Servidor implements Serializable {
     
     @OneToMany(mappedBy = "professor", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Disciplina> disciplina;
-
-    public void getDisciplina(ArrayList<String> listaDisciplina) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
 }

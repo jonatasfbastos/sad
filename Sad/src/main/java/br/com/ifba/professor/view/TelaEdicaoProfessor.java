@@ -248,7 +248,7 @@ public class TelaEdicaoProfessor extends javax.swing.JFrame {
         this.professor.setTelefone(telefone);
         this.professor.setEmail(email);
         this.professor.setCpf(cpf);
-        this.professor.setNascimento(nascimento);
+        this.professor.setDataNascimento(nascimento);
         this.professor.getUsuario().setSenha(senha);
         
         if(this.validarCampos(this.professor) == false) {

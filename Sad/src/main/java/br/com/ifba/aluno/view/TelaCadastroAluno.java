@@ -42,7 +42,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
                 validacao.isEmpty(aluno.getTelefone()) ||
                 validacao.isEmpty(aluno.getEmail()) ||
                 validacao.isEmpty(aluno.getCpf()) ||
-                validacao.isEmpty(aluno.getNascimento().toString()) ||
+                validacao.isEmpty(aluno.getDataNascimento().toString()) ||
                 validacao.isEmpty(Long.toString(aluno.getTurma().getId())) ||
                 validacao.isEmpty(aluno.getUsuario().getSenha())) {
             return false;
@@ -202,7 +202,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         aluno.setTelefone(telefone);
         aluno.setEmail(email);
         aluno.setCpf(cpf);
-        aluno.setNascimento(nascimento);
+        aluno.setDataNascimento(nascimento);
         aluno.setTurma(turmaEncontrada);
         aluno.getUsuario().setSenha(senha);
         

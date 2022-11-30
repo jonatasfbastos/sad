@@ -4,15 +4,16 @@
  */
 package br.com.ifba.servidor.model;
 import br.com.ifba.pessoa.model.Pessoa;
+import java.io.Serializable;
 import lombok.Data;
 
 /**
  *
  * @author Pedro Henrique
  */
-
 @Data
-public abstract class Servidor extends Pessoa{
+public abstract class Servidor extends Pessoa implements Serializable {
+    
     private String siape;
-        
+    
 }

@@ -35,7 +35,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     //lista global
-    ArrayList<String> listaDisciplina = new ArrayList<String>();
+    //ArrayList<String> listaDisciplina = new ArrayList<String>();
     // Verifica se algum dado está vazio
     private boolean validarCampos(Professor professor) {
         StringUtil validacao = StringUtil.getInstance();
@@ -45,7 +45,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
                 validacao.isEmpty(professor.getTelefone()) ||
                 validacao.isEmpty(professor.getEmail()) ||
                 validacao.isEmpty(professor.getCpf()) ||
-                validacao.isEmpty(professor.getNascimento().toString()) ||
+                validacao.isEmpty(professor.getDataNascimento().toString()) ||
                 validacao.isEmpty(professor.getUsuario().getSenha())) {
             return false;
         }
@@ -209,9 +209,9 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         professor.setTelefone(telefone);
         professor.setEmail(email);
         professor.setCpf(cpf);
-        professor.setNascimento(nascimento);
+        professor.setDataNascimento(nascimento);
         professor.getUsuario().setSenha(senha);
-        professor.getDisciplina(listaDisciplina);
+       // professor.getDisciplina(listaDisciplina);
         
         if(this.validarCampos(professor) == false) {
             JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos e tente novamente!",
@@ -242,7 +242,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
        // ArrayList<String> listaDisciplina = new ArrayList<String>();
         //armazenando o dado da variavel
         String disciplina = txtDisciplina.getText();
-        listaDisciplina.add(disciplina);
+        //listaDisciplina.add(disciplina);
  
         
     }//GEN-LAST:event_btnAdiconarDisciplinaActionPerformed
