@@ -24,9 +24,10 @@ import lombok.Data;
 @Data
 public class Modalidade extends PersistenceEntity implements Serializable {
     // Variáveis
-    @OneToMany(mappedBy = "modalidade", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Curso> cursos;
     private String nome;
     private String descricao;
 
+    //Uma modalidade está associada a um ou vários cursos
+    @OneToMany(mappedBy = "modalidade", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Curso> cursos;
 }

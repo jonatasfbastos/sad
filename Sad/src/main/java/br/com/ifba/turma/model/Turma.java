@@ -4,6 +4,7 @@
  */
 package br.com.ifba.turma.model;
 
+import br.com.ifba.etapacurso.model.EtapaCurso;
 import br.com.ifba.infrastructure.model.PersistenceEntity;
 import br.com.ifba.tipoturma.model.TipoTurma;
 import java.io.Serializable;
@@ -27,8 +28,11 @@ public class Turma extends PersistenceEntity implements Serializable {
     private String codigoTurma;
     private String sigla;
     private boolean ativa;
+    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "turma_id", referencedColumnName = "ID")
     private TipoTurma tipoTurma;
-
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    private EtapaCurso etapaCurso;
 }

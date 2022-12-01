@@ -30,10 +30,12 @@ public class MatrizCurricular extends PersistenceEntity implements Serializable{
     private String nome;
     private String descricao;
     
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    //Uma matriz curricular pode estar associada a uma ou mais etapas do curso
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<EtapaCurso> etapacurso;
     
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    //Uma ou mais matrizes estão relacionadas a um curso
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Curso curso;
     
 }

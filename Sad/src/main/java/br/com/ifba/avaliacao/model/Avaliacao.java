@@ -28,10 +28,11 @@ public class Avaliacao extends PersistenceEntity implements Serializable{
     private String dataFim;
     private String datainicio;
     
-    @OneToOne(/*mappedBy = "Avaliacao",*/ fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})   
-    private Formulario formulario;
-    
+    //A Avaliação está relacionada a um formulário
+    @OneToOne(mappedBy = "Avaliacao", fetch = FetchType.EAGER)   
+    private Formulario formulario;    
    
-    @OneToOne(/*mappedBy = "Avaliacao"*/ fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    //A avaliação está relacionada a uma disciplina
+    @OneToOne(mappedBy = "Avaliacao" ,fetch = FetchType.EAGER)
     private Disciplina disciplina;
 }

@@ -27,6 +27,7 @@ public class PerfilUsuario extends PersistenceEntity implements Serializable {
      
      private String nome;
      private String descricao;
+     //Um perfil de usuário pode ter um ou mais usuários
      @OneToMany(mappedBy = "perfilUsuario", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
      private List<Usuario> usuarios;
      

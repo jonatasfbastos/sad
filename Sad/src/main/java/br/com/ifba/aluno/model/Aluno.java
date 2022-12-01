@@ -24,7 +24,8 @@ import lombok.Data;
 public class Aluno extends Pessoa implements Serializable{
     
     private String matricula;
+    //Vários alunos possuem uma turma associada a eles
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "turma_ID", referencedColumnName = "ID")
+    @JoinColumn(name = "turma_id", referencedColumnName = "ID")
     private Turma turma;
 }

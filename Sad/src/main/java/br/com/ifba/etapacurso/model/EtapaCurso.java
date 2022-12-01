@@ -5,13 +5,17 @@
 package br.com.ifba.etapacurso.model;
 
 import br.com.ifba.curso.model.Curso;
+import br.com.ifba.disciplina.model.Disciplina;
 import br.com.ifba.infrastructure.model.PersistenceEntity;
+import br.com.ifba.matrizcurricular.model.MatrizCurricular;
+import br.com.ifba.turma.model.Turma;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Data;
 
@@ -29,7 +33,15 @@ public class EtapaCurso extends PersistenceEntity implements Serializable {
     private int periodo;
     private boolean concluinte;
     private int cargaHoraria;
-    @ManyToMany(/*mappedBy = "curso",*/ fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Curso> curso;
+    
+    //Uma ou mais etapas do curso estão asssociadas a uma matriz
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private MatrizCurricular matrizCurricular; 
+    
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private Disciplina disciplina; 
+    
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List <Turma> turma; 
 
 }
